@@ -87,71 +87,101 @@ namespace GunfireBaseMod
     }
 
     // on player object change
-    [HarmonyPatch(typeof(OC1stPlayer), "OnHeroChange")]
-    public class Hero_Change_Event_Patch
+    //[HarmonyPatch(typeof(OC1stPlayer), "OnHeroChange")]
+    //public class Hero_Change_Event_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref Il2CppReferenceArray<Il2CppSystem.Object> msg, OC1stPlayer __instance)
+    //    {
+    //        MelonLogger.Msg("OnHeroChange");
+    //        MelonLogger.Msg(msg);
+    //        MelonLogger.Msg(__instance);
+    //    }
+    //}
+
+    //[HarmonyPatch(typeof(AkEvent), "HandleEvent")]
+    //public class AkEvent_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref GameObject in_gameObject, ref AkEvent __instance)
+    //    {
+    //        MelonLogger.Msg("HandleAkEvent");
+    //        if (!Il2CppSystem.Object.ReferenceEquals(in_gameObject, null))
+    //        {
+    //            MelonLogger.Msg(in_gameObject.name);
+    //        }
+    //        MelonLogger.Msg(__instance.eventID);
+    //    }
+    //}
+
+    [HarmonyPatch(typeof(AkTriggerCustom), "OnAkTrigger")]
+    public class AkTriggerCustom_Patch
     {
         [HarmonyPostfix]
-        public static void Postfix(Il2CppReferenceArray<Il2CppSystem.Object> msg)
+        public static void Postfix(AkTriggerCustom __instance)
         {
-            MelonLogger.Msg("OnHeroChange");
-            MelonLogger.Msg(msg);
+            MelonLogger.Msg("HandleAkTriggerCustom");
+            MelonLogger.Msg(__instance.TriggerEventName);
         }
     }
 
-    [HarmonyPatch(typeof(TriggerManager), "OnEnterTrigger")]
-    public class Trigger_Event_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(String enterName, Boolean isDrop)
-        {
-            MelonLogger.Msg(enterName);
-            MelonLogger.Msg(isDrop);
-        }
-    }
+    //[HarmonyPatch(typeof(TriggerManager), "OnEnterTrigger")]
+    //public class Trigger_Event_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref String enterName, ref Boolean isDrop, TriggerManager __instance)
+    //    {
+    //        MelonLogger.Msg(__instance.ToString());
+    //        MelonLogger.Msg("OnEnterTrigger");
+    //        MelonLogger.Msg(enterName);
+    //        MelonLogger.Msg(isDrop);
 
-    [HarmonyPatch(typeof(SpeNearGateGuide), "CheckProtalButton")]
-    public class Near_Gate_Guide_Event_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(Il2CppReferenceArray<Il2CppSystem.Object> msg)
-        {
-            MelonLogger.Msg("CheckProtalButton");
-            MelonLogger.Msg(msg);
-        }
-    }
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(SpeNearGateGuide), "CheckProtalButton2")]
-    public class Near_Gate_Guide_2_Event_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(Il2CppReferenceArray<Il2CppSystem.Object> msg)
-        {
-            MelonLogger.Msg("CheckProtalButton2");
-            MelonLogger.Msg(msg);
-        }
-    }
+    //[HarmonyPatch(typeof(SpeNearGateGuide), "CheckProtalButton")]
+    //public class Near_Gate_Guide_Event_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(Il2CppReferenceArray<Il2CppSystem.Object> msg)
+    //    {
+    //        MelonLogger.Msg("CheckProtalButton");
+    //        MelonLogger.Msg(msg);
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(S2CDuoNet), "s2cwarop_GS2CMapTriggerGate")]
-    public class Duo_Net_CG2_CMap_Trigger_Gate_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(NetFunc.basenet netobj)
-        {
-            MelonLogger.Msg(netobj);
-            MelonLogger.Msg("s2cwarop_GS2CMapTriggerGate");
-        }
-    }
+    //[HarmonyPatch(typeof(SpeNearGateGuide), "CheckProtalButton2")]
+    //public class Near_Gate_Guide_2_Event_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(Il2CppReferenceArray<Il2CppSystem.Object> msg)
+    //    {
+    //        MelonLogger.Msg("CheckProtalButton2");
+    //        MelonLogger.Msg(msg);
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(SeverLoadSceneManager), "startLoad")]
-    public class Start_Load_Action_Patch
-    {
-        [HarmonyPrefix]
-        public static void Prefix(OneSeverLoadSceneData info)
-        {
-            MelonLogger.Msg(info);
-            MelonLogger.Msg("startLoad");
-        }
-    }
+    //[HarmonyPatch(typeof(S2CDuoNet), "s2cwarop_GS2CMapTriggerGate")]
+    //public class Duo_Net_CG2_CMap_Trigger_Gate_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(NetFunc.basenet netobj)
+    //    {
+    //        MelonLogger.Msg(netobj);
+    //        MelonLogger.Msg("s2cwarop_GS2CMapTriggerGate");
+    //    }
+    //}
+
+    //[HarmonyPatch(typeof(SeverLoadSceneManager), "startLoad")]
+    //public class Start_Load_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(OneSeverLoadSceneData info)
+    //    {
+    //        MelonLogger.Msg(info);
+    //        MelonLogger.Msg("startLoad");
+    //    }
+    //}
 
     //[HarmonyPatch(typeof(ScriptEventManager), "ExecEvent")]
     //public class Exec_Event_Action_Patch
@@ -374,38 +404,38 @@ namespace GunfireBaseMod
     //    }
     //}
 
-    [HarmonyPatch(typeof(s2cwarop), "GS2CMapTriggerGate")]
-    public class CG2_CMap_Trigger_Gate_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(s2cwarop_GS2CMapTriggerGateClass data)
-        {
-            MelonLogger.Msg(data);
-            MelonLogger.Msg("GS2CMapTriggerGate");
-        }
-    }
+    //[HarmonyPatch(typeof(s2cwarop), "GS2CMapTriggerGate")]
+    //public class CG2_CMap_Trigger_Gate_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref s2cwarop_GS2CMapTriggerGateClass data)
+    //    {
+    //        MelonLogger.Msg(data);
+    //        MelonLogger.Msg("GS2CMapTriggerGate");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(s2cwarop), "GS2CMapTriggerUpStone")]
-    public class CG2_CMap_Trigger_Up_Stone_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(s2cwarop_GS2CMapTriggerUpStoneClass data)
-        {
-            MelonLogger.Msg(data);
-            MelonLogger.Msg("GS2CMapTriggerUpStone");
-        }
-    }
+    //[HarmonyPatch(typeof(s2cwarop), "GS2CMapTriggerUpStone")]
+    //public class CG2_CMap_Trigger_Up_Stone_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(s2cwarop_GS2CMapTriggerUpStoneClass data)
+    //    {
+    //        MelonLogger.Msg(data);
+    //        MelonLogger.Msg("GS2CMapTriggerUpStone");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(s2cwarop), "GS2CMapGoto")]
-    public class CG2_CMap_Goto_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(s2cwarop_GS2CMapGotoClass data)
-        {
-            MelonLogger.Msg(data);
-            MelonLogger.Msg("GS2CMapGoto");
-        }
-    }
+    //[HarmonyPatch(typeof(s2cwarop), "GS2CMapGoto")]
+    //public class CG2_CMap_Goto_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref s2cwarop_GS2CMapGotoClass data)
+    //    {
+    //        MelonLogger.Msg(data);
+    //        MelonLogger.Msg("GS2CMapGoto");
+    //    }
+    //}
 
     //[HarmonyPatch(typeof(ManagerBase), "WarUpdate")]
     //public class War_Update_Action_Patch
@@ -427,165 +457,165 @@ namespace GunfireBaseMod
     //    }
     //}
 
-    [HarmonyPatch(typeof(MainManager), "OnCurfewConfirm")]
-    public class On_Curfew_Confirm_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix()
-        {
-            MelonLogger.Msg("OnCurfewConfirm");
-        }
-    }
+    //[HarmonyPatch(typeof(MainManager), "OnCurfewConfirm")]
+    //public class On_Curfew_Confirm_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix()
+    //    {
+    //        MelonLogger.Msg("OnCurfewConfirm");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(MainManager), "SwithScene")]
-    public class Switch_Scene_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix()
-        {
-            MelonLogger.Msg("SwithScene");
-        }
-    }
+    //[HarmonyPatch(typeof(MainManager), "SwithScene")]
+    //public class Switch_Scene_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix()
+    //    {
+    //        MelonLogger.Msg("SwithScene");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(GameSceneManager), "WarEndToBackHome")]
-    public class War_End_To_Back_Home_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix()
-        {
-            MelonLogger.Msg("WarEndToBackHome");
-        }
-    }
+    //[HarmonyPatch(typeof(GameSceneManager), "WarEndToBackHome")]
+    //public class War_End_To_Back_Home_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix()
+    //    {
+    //        MelonLogger.Msg("WarEndToBackHome");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(GameSceneManager), "LoadSceneAsync")]
-    public class Load_Scene_Async_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(String sceneName)
-        {
-            MelonLogger.Msg(sceneName);
-            MelonLogger.Msg("LoadSceneAsync");
-        }
-    }
+    //[HarmonyPatch(typeof(GameSceneManager), "LoadSceneAsync")]
+    //public class Load_Scene_Async_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(String sceneName)
+    //    {
+    //        MelonLogger.Msg(sceneName);
+    //        MelonLogger.Msg("LoadSceneAsync");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(Buttonevent), "BeginInvoke")]
-    public class Button_Begin_Invoke_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(AsyncCallback callback, Il2CppSystem.Object @object)
-        {
-            MelonLogger.Msg(callback);
-            MelonLogger.Msg(@object);
-            MelonLogger.Msg("ButtonBeginInvoke");
-        }
-    }
+    //[HarmonyPatch(typeof(Buttonevent), "BeginInvoke")]
+    //public class Button_Begin_Invoke_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(AsyncCallback callback, Il2CppSystem.Object @object)
+    //    {
+    //        MelonLogger.Msg(callback);
+    //        MelonLogger.Msg(@object);
+    //        MelonLogger.Msg("ButtonBeginInvoke");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(Buttonevent), "EndInvoke")]
-    public class Button_End_Invoke_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(IAsyncResult result)
-        {
-            MelonLogger.Msg(result);
-            MelonLogger.Msg("ButtonEndInvoke");
-        }
-    }
+    //[HarmonyPatch(typeof(Buttonevent), "EndInvoke")]
+    //public class Button_End_Invoke_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(IAsyncResult result)
+    //    {
+    //        MelonLogger.Msg(result);
+    //        MelonLogger.Msg("ButtonEndInvoke");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(Game.EventHandler), "BeginInvoke")]
-    public class Begin_Invoke_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(AsyncCallback callback, Il2CppSystem.Object @object)
-        {
-            MelonLogger.Msg(callback);
-            MelonLogger.Msg(@object);
-            MelonLogger.Msg("BeginInvoke");
-        }
-    }
+    //[HarmonyPatch(typeof(Game.EventHandler), "BeginInvoke")]
+    //public class Begin_Invoke_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref AsyncCallback callback, ref Il2CppSystem.Object @object)
+    //    {
+    //        MelonLogger.Msg(callback);
+    //        MelonLogger.Msg(@object);
+    //        MelonLogger.Msg("BeginInvoke");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(Game.EventHandler), "EndInvoke")]
-    public class End_Invoke_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(IAsyncResult result)
-        {
-            MelonLogger.Msg(result);
-            MelonLogger.Msg("EndInvoke");
-        }
-    }
+    //[HarmonyPatch(typeof(Game.EventHandler), "EndInvoke")]
+    //public class End_Invoke_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref IAsyncResult result)
+    //    {
+    //        MelonLogger.Msg(result);
+    //        MelonLogger.Msg("EndInvoke");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(EventHandlerWith1Arg), "BeginInvoke")]
-    public class Begin_Invoke_1_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(Il2CppSystem.Object arg0, AsyncCallback callback, Il2CppSystem.Object @object)
-        {
-            MelonLogger.Msg(arg0);
-            MelonLogger.Msg(callback);
-            MelonLogger.Msg(@object);
-            MelonLogger.Msg("BeginInvoke1");
-        }
-    }
+    //[HarmonyPatch(typeof(EventHandlerWith1Arg), "BeginInvoke")]
+    //public class Begin_Invoke_1_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref Il2CppSystem.Object arg0, ref AsyncCallback callback, ref Il2CppSystem.Object @object)
+    //    {
+    //        MelonLogger.Msg(arg0);
+    //        MelonLogger.Msg(callback);
+    //        MelonLogger.Msg(@object);
+    //        MelonLogger.Msg("BeginInvoke1");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(EventHandlerWith1Arg), "EndInvoke")]
-    public class End_Invoke_1_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(IAsyncResult result)
-        {
-            MelonLogger.Msg(result);
-            MelonLogger.Msg("EndInvoke1");
-        }
-    }
+    //[HarmonyPatch(typeof(EventHandlerWith1Arg), "EndInvoke")]
+    //public class End_Invoke_1_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref IAsyncResult result)
+    //    {
+    //        MelonLogger.Msg(result);
+    //        MelonLogger.Msg("EndInvoke1");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(EventHandlerWith2Arg), "BeginInvoke")]
-    public class Begin_Invoke_2_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(Il2CppSystem.Object arg0, Il2CppSystem.Object arg1, AsyncCallback callback, Il2CppSystem.Object @object)
-        {
-            MelonLogger.Msg(arg0);
-            MelonLogger.Msg(arg1);
-            MelonLogger.Msg(callback);
-            MelonLogger.Msg(@object);
-            MelonLogger.Msg("BeginInvoke2");
-        }
-    }
+    //[HarmonyPatch(typeof(EventHandlerWith2Arg), "BeginInvoke")]
+    //public class Begin_Invoke_2_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref Il2CppSystem.Object arg0, ref Il2CppSystem.Object arg1, ref AsyncCallback callback, ref Il2CppSystem.Object @object)
+    //    {
+    //        MelonLogger.Msg(arg0);
+    //        MelonLogger.Msg(arg1);
+    //        MelonLogger.Msg(callback);
+    //        MelonLogger.Msg(@object);
+    //        MelonLogger.Msg("BeginInvoke2");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(EventHandlerWith2Arg), "EndInvoke")]
-    public class End_Invoke_2_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(IAsyncResult result)
-        {
-            MelonLogger.Msg(result);
-            MelonLogger.Msg("EndInvoke2");
-        }
-    }
+    //[HarmonyPatch(typeof(EventHandlerWith2Arg), "EndInvoke")]
+    //public class End_Invoke_2_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref IAsyncResult result)
+    //    {
+    //        MelonLogger.Msg(result);
+    //        MelonLogger.Msg("EndInvoke2");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(EventHandlerWith3Arg), "BeginInvoke")]
-    public class Begin_Invoke_3_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(Il2CppSystem.Object arg0, Il2CppSystem.Object arg1, Il2CppSystem.Object arg2, AsyncCallback callback, Il2CppSystem.Object @object)
-        {
-            MelonLogger.Msg(arg0);
-            MelonLogger.Msg(arg1);
-            MelonLogger.Msg(arg2);
-            MelonLogger.Msg(callback);
-            MelonLogger.Msg(@object);
-            MelonLogger.Msg("BeginInvoke3");
-        }
-    }
+    //[HarmonyPatch(typeof(EventHandlerWith3Arg), "BeginInvoke")]
+    //public class Begin_Invoke_3_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref Il2CppSystem.Object arg0, ref Il2CppSystem.Object arg1, ref Il2CppSystem.Object arg2, ref AsyncCallback callback, ref Il2CppSystem.Object @object)
+    //    {
+    //        MelonLogger.Msg(arg0);
+    //        MelonLogger.Msg(arg1);
+    //        MelonLogger.Msg(arg2);
+    //        MelonLogger.Msg(callback);
+    //        MelonLogger.Msg(@object);
+    //        MelonLogger.Msg("BeginInvoke3");
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(EventHandlerWith3Arg), "EndInvoke")]
-    public class End_Invoke_3_Action_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(IAsyncResult result)
-        {
-            MelonLogger.Msg(result);
-            MelonLogger.Msg("EndInvoke3");
-        }
-    }
+    //[HarmonyPatch(typeof(EventHandlerWith3Arg), "EndInvoke")]
+    //public class End_Invoke_3_Action_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref IAsyncResult result)
+    //    {
+    //        MelonLogger.Msg(result);
+    //        MelonLogger.Msg("EndInvoke3");
+    //    }
+    //}
 }
