@@ -29,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>MSB3277</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GunfireMod.cs" />
