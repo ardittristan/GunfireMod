@@ -49,6 +49,9 @@
       <HintPath>MelonLoader\Managed\netstandard.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Preload">
+      <HintPath>MelonLoader\Dependencies\SupportModules\Preload.dll</HintPath>
+    </Reference>
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
     <Reference Include="Accessibility">
@@ -587,6 +590,9 @@
       <HintPath>MelonLoader\Managed\SystemWebTestShim.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Tomlet">
+      <HintPath>MelonLoader\Tomlet.dll</HintPath>
+    </Reference>
     <Reference Include="UnhollowerBaseLib">
       <HintPath>MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath>
       <Private>False</Private>
@@ -1113,6 +1119,7 @@
     <Content Include="MelonLoader\Managed\Whinarn.UnityMeshSimplifier.Runtime.dll" />
     <Content Include="MelonLoader\Managed\WindowsBase.dll" />
     <Content Include="MelonLoader\Managed\XLogStandalone.dll" />
+    <Content Include="MelonLoader\Tomlet.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,6 +6,13 @@ using Guide;
 using HarmonyLib;
 using DYPublic.Duonet;
 using Game;
+<<<<<<< HEAD
+=======
+using Il2CppSystem.Text;
+using System.Reflection.Emit;
+using System.Reflection;
+using System.Collections.Generic;
+>>>>>>> e26310b... Try more things
 
 namespace GunfireBaseMod
 {
@@ -23,8 +30,14 @@ namespace GunfireBaseMod
 
         public override void OnApplicationStart() // Runs after Game Initialization.
         {
+<<<<<<< HEAD
+=======
+            
+
+            DYPublic.XLog.Logger.Log(DYPublic.XLog.LogLevel.LevelWarn, "Test");
+>>>>>>> e26310b... Try more things
             MelonLogger.Msg("OnApplicationStart");
-            MelonLogger.Msg(HarmonyInstance.GetPatchedMethods().ToString());
+            MelonLogger.Msg(HarmonyInstance.Id);
             HarmonyLib.Tools.HarmonyFileLog.Enabled = true;
             Debug.developerConsoleVisible = true;
             DebugDY.SetDebugActive(DebugType.GuideInfo, true);
@@ -114,6 +127,18 @@ namespace GunfireBaseMod
     //    }
     //}
 
+    //[HarmonyPatch()]
+    //public class Custom_Patch
+    //{
+    //    IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    //    {
+    //        return new CodeMatcher(instructions).MatchForward(false,
+    //            new CodeMatch(OpCodes.Stfld),
+    //            new CodeMatch(OpCodes.Ldarg_0),
+    //            new CodeMatch(i => i.opcode == OpCodes.Ldfld && ((FieldInfo)i.operand).Name == "test"));
+    //    }
+    //}
+
     [HarmonyPatch(typeof(AkTriggerCustom), "OnAkTrigger")]
     public class AkTriggerCustom_Patch
     {
@@ -122,6 +147,17 @@ namespace GunfireBaseMod
         {
             MelonLogger.Msg("HandleAkTriggerCustom");
             MelonLogger.Msg(__instance.TriggerEventName);
+        }
+    }
+
+    [HarmonyPatch(typeof(OCDrop.OCDropBase), "SetDropItem")]
+    public class OpOverDropItem_Patch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(ref ItemObject item)
+        {
+            MelonLogger.Msg("HandleAkTriggerCustodssdffdsm");
+            MelonLogger.Msg(item.ItemID);
         }
     }
 
