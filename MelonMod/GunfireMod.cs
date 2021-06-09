@@ -12,7 +12,11 @@ using Il2CppSystem.Text;
 using System.Reflection.Emit;
 using System.Reflection;
 using System.Collections.Generic;
+<<<<<<< HEAD:GunfireMod.cs
 >>>>>>> e26310b... Try more things
+=======
+using UnhollowerRuntimeLib;
+>>>>>>> fd037b3... split into 2 different loaders:MelonMod/GunfireMod.cs
 
 namespace GunfireBaseMod
 {
@@ -139,27 +143,39 @@ namespace GunfireBaseMod
     //    }
     //}
 
-    [HarmonyPatch(typeof(AkTriggerCustom), "OnAkTrigger")]
-    public class AkTriggerCustom_Patch
+    //[HarmonyPatch(typeof(AkTriggerCustom), "OnAkTrigger")]
+    //public class AkTriggerCustom_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(AkTriggerCustom __instance)
+    //    {
+    //        MelonLogger.Msg("HandleAkTriggerCustom");
+    //        MelonLogger.Msg(__instance.TriggerEventName);
+    //    }
+    //}
+
+    [HarmonyPatch(typeof(LuaComBase), nameof(LuaComBase.AniEventChange))]
+    public class LuaComponent_Patch
     {
-        [HarmonyPostfix]
-        public static void Postfix(AkTriggerCustom __instance)
+        public static void Prefix(ref Il2CppReferenceArray<Il2CppSystem.Object> __0)
         {
-            MelonLogger.Msg("HandleAkTriggerCustom");
-            MelonLogger.Msg(__instance.TriggerEventName);
+            if (__0 != null)
+            {
+                MelonLogger.Msg(__0.Length);
+            }
         }
     }
 
-    [HarmonyPatch(typeof(OCDrop.OCDropBase), "SetDropItem")]
-    public class OpOverDropItem_Patch
-    {
-        [HarmonyPostfix]
-        public static void Postfix(ref ItemObject item)
-        {
-            MelonLogger.Msg("HandleAkTriggerCustodssdffdsm");
-            MelonLogger.Msg(item.ItemID);
-        }
-    }
+    //[HarmonyPatch(typeof(OCDrop.OCDropBase), "SetDropItem")]
+    //public class OpOverDropItem_Patch
+    //{
+    //    [HarmonyPostfix]
+    //    public static void Postfix(ref ItemObject item)
+    //    {
+    //        MelonLogger.Msg("SetDropItem");
+    //        MelonLogger.Msg(item.ItemID);
+    //    }
+    //}
 
     //[HarmonyPatch(typeof(TriggerManager), "OnEnterTrigger")]
     //public class Trigger_Event_Patch

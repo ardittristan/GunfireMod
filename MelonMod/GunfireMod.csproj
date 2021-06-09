@@ -1119,7 +1119,6 @@
     <Content Include="MelonLoader\Managed\Whinarn.UnityMeshSimplifier.Runtime.dll" />
     <Content Include="MelonLoader\Managed\WindowsBase.dll" />
     <Content Include="MelonLoader\Managed\XLogStandalone.dll" />
-    <Content Include="MelonLoader\Tomlet.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
