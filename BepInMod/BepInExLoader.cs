@@ -41,7 +41,8 @@ namespace BepInMod
             {
                 log.LogMessage("Registering C# Type's in Il2Cpp");
 
-                //ClassInjector.RegisterTypeInIl2Cpp<Bootstrapper>();
+                ClassInjector.RegisterTypeInIl2Cpp<Bootstrapper>();
+                ClassInjector.RegisterTypeInIl2Cpp<Patches.LuaComponentPatch>();
             }
             catch
             {
@@ -65,6 +66,26 @@ namespace BepInMod
 
                 #endregion
 
+                #region[Update() Hook - Only Needed for Bootstrapper]
+
+                var originalUpdate = AccessTools.Method(typeof(UnityEngine.UI.CanvasScaler), "Update");
+                log.LogMessage("   Original Method: " + originalUpdate.DeclaringType.Name + "." + originalUpdate.Name);
+                var postUpdate = AccessTools.Method(typeof(Bootstrapper), "Update");
+                log.LogMessage("   Postfix Method: " + postUpdate.DeclaringType.Name + "." + postUpdate.Name);
+                harmony.Patch(originalUpdate, postfix: new HarmonyMethod(postUpdate));
+
+                #endregion
+
+                #region[LuaComponent Patch]
+
+                var originalLoadParamToLuaByRuntime = AccessTools.Method(typeof(LuaComponent), "LoadParamToLuaByRuntime");
+                log.LogMessage("   Original Method: " + originalLoadParamToLuaByRuntime.DeclaringType.Name + "." + originalLoadParamToLuaByRuntime.Name);
+                var postLoadParamToLuaByRuntime = AccessTools.Method(typeof(Patches.LuaComponentPatch), "LoadParamToLuaByRuntime");
+                log.LogMessage("   Postfix Method: " + postLoadParamToLuaByRuntime.DeclaringType.Name + "." + postLoadParamToLuaByRuntime.Name);
+                harmony.Patch(originalLoadParamToLuaByRuntime, postfix: new HarmonyMethod(postLoadParamToLuaByRuntime));
+
+                #endregion
+
                 #region[Patch() Hook]
 
                 //harmony code
@@ -84,7 +105,8 @@ namespace BepInMod
             log.LogMessage("Initializng Il2CppTypeSupport...");
             Il2CppTypeSupport.Initialize();
 
-
+            Bootstrapper.Create("BootStrapperGO");
+            Patches.LuaComponentPatch.Create("LuaComponentPatchGO");
         }
     }
 }

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1F1658DB-D6E7-4E80-B6C5-A03535075A76}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>BepInMod</RootNamespace>
     <AssemblyName>BepInMod</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -24,13 +24,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -137,6 +140,7 @@
       <HintPath>BepInEx\unhollowed\Sirenix.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System" />
     <Reference Include="UnhollowerBaseLib">
       <HintPath>BepInEx\core\UnhollowerBaseLib.dll</HintPath>
       <Private>False</Private>
@@ -165,12 +169,27 @@
       <HintPath>BepInEx\unhollowed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.AccessibilityModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>BepInEx\unhollowed\UnityEngine.AIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.AndroidJNIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.AnimationModule">
       <HintPath>BepInEx\unhollowed\UnityEngine.AnimationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.ARModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
@@ -181,16 +200,51 @@
       <HintPath>BepInEx\unhollowed\UnityEngine.AudioModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.ClothModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.ClothModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.ClusterInputModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.ClusterRendererModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>BepInEx\unhollowed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.CrashReportingModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.DirectorModule">
       <HintPath>BepInEx\unhollowed\UnityEngine.DirectorModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.DSPGraphModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.DSPGraphModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.GameCenterModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.GridModule">
       <HintPath>BepInEx\unhollowed\UnityEngine.GridModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.HotReloadModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
@@ -201,12 +255,22 @@
       <HintPath>BepInEx\unhollowed\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.InputModule">
       <HintPath>BepInEx\unhollowed\UnityEngine.InputModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
       <HintPath>BepInEx\unhollowed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.LocalizationModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.Networking">
@@ -217,12 +281,22 @@
       <HintPath>BepInEx\unhollowed\UnityEngine.ParticleSystemModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.Physics2DModule">
       <HintPath>BepInEx\unhollowed\UnityEngine.Physics2DModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>BepInEx\unhollowed\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ProfilerModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.ProfilerModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ScreenCaptureModule">
@@ -233,8 +307,38 @@
       <HintPath>BepInEx\unhollowed\UnityEngine.SharedInternalsModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.SpriteMaskModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.SpriteShapeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.StreamingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.SubstanceModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SubsystemsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.SubsystemsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.TerrainModule">
       <HintPath>BepInEx\unhollowed\UnityEngine.TerrainModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.TextCoreModule">
@@ -253,6 +357,11 @@
       <HintPath>BepInEx\unhollowed\UnityEngine.Timeline.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.TLSModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.TLSModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>BepInEx\unhollowed\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
@@ -265,12 +374,37 @@
       <HintPath>BepInEx\unhollowed\UnityEngine.UIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.UmbraModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.UmbraModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.UNETModule">
       <HintPath>BepInEx\unhollowed\UnityEngine.UNETModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UnityAnalyticsModule">
       <HintPath>BepInEx\unhollowed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.UnityConnectModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestModule">
@@ -301,6 +435,11 @@
       <HintPath>BepInEx\unhollowed\UnityEngine.VRModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.WindModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BepInEx\unhollowed\UnityEngine.WindModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>BepInEx\unhollowed\UnityEngine.XRModule.dll</HintPath>
       <Private>False</Private>
@@ -316,7 +455,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BepInExLoader.cs" />
+    <Compile Include="Bootstrapper.cs" />
     <Compile Include="Helpers\Il2CppTypeSupport.cs" />
+    <Compile Include="Patches\LuaComponentPatch.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="BepInEx\core\0Harmony.dll" />
@@ -377,34 +519,60 @@
     <Content Include="BepInEx\unhollowed\Unity.RenderPipelines.Core.Runtime.dll" />
     <Content Include="BepInEx\unhollowed\Unity.RenderPipelines.Lightweight.Runtime.dll" />
     <Content Include="BepInEx\unhollowed\Unity.TextMeshPro.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.AccessibilityModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.AIModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.AndroidJNIModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.AnimationModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.ARModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.AssetBundleModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.AudioModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.ClothModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.ClusterInputModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.ClusterRendererModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.CoreModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.CrashReportingModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.DirectorModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.DSPGraphModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.GameCenterModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.GridModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.HotReloadModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.ImageConversionModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.IMGUIModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.InputLegacyModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.InputModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.JSONSerializeModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.LocalizationModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.Networking.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.ParticleSystemModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.PerformanceReportingModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.Physics2DModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.PhysicsModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.ProfilerModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.ScreenCaptureModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.SharedInternalsModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.SpriteMaskModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.SpriteShapeModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.StreamingModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.SubstanceModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.SubsystemsModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.TerrainModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.TerrainPhysicsModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.TextCoreModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.TextRenderingModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.TilemapModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.Timeline.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.TLSModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.UI.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.UIElementsModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.UIModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.UmbraModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.UNETModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.UnityAnalyticsModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.UnityConnectModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.UnityTestProtocolModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.UnityWebRequestAssetBundleModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.UnityWebRequestAudioModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.UnityWebRequestModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.UnityWebRequestTextureModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.UnityWebRequestWWWModule.dll" />
@@ -412,6 +580,7 @@
     <Content Include="BepInEx\unhollowed\UnityEngine.VFXModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.VideoModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.VRModule.dll" />
+    <Content Include="BepInEx\unhollowed\UnityEngine.WindModule.dll" />
     <Content Include="BepInEx\unhollowed\UnityEngine.XRModule.dll" />
     <Content Include="BepInEx\unhollowed\Whinarn.UnityMeshSimplifier.Runtime.dll" />
     <Content Include="BepInEx\unhollowed\XLogStandalone.dll" />
