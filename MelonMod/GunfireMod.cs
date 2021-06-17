@@ -16,12 +16,25 @@ using System.Collections.Generic;
 >>>>>>> e26310b... Try more things
 =======
 using UnhollowerRuntimeLib;
+<<<<<<< HEAD
 >>>>>>> fd037b3... split into 2 different loaders:MelonMod/GunfireMod.cs
+=======
+using HarmonyLib.Tools;
+using Logger = HarmonyLib.Tools.Logger;
+>>>>>>> 71a63e2... let the console spam commence
 
 namespace GunfireBaseMod
 {
     public class GunfireMod : MelonMod
     {
+        public GunfireMod()
+        {
+            Logger.ChannelFilter = Logger.LogChannel.All;
+            HarmonyFileLog.Enabled = true;
+
+            Debug.developerConsoleVisible = true;
+        }
+
         public override void OnApplicationLateStart() // Runs after Application Start has finished.
         {
             MelonLogger.Msg("OnApplicationLateStart");
@@ -31,28 +44,24 @@ namespace GunfireBaseMod
         {
             MelonLogger.Msg("OnApplicationQuit");
         }
-
         public override void OnApplicationStart() // Runs after Game Initialization.
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
             
 
             DYPublic.XLog.Logger.Log(DYPublic.XLog.LogLevel.LevelWarn, "Test");
 >>>>>>> e26310b... Try more things
+=======
+            //ClassInjector.RegisterTypeInIl2Cpp<Patches.LuaComponentPatch>();
+            //ClassInjector.RegisterTypeInIl2Cpp<NPCGate>();
+
+            //HarmonyInstance.PatchAll(typeof(Patches.LuaComponentPatch));
+
+
+>>>>>>> 71a63e2... let the console spam commence
             MelonLogger.Msg("OnApplicationStart");
-            MelonLogger.Msg(HarmonyInstance.Id);
-            HarmonyLib.Tools.HarmonyFileLog.Enabled = true;
-            Debug.developerConsoleVisible = true;
-            DebugDY.SetDebugActive(DebugType.GuideInfo, true);
-            DebugDY.SetDebugActive(DebugType.LoadScene, true);
-            DebugDY.SetDebugActive(DebugType.Log, true);
-            DebugDY.SetDebugActive(DebugType.Notify, true);
-            DebugDY.SetDebugActive(DebugType.NPC, true);
-            DebugDY.SetDebugActive(DebugType.NPCDebug, true);
-            DebugDY.SetDebugActive(DebugType.NPCEvent, true);
-            DebugDY.SetDebugActive(DebugType.State, true);
-            DebugDY.SetDebugActive(DebugType.TestLog, true);
         }
 
         public override void OnFixedUpdate() // Can run multiple times per frame. Mostly used for Physics.
@@ -99,6 +108,10 @@ namespace GunfireBaseMod
                 MelonLogger.Msg(FontManager.Instance.textList);
                 MelonLogger.Msg(FontManager.instance.textList);
             }
+
+            // TODO: Run less often
+            var gateObjects = GameObject.FindGameObjectsWithTag(Tag.GateNPC);
+            MelonLogger.Msg(gateObjects.Length);
         }
 
     }
@@ -154,17 +167,17 @@ namespace GunfireBaseMod
     //    }
     //}
 
-    [HarmonyPatch(typeof(LuaComBase), nameof(LuaComBase.AniEventChange))]
-    public class LuaComponent_Patch
-    {
-        public static void Prefix(ref Il2CppReferenceArray<Il2CppSystem.Object> __0)
-        {
-            if (__0 != null)
-            {
-                MelonLogger.Msg(__0.Length);
-            }
-        }
-    }
+    //[HarmonyPatch(typeof(LuaComBase), nameof(LuaComBase.AniEventChange))]
+    //public class LuaComponent_Patch
+    //{
+    //    public static void Prefix(ref Il2CppReferenceArray<Il2CppSystem.Object> __0)
+    //    {
+    //        if (__0 != null)
+    //        {
+    //            MelonLogger.Msg(__0.Length);
+    //        }
+    //    }
+    //}
 
     //[HarmonyPatch(typeof(OCDrop.OCDropBase), "SetDropItem")]
     //public class OpOverDropItem_Patch

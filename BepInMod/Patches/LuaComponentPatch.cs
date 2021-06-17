@@ -22,9 +22,8 @@ namespace BepInMod.Patches
 
         }
 
-        [HideFromIl2Cpp]
         [HarmonyPostfix]
-        public static void LoadParamToLuaByRuntime(Component com)
+        public static void LoadParamToLuaByRuntime(Il2CppSystem.Nullable<Component> com)
         {
             BepInExLoader.log.LogMessage("LuaComponent Fired!");
         }
