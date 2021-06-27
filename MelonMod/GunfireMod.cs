@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using MelonLoader;
+<<<<<<< HEAD
 using Il2CppSystem;
 using UnhollowerBaseLib;
 using Guide;
@@ -22,6 +23,8 @@ using UnhollowerRuntimeLib;
 using HarmonyLib.Tools;
 using Logger = HarmonyLib.Tools.Logger;
 >>>>>>> 71a63e2... let the console spam commence
+=======
+>>>>>>> bbde83e... add initial fontfix mod
 
 namespace GunfireBaseMod
 {
@@ -29,8 +32,8 @@ namespace GunfireBaseMod
     {
         public GunfireMod()
         {
-            Logger.ChannelFilter = Logger.LogChannel.All;
-            HarmonyFileLog.Enabled = true;
+            HarmonyLib.Tools.Logger.ChannelFilter = HarmonyLib.Tools.Logger.LogChannel.All;
+            HarmonyLib.Tools.HarmonyFileLog.Enabled = true;
 
             Debug.developerConsoleVisible = true;
         }
@@ -48,20 +51,28 @@ namespace GunfireBaseMod
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             
 
             DYPublic.XLog.Logger.Log(DYPublic.XLog.LogLevel.LevelWarn, "Test");
 >>>>>>> e26310b... Try more things
 =======
+=======
+
+>>>>>>> bbde83e... add initial fontfix mod
             //ClassInjector.RegisterTypeInIl2Cpp<Patches.LuaComponentPatch>();
             //ClassInjector.RegisterTypeInIl2Cpp<NPCGate>();
 
             //HarmonyInstance.PatchAll(typeof(Patches.LuaComponentPatch));
 
+<<<<<<< HEAD
 
 >>>>>>> 71a63e2... let the console spam commence
             MelonLogger.Msg("OnApplicationStart");
+=======
+            Modifications.PortalBehaviour.Setup();
+>>>>>>> bbde83e... add initial fontfix mod
         }
 
         public override void OnFixedUpdate() // Can run multiple times per frame. Mostly used for Physics.
@@ -105,16 +116,29 @@ namespace GunfireBaseMod
         {
             if (Input.GetKeyUp(KeyCode.Home))
             {
-                MelonLogger.Msg(FontManager.Instance.textList);
-                MelonLogger.Msg(FontManager.instance.textList);
+                
             }
-
-            // TODO: Run less often
-            var gateObjects = GameObject.FindGameObjectsWithTag(Tag.GateNPC);
-            MelonLogger.Msg(gateObjects.Length);
         }
 
     }
+
+    //[HarmonyPatch]
+    //public class Patch
+    //{
+    //    [HarmonyPatch(typeof(AkGameObj), "OnCustomTrigger")]
+    //    [HarmonyPostfix]
+    //    public static void onCustomTrigger(string __0)
+    //    {
+    //        MelonLogger.Msg(__0);
+    //    }
+
+    //    //[HarmonyPatch(typeof(AkTriggerMouseEnter), "OnMouseEnter")]
+    //    //[HarmonyPostfix]
+    //    //public static void onMouseEnter()
+    //    //{
+    //    //    MelonLogger.Msg("mouseenter");
+    //    //}
+    //}
 
     // on player object change
     //[HarmonyPatch(typeof(OC1stPlayer), "OnHeroChange")]

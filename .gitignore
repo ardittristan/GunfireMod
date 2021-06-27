@@ -335,8 +335,13 @@ ASALocalRun/
 
 # Symlinked Modloaders
 /MelonMod/MelonLoader
+/FontFixMod/MelonLoader
 /BepInMod/BepInEx
 
 # Release/compiled folders
 /bin
 /obj
+
+# Others
+**.nuget
+MigrationBackup
