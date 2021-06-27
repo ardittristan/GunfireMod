@@ -5,6 +5,9 @@ using FontFixMod;
 
 [assembly: MelonInfo(typeof(FontFix), "FontFix Mod", "0.0.1", "ardittristan")]
 [assembly: MelonGame("duoyi", "Gunfire Reborn")]
+[assembly: MelonPlatform(MelonPlatformAttribute.CompatiblePlatforms.WINDOWS_X64)]
+[assembly: MelonPlatformDomain(MelonPlatformDomainAttribute.CompatibleDomains.IL2CPP)]
+[assembly: VerifyLoaderVersion(0, 4, 0, true)]
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
