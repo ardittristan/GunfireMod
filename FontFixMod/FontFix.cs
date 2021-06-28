@@ -88,6 +88,104 @@ namespace FontFixMod
                             length = 3;
                             #endregion
                             break;
+                        case Characters.NUMDIVIDE:
+                            #region[Set NUMDIVIDE Text]
+                            __instance.SetText(
+                                text.Replace(
+                                    GetDescriptionFromEnumValue(Characters.NUMDIVIDE),
+                                    "<sprite name=sck92>"
+                                )
+                            );
+                            #endregion
+                            break;
+                        case Characters.NUMEQUALS:
+                            #region[Set NUMEQUALS Text]
+                            __instance.SetText(
+                                text.Replace(
+                                    GetDescriptionFromEnumValue(Characters.NUMEQUALS),
+                                    "<sprite name=sck61>"
+                                )
+                            );
+                            #endregion
+                            break;
+                        case Characters.NUMLOCK:
+                            #region[Set NUMLOCK Text]
+                            __instance.SetText(
+                                text.Replace(
+                                    GetDescriptionFromEnumValue(Characters.NUMLOCK),
+                                    String.Format(
+                                        "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}><sprite name=sck{3}><sprite name=sck{4}><sprite name=sck{5}><sprite name=sck{6}></cspace></size>",
+                                        (int)KeyCode.N,
+                                        (int)KeyCode.U,
+                                        (int)KeyCode.M,
+                                        (int)KeyCode.L,
+                                        (int)KeyCode.O,
+                                        (int)KeyCode.C,
+                                        (int)KeyCode.K
+                                    )
+                                )
+                            );
+                            length = 7;
+                            #endregion
+                            break;
+                        case Characters.SCROLLLOCK:
+                            #region[Set SCROLLLOCK Text]
+                            __instance.SetText(
+                                text.Replace(
+                                    GetDescriptionFromEnumValue(Characters.SCROLLLOCK),
+                                    String.Format(
+                                        "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}><sprite name=sck{3}><sprite name=sck{4}><sprite name=sck{5}><sprite name=sck{6}><sprite name=sck{7}><sprite name=sck{8}><sprite name=sck{9}></cspace></size>",
+                                        (int)KeyCode.S,
+                                        (int)KeyCode.C,
+                                        (int)KeyCode.R,
+                                        (int)KeyCode.O,
+                                        (int)KeyCode.L,
+                                        (int)KeyCode.L,
+                                        (int)KeyCode.L,
+                                        (int)KeyCode.O,
+                                        (int)KeyCode.C,
+                                        (int)KeyCode.K
+                                    )
+                                )
+                            );
+                            length = 10;
+                            #endregion
+                            break;
+                        case Characters.BREAK:
+                            #region[Set BREAK Text]
+                            __instance.SetText(
+                                text.Replace(
+                                    GetDescriptionFromEnumValue(Characters.BREAK),
+                                    String.Format(
+                                        "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}><sprite name=sck{3}><sprite name=sck{4}></cspace></size>",
+                                        (int)KeyCode.B,
+                                        (int)KeyCode.R,
+                                        (int)KeyCode.E,
+                                        (int)KeyCode.A,
+                                        (int)KeyCode.K
+                                    )
+                                )
+                            );
+                            length = 5;
+                            #endregion
+                            break;
+                        case Characters.MENU:
+                            #region[Set MENU Text]
+                            __instance.SetText(
+                                text.Replace(
+                                    GetDescriptionFromEnumValue(Characters.MENU),
+                                    String.Format(
+                                        "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}><sprite name=sck{3}></cspace></size>",
+                                        (int)KeyCode.M,
+                                        (int)KeyCode.E,
+                                        (int)KeyCode.N,
+                                        (int)KeyCode.U
+                                    )
+                                )
+                            );
+                            length = 4;
+                            #endregion
+                            break;
                     }
 
                     if (length != 0)
@@ -122,7 +220,19 @@ namespace FontFixMod
             [Description("<sprite name=sck295>")]
             F14,
             [Description("<sprite name=sck296>")]
-            F15
+            F15,
+            [Description("<sprite name=sck267>")]
+            NUMDIVIDE,
+            [Description("<sprite name=sck272>")]
+            NUMEQUALS,
+            [Description("<sprite name=sck300>")]
+            NUMLOCK,
+            [Description("<sprite name=sck302>")]
+            SCROLLLOCK,
+            [Description("<sprite name=sck318>")]
+            BREAK,
+            [Description("<sprite name=sck318>")]
+            MENU
         }
 
         /// <summary>
