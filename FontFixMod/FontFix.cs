@@ -5,6 +5,8 @@ using System.Reflection;
 using HarmonyLib;
 using MelonLoader;
 using TMPro;
+using UnhollowerBaseLib;
+using Il2CppObject = Il2CppSystem.Object;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,15 +44,13 @@ namespace FontFixMod
                     {
                         case Characters.F13:
                             #region[Set F13 Text]
-                            __instance.SetText(
-                                text.Replace(
-                                    GetDescriptionFromEnumValue(Characters.F13),
-                                    String.Format(
-                                        "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}></cspace></size>",
-                                        (int)KeyCode.F,
-                                        (int)KeyCode.Alpha1,
-                                        (int)KeyCode.Alpha3
-                                    )
+                            __instance.text = text.Replace(
+                                GetDescriptionFromEnumValue(Characters.F13),
+                                String.Format(
+                                    "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}></cspace></size>",
+                                    (int)KeyCode.F,
+                                    (int)KeyCode.Alpha1,
+                                    (int)KeyCode.Alpha3
                                 )
                             );
                             length = 3;
@@ -58,15 +58,13 @@ namespace FontFixMod
                             break;
                         case Characters.F14:
                             #region[Set F14 Text]
-                            __instance.SetText(
-                                text.Replace(
-                                    GetDescriptionFromEnumValue(Characters.F14),
-                                    String.Format(
-                                        "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}></cspace></size>",
-                                        (int)KeyCode.F,
-                                        (int)KeyCode.Alpha1,
-                                        (int)KeyCode.Alpha4
-                                    )
+                            __instance.text = text.Replace(
+                                GetDescriptionFromEnumValue(Characters.F14),
+                                String.Format(
+                                    "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}></cspace></size>",
+                                    (int)KeyCode.F,
+                                    (int)KeyCode.Alpha1,
+                                    (int)KeyCode.Alpha4
                                 )
                             );
                             length = 3;
@@ -74,15 +72,13 @@ namespace FontFixMod
                             break;
                         case Characters.F15:
                             #region[Set F15 Text]
-                            __instance.SetText(
-                                text.Replace(
-                                    GetDescriptionFromEnumValue(Characters.F15),
-                                    String.Format(
-                                        "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}></cspace></size>",
-                                        (int)KeyCode.F,
-                                        (int)KeyCode.Alpha1,
-                                        (int)KeyCode.Alpha5
-                                    )
+                            __instance.text = text.Replace(
+                                GetDescriptionFromEnumValue(Characters.F15),
+                                String.Format(
+                                    "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}></cspace></size>",
+                                    (int)KeyCode.F,
+                                    (int)KeyCode.Alpha1,
+                                    (int)KeyCode.Alpha5
                                 )
                             );
                             length = 3;
@@ -90,39 +86,33 @@ namespace FontFixMod
                             break;
                         case Characters.NUMDIVIDE:
                             #region[Set NUMDIVIDE Text]
-                            __instance.SetText(
-                                text.Replace(
-                                    GetDescriptionFromEnumValue(Characters.NUMDIVIDE),
-                                    "<sprite name=sck92>"
-                                )
+                            __instance.text = text.Replace(
+                                GetDescriptionFromEnumValue(Characters.NUMDIVIDE),
+                                "<sprite name=sck92>"
                             );
                             #endregion
                             break;
                         case Characters.NUMEQUALS:
                             #region[Set NUMEQUALS Text]
-                            __instance.SetText(
-                                text.Replace(
-                                    GetDescriptionFromEnumValue(Characters.NUMEQUALS),
-                                    "<sprite name=sck61>"
-                                )
+                            __instance.text = text.Replace(
+                                GetDescriptionFromEnumValue(Characters.NUMEQUALS),
+                                "<sprite name=sck61>"
                             );
                             #endregion
                             break;
                         case Characters.NUMLOCK:
                             #region[Set NUMLOCK Text]
-                            __instance.SetText(
-                                text.Replace(
-                                    GetDescriptionFromEnumValue(Characters.NUMLOCK),
-                                    String.Format(
-                                        "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}><sprite name=sck{3}><sprite name=sck{4}><sprite name=sck{5}><sprite name=sck{6}></cspace></size>",
-                                        (int)KeyCode.N,
-                                        (int)KeyCode.U,
-                                        (int)KeyCode.M,
-                                        (int)KeyCode.L,
-                                        (int)KeyCode.O,
-                                        (int)KeyCode.C,
-                                        (int)KeyCode.K
-                                    )
+                            __instance.text = text.Replace(
+                                GetDescriptionFromEnumValue(Characters.NUMLOCK),
+                                String.Format(
+                                    "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}><sprite name=sck{3}><sprite name=sck{4}><sprite name=sck{5}><sprite name=sck{6}></cspace></size>",
+                                    (int)KeyCode.N,
+                                    (int)KeyCode.U,
+                                    (int)KeyCode.M,
+                                    (int)KeyCode.L,
+                                    (int)KeyCode.O,
+                                    (int)KeyCode.C,
+                                    (int)KeyCode.K
                                 )
                             );
                             length = 7;
@@ -130,22 +120,20 @@ namespace FontFixMod
                             break;
                         case Characters.SCROLLLOCK:
                             #region[Set SCROLLLOCK Text]
-                            __instance.SetText(
-                                text.Replace(
-                                    GetDescriptionFromEnumValue(Characters.SCROLLLOCK),
-                                    String.Format(
-                                        "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}><sprite name=sck{3}><sprite name=sck{4}><sprite name=sck{5}><sprite name=sck{6}><sprite name=sck{7}><sprite name=sck{8}><sprite name=sck{9}></cspace></size>",
-                                        (int)KeyCode.S,
-                                        (int)KeyCode.C,
-                                        (int)KeyCode.R,
-                                        (int)KeyCode.O,
-                                        (int)KeyCode.L,
-                                        (int)KeyCode.L,
-                                        (int)KeyCode.L,
-                                        (int)KeyCode.O,
-                                        (int)KeyCode.C,
-                                        (int)KeyCode.K
-                                    )
+                            __instance.text = text.Replace(
+                                GetDescriptionFromEnumValue(Characters.SCROLLLOCK),
+                                String.Format(
+                                    "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}><sprite name=sck{3}><sprite name=sck{4}><sprite name=sck{5}><sprite name=sck{6}><sprite name=sck{7}><sprite name=sck{8}><sprite name=sck{9}></cspace></size>",
+                                    (int)KeyCode.S,
+                                    (int)KeyCode.C,
+                                    (int)KeyCode.R,
+                                    (int)KeyCode.O,
+                                    (int)KeyCode.L,
+                                    (int)KeyCode.L,
+                                    (int)KeyCode.L,
+                                    (int)KeyCode.O,
+                                    (int)KeyCode.C,
+                                    (int)KeyCode.K
                                 )
                             );
                             length = 10;
@@ -153,17 +141,15 @@ namespace FontFixMod
                             break;
                         case Characters.BREAK:
                             #region[Set BREAK Text]
-                            __instance.SetText(
-                                text.Replace(
-                                    GetDescriptionFromEnumValue(Characters.BREAK),
-                                    String.Format(
-                                        "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}><sprite name=sck{3}><sprite name=sck{4}></cspace></size>",
-                                        (int)KeyCode.B,
-                                        (int)KeyCode.R,
-                                        (int)KeyCode.E,
-                                        (int)KeyCode.A,
-                                        (int)KeyCode.K
-                                    )
+                            __instance.text = text.Replace(
+                                GetDescriptionFromEnumValue(Characters.BREAK),
+                                String.Format(
+                                    "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}><sprite name=sck{3}><sprite name=sck{4}></cspace></size>",
+                                    (int)KeyCode.B,
+                                    (int)KeyCode.R,
+                                    (int)KeyCode.E,
+                                    (int)KeyCode.A,
+                                    (int)KeyCode.K
                                 )
                             );
                             length = 5;
@@ -171,16 +157,14 @@ namespace FontFixMod
                             break;
                         case Characters.MENU:
                             #region[Set MENU Text]
-                            __instance.SetText(
-                                text.Replace(
-                                    GetDescriptionFromEnumValue(Characters.MENU),
-                                    String.Format(
-                                        "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}><sprite name=sck{3}></cspace></size>",
-                                        (int)KeyCode.M,
-                                        (int)KeyCode.E,
-                                        (int)KeyCode.N,
-                                        (int)KeyCode.U
-                                    )
+                            __instance.text = text.Replace(
+                                GetDescriptionFromEnumValue(Characters.MENU),
+                                String.Format(
+                                    "<size=95%><cspace=-0.9em><sprite name=sck{0}><sprite name=sck{1}><sprite name=sck{2}><sprite name=sck{3}></cspace></size>",
+                                    (int)KeyCode.M,
+                                    (int)KeyCode.E,
+                                    (int)KeyCode.N,
+                                    (int)KeyCode.U
                                 )
                             );
                             length = 4;
@@ -199,8 +183,8 @@ namespace FontFixMod
 
                             Vector2 sizeDelta = transform.sizeDelta;
 
-                            Vector2 oldOffsetMax = transform.offsetMax;
-                            transform.offsetMax = new Vector2(oldOffsetMax.x < 240 ? oldOffsetMax.x + (int)((33 * (length - 1) * 0.5)) : oldOffsetMax.x, oldOffsetMax.y);
+                            Vector2 oldOffsetMax = transform.get_offsetMax();
+                            transform.set_offsetMax(new Vector2(oldOffsetMax.x < 240 ? oldOffsetMax.x + (int)((33 * (length - 1) * 0.5)) : oldOffsetMax.x, oldOffsetMax.y));
 
                             Vector4 oldMargin = __instance.margin;
                             __instance.margin = new Vector4(oldMargin.x < 2 ? oldMargin.x + length * 2 : oldMargin.x, oldMargin.y, oldMargin.z, oldMargin.w);
@@ -262,6 +246,36 @@ namespace FontFixMod
                 .GetField(value.ToString())
                 .GetCustomAttributes(typeof(DescriptionAttribute), false)
                 .SingleOrDefault() is not DescriptionAttribute attribute ? value.ToString() : attribute.Description;
+        }
+    }
+
+    /// <summary>
+    /// Removes spammy error from creating text on screen
+    /// </summary>
+    [HarmonyPatch]
+    class Logger_Patch
+    {
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(Logger), "Log", new Type[] { typeof(LogType), typeof(Il2CppObject) })]
+        public static bool Log(Il2CppObject __1)
+        {
+            try
+            {
+                if (__1.GetIl2CppType().ToString() == "System.String")
+                {
+                    switch(__1.ToString())
+                    {
+                        case "Trying to add Input (UnityEngine.UI.InputField) for graphic rebuild while we are already inside a graphic rebuild loop. This is not supported.":
+                        case "Trying to add interact_tips (UnityEngine.UI.Image) for graphic rebuild while we are already inside a graphic rebuild loop. This is not supported.":
+                        case "Trying to add SCK_tips (UnityEngine.UI.Image) for graphic rebuild while we are already inside a graphic rebuild loop. This is not supported.":
+                            return false;
+                    }
+                }
+            }
+            catch (ObjectCollectedException)
+            {
+            }
+            return true;
         }
     }
 }

@@ -39,9 +39,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="MelonLoader">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>MelonLoader\MelonLoader.dll</HintPath>
