@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="FontFix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\LogSilencer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MelonLoader">
@@ -1111,5 +1112,6 @@
     <Content Include="MelonLoader\Managed\WindowsBase.dll" />
     <Content Include="MelonLoader\Managed\XLogStandalone.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

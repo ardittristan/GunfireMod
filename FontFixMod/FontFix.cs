@@ -5,27 +5,14 @@ using System.Reflection;
 using HarmonyLib;
 using MelonLoader;
 using TMPro;
-using UnhollowerBaseLib;
-using Il2CppObject = Il2CppSystem.Object;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace FontFixMod
 {
-    /// <summary>
-    /// Defines the <see cref="FontFix" />.
-    /// </summary>
-    public class FontFix : MelonMod
-    {
-        FontFix() { }
-    }
-
-    /// <summary>
-    /// Patches for <see cref="TMP_Text" />.
-    /// </summary>
     [HarmonyPatch]
-    class TMP_Text_Patch
-    {
+    class FontFix : MelonMod
+{
         /// <summary>
         /// Hooks before text gets rendered.
         /// </summary>
@@ -246,36 +233,6 @@ namespace FontFixMod
                 .GetField(value.ToString())
                 .GetCustomAttributes(typeof(DescriptionAttribute), false)
                 .SingleOrDefault() is not DescriptionAttribute attribute ? value.ToString() : attribute.Description;
-        }
-    }
-
-    /// <summary>
-    /// Removes spammy error from creating text on screen
-    /// </summary>
-    [HarmonyPatch]
-    class Logger_Patch
-    {
-        [HarmonyPrefix]
-        [HarmonyPatch(typeof(Logger), "Log", new Type[] { typeof(LogType), typeof(Il2CppObject) })]
-        public static bool Log(Il2CppObject __1)
-        {
-            try
-            {
-                if (__1.GetIl2CppType().ToString() == "System.String")
-                {
-                    switch(__1.ToString())
-                    {
-                        case "Trying to add Input (UnityEngine.UI.InputField) for graphic rebuild while we are already inside a graphic rebuild loop. This is not supported.":
-                        case "Trying to add interact_tips (UnityEngine.UI.Image) for graphic rebuild while we are already inside a graphic rebuild loop. This is not supported.":
-                        case "Trying to add SCK_tips (UnityEngine.UI.Image) for graphic rebuild while we are already inside a graphic rebuild loop. This is not supported.":
-                            return false;
-                    }
-                }
-            }
-            catch (ObjectCollectedException)
-            {
-            }
-            return true;
         }
     }
 }
