@@ -896,6 +896,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MelonLoader\Dependencies\SupportModules\Preload.dll" />
     <Content Include="MelonLoader\MelonLoader.dll" />
     <Content Include="MelonLoader\Managed\Accessibility.dll" />
     <Content Include="MelonLoader\Managed\Assembly-CSharp-firstpass.dll" />
