@@ -5,27 +5,25 @@ using UnhollowerBaseLib.Attributes;
 using UnhollowerRuntimeLib;
 using UnityEngine;
 
-namespace GunfireBaseMod.Modifications
+namespace GunfireLib.Instances
 {
-    class PortalBehaviour : MonoBehaviour
+    public class PortalInstance : MonoBehaviour
     {
 
-        public GameObject WorldPortal = null;
-        private bool foundPortal = false;
-
-        internal static PortalBehaviour Instance { get; private set; }
+        public static GameObject Instance = null;
+        public static bool portalFound = false;
 
         internal static void Setup()
         {
-            ClassInjector.RegisterTypeInIl2Cpp<PortalBehaviour>();
+            ClassInjector.RegisterTypeInIl2Cpp<PortalInstance>();
 
-            var obj = new GameObject("PortalBehaviour");
+            var obj = new GameObject("Portal");
             DontDestroyOnLoad(obj);
             obj.hideFlags |= HideFlags.HideAndDontSave;
-            Instance = obj.AddComponent<PortalBehaviour>();
+            obj.AddComponent<PortalInstance>();
         }
 
-        public PortalBehaviour(IntPtr ptr) : base(ptr) { }
+        public PortalInstance(IntPtr ptr) : base(ptr) { }
 
         internal void Awake()
         {
@@ -41,22 +39,22 @@ namespace GunfireBaseMod.Modifications
                 var gateObjects = GameObject.FindGameObjectsWithTag(Tag.GateNPC);
                 if (gateObjects.Length == 1)
                 {
-                    if (!foundPortal)
+                    if (!portalFound)
                     {
-                        WorldPortal = gateObjects[0];
-                        foundPortal = true;
-                        MelonLogger.Msg(WorldPortal.name);
+                        Instance = gateObjects[0];
+                        portalFound = true;
+                        MelonLogger.Msg(Instance.name);
                     }
                 }
                 else
                 {
-                    if (foundPortal)
+                    if (portalFound)
                     {
-                        WorldPortal = null;
-                        foundPortal = false;
+                        Instance = null;
+                        portalFound = false;
                     }
                 }
-                yield return new WaitForSeconds(.1f);
+                yield return new WaitForSeconds(1f);
             }
         }
     }

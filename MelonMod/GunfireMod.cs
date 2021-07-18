@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using MelonLoader;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using Il2CppSystem;
 using UnhollowerBaseLib;
 using Guide;
@@ -25,6 +26,10 @@ using Logger = HarmonyLib.Tools.Logger;
 >>>>>>> 71a63e2... let the console spam commence
 =======
 >>>>>>> bbde83e... add initial fontfix mod
+=======
+using HarmonyLib;
+using GameCoder.Engine;
+>>>>>>> 2e3c525... switch logic over to lib mod
 
 namespace GunfireBaseMod
 {
@@ -32,20 +37,16 @@ namespace GunfireBaseMod
     {
         public GunfireMod()
         {
-            HarmonyLib.Tools.Logger.ChannelFilter = HarmonyLib.Tools.Logger.LogChannel.All;
-            HarmonyLib.Tools.HarmonyFileLog.Enabled = true;
-
-            Debug.developerConsoleVisible = true;
         }
 
         public override void OnApplicationLateStart() // Runs after Application Start has finished.
         {
-            MelonLogger.Msg("OnApplicationLateStart");
+            //MelonLogger.Msg("OnApplicationLateStart");
         }
 
         public override void OnApplicationQuit() // Runs when the Game is told to Close.
         {
-            MelonLogger.Msg("OnApplicationQuit");
+            //MelonLogger.Msg("OnApplicationQuit");
         }
         public override void OnApplicationStart() // Runs after Game Initialization.
         {
@@ -65,6 +66,7 @@ namespace GunfireBaseMod
             //ClassInjector.RegisterTypeInIl2Cpp<NPCGate>();
 
             //HarmonyInstance.PatchAll(typeof(Patches.LuaComponentPatch));
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 
@@ -73,6 +75,8 @@ namespace GunfireBaseMod
 =======
             Modifications.PortalBehaviour.Setup();
 >>>>>>> bbde83e... add initial fontfix mod
+=======
+>>>>>>> 2e3c525... switch logic over to lib mod
         }
 
         public override void OnFixedUpdate() // Can run multiple times per frame. Mostly used for Physics.
@@ -92,34 +96,45 @@ namespace GunfireBaseMod
 
         public override void OnPreferencesLoaded() // Called when a mod calls MelonLoader.MelonPreferences.Load(), or when MelonPreferences loads external changes.
         {
-            MelonLogger.Msg("OnPreferencesLoaded");
+            //MelonLogger.Msg("OnPreferencesLoaded");
         }
 
         public override void OnPreferencesSaved() // Called when a mod calls MelonLoader.MelonPreferences.Save(), or when the application quits.
         {
-            MelonLogger.Msg("OnPreferencesSaved");
+            //MelonLogger.Msg("OnPreferencesSaved");
         }
 
         public override void OnSceneWasInitialized(int buildIndex, string sceneName) // Runs when a Scene has Initialized.
         {
             MelonLogger.Msg("OnSceneWasInitialized - buildIndex: " + buildIndex.ToString());
             MelonLogger.Msg("OnSceneWasInitialized - sceneName: " + sceneName);
+            MelonLogger.Msg("OnSceneWasInitialized - parsedSceneName: " + DYSceneManager.GetABName(sceneName));
         }
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName) // Runs when a Scene has Loaded.
         {
             MelonLogger.Msg("OnSceneWasLoaded - buildIndex: " + buildIndex.ToString());
             MelonLogger.Msg("OnSceneWasLoaded - sceneName: " + sceneName);
+            MelonLogger.Msg("OnSceneWasLoaded - parsedSceneName: " + DYSceneManager.GetABName(sceneName));
         }
 
         public override void OnUpdate() // Runs once per frame.
         {
-            if (Input.GetKeyUp(KeyCode.Home))
-            {
-                
-            }
+            
         }
 
+    }
+
+    [HarmonyPatch]
+    public class Patch
+    {
+        [HarmonyPatch(typeof(NpcTrigger), "ShowHideDoorTip")]
+        [HarmonyPostfix]
+        public static void ShowHideDoorTip(Collider __0, bool __1)
+        {
+            MelonLogger.Msg(__0);
+            MelonLogger.Msg(__1);
+        }
     }
 
     //[HarmonyPatch]

@@ -170,8 +170,8 @@ namespace FontFixMod
 
                             Vector2 sizeDelta = transform.sizeDelta;
 
-                            Vector2 oldOffsetMax = transform.get_offsetMax();
-                            transform.set_offsetMax(new Vector2(oldOffsetMax.x < 240 ? oldOffsetMax.x + (int)((33 * (length - 1) * 0.5)) : oldOffsetMax.x, oldOffsetMax.y));
+                            Vector2 oldOffsetMax = transform.offsetMax;
+                            transform.offsetMax = new Vector2(oldOffsetMax.x < 240 ? oldOffsetMax.x + (int)((33 * (length - 1) * 0.5)) : oldOffsetMax.x, oldOffsetMax.y);
 
                             Vector4 oldMargin = __instance.margin;
                             __instance.margin = new Vector4(oldMargin.x < 2 ? oldMargin.x + length * 2 : oldMargin.x, oldMargin.y, oldMargin.z, oldMargin.w);

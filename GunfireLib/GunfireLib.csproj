@@ -4,16 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{616C7559-9FC0-48B8-A30E-47CA3566D019}</ProjectGuid>
+    <ProjectGuid>{ED0C2330-5FF7-46B5-96B1-EE2FFAFFFF7D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GunfireBaseMod</RootNamespace>
-    <AssemblyName>GunfireMod</AssemblyName>
+    <RootNamespace>GunfireLib</RootNamespace>
+    <AssemblyName>GunfireLib</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,11 +31,6 @@
     <WarningLevel>4</WarningLevel>
     <NoWarn>MSB3277</NoWarn>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="GunfireMod.cs" />
-    <Compile Include="Patches\LuaComponentPatch.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
   <ItemGroup>
     <Reference Include="MelonLoader">
       <SpecificVersion>False</SpecificVersion>
@@ -897,8 +890,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GunfireLib.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Instances\PortalInstance.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="MelonLoader\Dependencies\SupportModules\Preload.dll" />
-    <Content Include="MelonLoader\MelonLoader.dll" />
     <Content Include="MelonLoader\Managed\Accessibility.dll" />
     <Content Include="MelonLoader\Managed\Assembly-CSharp-firstpass.dll" />
     <Content Include="MelonLoader\Managed\Assembly-CSharp.dll" />
@@ -1113,6 +1110,7 @@
     <Content Include="MelonLoader\Managed\ValueTupleBridge.dll" />
     <Content Include="MelonLoader\Managed\WindowsBase.dll" />
     <Content Include="MelonLoader\Managed\XLogStandalone.dll" />
+    <Content Include="MelonLoader\MelonLoader.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,22 +1,21 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 using MelonLoader;
-using GunfireBaseMod;
 
-[assembly: MelonInfo(typeof(GunfireMod), "Gunfire Mod", "0.0.1", "ardittristan")]
+[assembly: MelonInfo(typeof(GunfireLib.GunfireLib), "Gunfire Lib", "0.0.1", "ardittristan")]
 [assembly: MelonGame("duoyi", "Gunfire Reborn")]
 [assembly: MelonPlatform(MelonPlatformAttribute.CompatiblePlatforms.WINDOWS_X64)]
 [assembly: MelonPlatformDomain(MelonPlatformDomainAttribute.CompatibleDomains.IL2CPP)]
-[assembly: VerifyLoaderVersion(0, 4, 0, true)]
+[assembly: VerifyLoaderVersion(0, 4, 1, true)]
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GunfireMod")]
+[assembly: AssemblyTitle("GunfireLib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GunfireMod")]
+[assembly: AssemblyProduct("GunfireLib")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -27,7 +26,7 @@ using GunfireBaseMod;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("616c7559-9fc0-48b8-a30e-47ca3566d019")]
+[assembly: Guid("ed0c2330-5ff7-46b5-96b1-ee2ffaffff7d")]
 
 // Version information for an assembly consists of the following four values:
 //

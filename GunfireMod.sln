@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{3E7F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{9D217651-297D-4CD7-BDF4-4082FDEF6AD8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GunfireLib", "GunfireLib\GunfireLib.csproj", "{ED0C2330-5FF7-46B5-96B1-EE2FFAFFFF7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,14 @@ Global
 		{455997F1-0575-4131-89EC-296637DB5B9D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{455997F1-0575-4131-89EC-296637DB5B9D}.Release|x64.ActiveCfg = Release|Any CPU
 		{455997F1-0575-4131-89EC-296637DB5B9D}.Release|x64.Build.0 = Release|Any CPU
+		{ED0C2330-5FF7-46B5-96B1-EE2FFAFFFF7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED0C2330-5FF7-46B5-96B1-EE2FFAFFFF7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED0C2330-5FF7-46B5-96B1-EE2FFAFFFF7D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ED0C2330-5FF7-46B5-96B1-EE2FFAFFFF7D}.Debug|x64.Build.0 = Debug|Any CPU
+		{ED0C2330-5FF7-46B5-96B1-EE2FFAFFFF7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED0C2330-5FF7-46B5-96B1-EE2FFAFFFF7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED0C2330-5FF7-46B5-96B1-EE2FFAFFFF7D}.Release|x64.ActiveCfg = Release|Any CPU
+		{ED0C2330-5FF7-46B5-96B1-EE2FFAFFFF7D}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

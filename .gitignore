@@ -334,8 +334,7 @@ ASALocalRun/
 .localhistory/
 
 # Symlinked Modloaders
-/MelonMod/MelonLoader
-/FontFixMod/MelonLoader
+**/MelonLoader
 /BepInMod/BepInEx
 
 # Release/compiled folders
