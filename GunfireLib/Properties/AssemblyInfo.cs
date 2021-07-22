@@ -7,6 +7,7 @@ using MelonLoader;
 [assembly: MelonPlatform(MelonPlatformAttribute.CompatiblePlatforms.WINDOWS_X64)]
 [assembly: MelonPlatformDomain(MelonPlatformDomainAttribute.CompatibleDomains.IL2CPP)]
 [assembly: VerifyLoaderVersion(0, 4, 1, true)]
+[assembly: MelonPriority(-100)]
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information

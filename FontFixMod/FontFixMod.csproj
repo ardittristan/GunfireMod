@@ -40,6 +40,10 @@
     <Compile Include="Utils\LogSilencer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Il2Cpp, Version=0.4.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>MelonLoader\Dependencies\SupportModules\Il2Cpp.dll</HintPath>
+    </Reference>
     <Reference Include="MelonLoader">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>MelonLoader\MelonLoader.dll</HintPath>
@@ -896,6 +900,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MelonLoader\Dependencies\SupportModules\Il2Cpp.dll" />
     <Content Include="MelonLoader\Dependencies\SupportModules\Preload.dll" />
     <Content Include="MelonLoader\MelonLoader.dll" />
     <Content Include="MelonLoader\Managed\Accessibility.dll" />

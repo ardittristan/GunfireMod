@@ -1,13 +1,21 @@
-﻿using MelonLoader;
+﻿using System;
+using System.Linq;
+using MelonLoader;
 using UnityEngine;
 using GunfireLib.Instances;
+using GunfireLib.Patches;
 
 namespace GunfireLib
 {
     public class GunfireLib : MelonMod
     {
+        internal static HarmonyLib.Harmony harmony;
+        internal static readonly bool verboseLog = Environment.GetCommandLineArgs().Any(s => s.Contains("--gunfirelib.verbose"));
+
         public GunfireLib()
         {
+            harmony = HarmonyInstance;
+
             HarmonyLib.Tools.Logger.ChannelFilter = HarmonyLib.Tools.Logger.LogChannel.All;
             HarmonyLib.Tools.HarmonyFileLog.Enabled = true;
 
@@ -26,6 +34,11 @@ namespace GunfireLib
         public override void OnApplicationStart()
         {
             PortalInstance.Setup();
+
+            if (verboseLog)
+            {
+                ExecEvent.SetupVerboseLog();
+            }
         }
 
         public override void OnFixedUpdate()

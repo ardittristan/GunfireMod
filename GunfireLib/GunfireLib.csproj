@@ -32,6 +32,10 @@
     <NoWarn>MSB3277</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Il2Cpp, Version=0.4.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FontFixMod\MelonLoader\Dependencies\SupportModules\Il2Cpp.dll</HintPath>
+    </Reference>
     <Reference Include="MelonLoader">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>MelonLoader\MelonLoader.dll</HintPath>
@@ -891,10 +895,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GunfireLib.cs" />
+    <Compile Include="Patches\ExecEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Instances\PortalInstance.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MelonLoader\Dependencies\SupportModules\Il2Cpp.dll" />
     <Content Include="MelonLoader\Dependencies\SupportModules\Preload.dll" />
     <Content Include="MelonLoader\Managed\Accessibility.dll" />
     <Content Include="MelonLoader\Managed\Assembly-CSharp-firstpass.dll" />
