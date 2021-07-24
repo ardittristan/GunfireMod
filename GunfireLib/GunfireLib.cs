@@ -34,11 +34,7 @@ namespace GunfireLib
         public override void OnApplicationStart()
         {
             PortalInstance.Setup();
-
-            if (verboseLog)
-            {
-                ExecEvent.SetupVerboseLog();
-            }
+            ScriptEventManagerPatch.Setup();
         }
 
         public override void OnFixedUpdate()

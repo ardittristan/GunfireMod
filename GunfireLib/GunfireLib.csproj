@@ -895,9 +895,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GunfireLib.cs" />
-    <Compile Include="Patches\ExecEvent.cs" />
+    <Compile Include="Patches\ScriptEventManagerPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Instances\PortalInstance.cs" />
+    <Compile Include="Utils\GunfireLogger.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MelonLoader\Dependencies\SupportModules\Il2Cpp.dll" />
