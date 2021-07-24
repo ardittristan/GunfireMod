@@ -11,7 +11,7 @@ using Il2CppObject = Il2CppSystem.Object;
 namespace GunfireLib.Patches
 {
     [HarmonyPatch]
-    class ScriptEventManagerPatch
+    public static class ScriptEventManagerPatch
     {
         internal static void Setup()
         {
@@ -35,11 +35,14 @@ namespace GunfireLib.Patches
             try
             {
                 ScriptEventManager.EventHandler eventHandler = ScriptEventManager.instance.m_Events[__0];
+
                 GunfireLogger.Verbose("ExecEvent", __0, eventHandler);
+                GunfireEvents.RaiseExecEvent(new GunfireEvents.ExecEventArgs(__0, eventHandler));
             }
             catch (Exception ex) when (ex is Il2CppException || ex is KeyNotFoundException)
             {
                 GunfireLogger.Verbose("ExecEvent", __0);
+                GunfireEvents.RaiseEmptyExecEvent(new GunfireEvents.EmptyExecEventArgs(__0));
             }
         }
 
@@ -50,11 +53,14 @@ namespace GunfireLib.Patches
             try
             {
                 ScriptEventManager.EventHandler eventHandler = ScriptEventManager.instance.m_Events[__0];
+
                 GunfireLogger.Verbose("ExecEventByAction", __0, __1, eventHandler);
+                GunfireEvents.RaiseExecEvent(new GunfireEvents.ExecEventArgs(__0, eventHandler, __1));
             }
             catch (Exception ex) when (ex is Il2CppException || ex is KeyNotFoundException)
             {
                 GunfireLogger.Verbose("ExecEventByAction", __0, __1);
+                GunfireEvents.RaiseEmptyExecEvent(new GunfireEvents.EmptyExecEventArgs(__0, __1));
             }
         }
 

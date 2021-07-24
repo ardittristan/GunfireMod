@@ -43,6 +43,7 @@
     <Reference Include="Il2Cpp, Version=0.4.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>MelonLoader\Dependencies\SupportModules\Il2Cpp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="MelonLoader">
       <SpecificVersion>False</SpecificVersion>

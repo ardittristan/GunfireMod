@@ -4,7 +4,7 @@ using MelonLoader;
 
 namespace GunfireLib.Utils
 {
-    class GunfireLogger
+    public static class GunfireLogger
     {
         public static void Verbose(string txt)
         {
