@@ -36,7 +36,7 @@ namespace GunfireLib.Patches
             {
                 ScriptEventManager.EventHandler eventHandler = ScriptEventManager.instance.m_Events[__0];
 
-                GunfireLogger.Verbose("ExecEvent", __0, eventHandler);
+                GunfireLogger.Verbose("ExecEvent", __0, eventHandler.Method.Name);
                 GunfireEvents.RaiseExecEvent(new GunfireEvents.ExecEventArgs(__0, eventHandler));
             }
             catch (Exception ex) when (ex is Il2CppException || ex is KeyNotFoundException)
@@ -54,7 +54,7 @@ namespace GunfireLib.Patches
             {
                 ScriptEventManager.EventHandler eventHandler = ScriptEventManager.instance.m_Events[__0];
 
-                GunfireLogger.Verbose("ExecEventByAction", __0, __1, eventHandler);
+                GunfireLogger.Verbose("ExecEventByAction", __0, __1, eventHandler.Method.Name);
                 GunfireEvents.RaiseExecEvent(new GunfireEvents.ExecEventArgs(__0, eventHandler, __1));
             }
             catch (Exception ex) when (ex is Il2CppException || ex is KeyNotFoundException)
