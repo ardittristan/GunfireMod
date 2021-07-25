@@ -1,9 +1,11 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using MelonLoader;
 using UnityEngine;
 using GunfireLib.Instances;
 using GunfireLib.Patches;
+using GunfireLib.Utils;
 
 namespace GunfireLib
 {
@@ -11,6 +13,8 @@ namespace GunfireLib
     {
         internal static HarmonyLib.Harmony harmony;
         internal static readonly bool verboseLog = Environment.GetCommandLineArgs().Any(s => s.Contains("--gunfirelib.verbose"));
+        internal static readonly bool fileLog = Environment.GetCommandLineArgs().Any(s => s.Contains("--gunfirelib.filelog"));
+        internal static readonly string libConfigDirectory = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "GunfireLib");
 
         public GunfireLib()
         {
@@ -20,17 +24,23 @@ namespace GunfireLib
             HarmonyLib.Tools.HarmonyFileLog.Enabled = true;
 
             Debug.developerConsoleVisible = true;
+
+            if (fileLog)
+            { 
+                Directory.CreateDirectory(libConfigDirectory);
+            }
         }
 
         public override void OnApplicationLateStart()
         {
-            MelonLogger.Msg("OnApplicationLateStart");
+
         }
 
         public override void OnApplicationQuit()
         {
-            MelonLogger.Msg("OnApplicationQuit");
+            GunfireEvents.RaiseQuitEvent();
         }
+
         public override void OnApplicationStart()
         {
             PortalInstance.Setup();
@@ -39,27 +49,27 @@ namespace GunfireLib
 
         public override void OnFixedUpdate()
         {
-            //MelonLogger.Msg("OnFixedUpdate");
+
         }
 
         public override void OnGUI()
         {
-            //MelonLogger.Msg("OnGui");
+
         }
 
         public override void OnLateUpdate()
         {
-            //MelonLogger.Msg("OnLateUpdate");
+
         }
 
         public override void OnSceneWasInitialized(int buildIndex, string sceneName)
         {
-            MelonLogger.Msg("OnSceneWasInitialized");
+
         }
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
-            MelonLogger.Msg("OnSceneWasLoaded");
+
         }
 
         public override void OnUpdate()

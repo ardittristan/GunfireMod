@@ -901,6 +901,7 @@
     <Compile Include="Instances\PortalInstance.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.EmptyExecEvent.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.ExecEvent.cs" />
+    <Compile Include="Utils\GunfireEvents\GunfireEvents.Quit.cs" />
     <Compile Include="Utils\GunfireLogger.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1121,6 +1122,17 @@
     <Content Include="MelonLoader\Managed\WindowsBase.dll" />
     <Content Include="MelonLoader\Managed\XLogStandalone.dll" />
     <Content Include="MelonLoader\MelonLoader.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FileParser">
+      <Version>1.4.4</Version>
+    </PackageReference>
+    <PackageReference Include="ILRepack.Lib.MSBuild.Task">
+      <Version>2.0.18.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ILRepack.targets" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

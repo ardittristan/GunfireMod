@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using GunfireLib.Utils;
 using MelonLoader;
 using UnhollowerBaseLib.Attributes;
 using UnhollowerRuntimeLib;
@@ -43,7 +44,7 @@ namespace GunfireLib.Instances
                     {
                         Instance = gateObjects[0];
                         portalFound = true;
-                        MelonLogger.Msg(Instance.name);
+                        GunfireLogger.Verbose(Instance.name);
                     }
                 }
                 else

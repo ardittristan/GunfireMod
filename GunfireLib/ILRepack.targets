@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Target Name="ILRepacker" AfterTargets="Build">
+		<ItemGroup>
+			<AssemblyFile Include="$(OutputPath)$(AssemblyName).dll" />
+		</ItemGroup>
+		<ItemGroup>
+			<LibraryPath Include="MelonLoader" />
+			<LibraryPath Include="MelonLoader\Managed" />
+		</ItemGroup>
+		<ItemGroup>
+			<InputAssemblies Include="@(AssemblyFile)" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'FileParser'" />
+		</ItemGroup>
+		<ILRepack
+			Parallel="true"
+			DebugInfo="false"
+			LibraryPath ="@(LibraryPath)"
+			InputAssemblies="@(InputAssemblies)"
+			TargetKind="Dll"
+			OutputFile="@(AssemblyFile)"
+		/>
+    </Target>
+	
+	<Target Name="Cleanup" AfterTargets="ILRepack">
+		<ItemGroup>
+			<FilesToDelete Include="$(OutputPath)FileParser.dll" />
+			<FilesToDelete Include="$(OutputPath)netstandard.dll" />
+		</ItemGroup>
+		<Delete Files="@(FilesToDelete)" />
+    </Target>
+</Project>
