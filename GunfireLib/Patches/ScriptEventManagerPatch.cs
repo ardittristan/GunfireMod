@@ -70,7 +70,7 @@ namespace GunfireLib.Patches
         #region[ExecEvent]
         [HarmonyPatch(typeof(ScriptEventManager), "ExecEvent", new Type[] { typeof(string) })]
         [HarmonyPostfix]
-        public static void ExecEvent(string __0)
+        static void ExecEvent(string __0)
         {
             try
             {
@@ -89,7 +89,7 @@ namespace GunfireLib.Patches
 
         [HarmonyPatch(typeof(ScriptEventManager), "ExecEventByAction")]
         [HarmonyPostfix]
-        public static void ExecEventByAction(string __0, Il2CppObject __1)
+        static void ExecEventByAction(string __0, Il2CppObject __1)
         {
             try
             {
@@ -128,7 +128,7 @@ namespace GunfireLib.Patches
 
         #region[AddEvent]
         [HarmonyPatch(typeof(ScriptEventManager), "AddEvent")]
-        public static void AddEvent(string __0, ScriptEventManager.EventHandler __1)
+        static void AddEvent(string __0, ScriptEventManager.EventHandler __1)
         {
             GunfireLogger.Verbose("AddEvent", __0, __1);
         }

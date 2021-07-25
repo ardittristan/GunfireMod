@@ -19,7 +19,7 @@ namespace FontFixMod
         /// <param name="__instance">The current <see cref="TextMeshProUGUI"/> instance.</param>
         [HarmonyPrefix]
         [HarmonyPatch(typeof(TextMeshProUGUI), "OnPreRenderCanvas")]
-        public static void OnPreRenderCanvas(TextMeshProUGUI __instance)
+        static void OnPreRenderCanvas(TextMeshProUGUI __instance)
         {
             if (__instance != null)
             {

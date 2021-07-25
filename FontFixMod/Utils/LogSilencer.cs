@@ -15,7 +15,7 @@ namespace FontFixMod.Utils
     {
         [HarmonyPrefix]
         [HarmonyPatch(typeof(Logger), "Log", new Type[] { typeof(LogType), typeof(Il2CppObject) })]
-        public static bool Log(Il2CppObject __1)
+        static bool Log(Il2CppObject __1)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace FontFixMod.Utils
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(Logger), "Log", new Type[] { typeof(LogType), typeof(Il2CppObject), typeof(UnityObject) })]
-        public static bool ContextLog(Il2CppObject __1)
+        static bool ContextLog(Il2CppObject __1)
         {
             try
             {

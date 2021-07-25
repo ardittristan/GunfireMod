@@ -895,6 +895,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="GunfireLib.cs" />
     <Compile Include="Patches\ScriptEventManagerPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
