@@ -895,13 +895,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\MapData.cs" />
+    <Compile Include="Data\MapData.Translations.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="GunfireLib.cs" />
     <Compile Include="Patches\ScriptEventManagerPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Instances\PortalInstance.cs" />
+    <Compile Include="Utils\DataHelpers.cs" />
+    <Compile Include="Utils\GunfireEvents\GunfireEvents.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.EmptyExecEvent.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.ExecEvent.cs" />
+    <Compile Include="Utils\GunfireEvents\GunfireEvents.OnGameLoaded.cs" />
+    <Compile Include="Utils\GunfireEvents\GunfireEvents.OnLateGameLoaded.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.Quit.cs" />
     <Compile Include="Utils\GunfireLogger.cs" />
   </ItemGroup>

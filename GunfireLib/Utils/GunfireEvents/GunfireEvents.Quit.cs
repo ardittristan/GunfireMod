@@ -1,11 +1,8 @@
-﻿using System;
-
-namespace GunfireLib.Utils
+﻿namespace GunfireLib.Utils
 {
     public static partial class GunfireEvents
     {
-        public delegate void QuitEventHandler();
-        public static event QuitEventHandler QuitEvent = delegate { };
+        public static event EmptyEventHandler QuitEvent = delegate { };
         internal static void RaiseQuitEvent()
         {
             QuitEvent?.Invoke();

@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using MelonLoader;
 using UnityEngine;
+using GunfireLib.Data;
 using GunfireLib.Instances;
 using GunfireLib.Patches;
 using GunfireLib.Utils;
@@ -15,6 +16,9 @@ namespace GunfireLib
         internal static readonly bool verboseLog = Environment.GetCommandLineArgs().Any(s => s.Contains("--gunfirelib.verbose"));
         internal static readonly bool fileLog = Environment.GetCommandLineArgs().Any(s => s.Contains("--gunfirelib.filelog"));
         internal static readonly string libConfigDirectory = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "GunfireLib");
+
+        private static bool firstHomeLoad = true;
+        private static bool firstLateHomeLoad = true;
 
         public GunfireLib()
         {
@@ -64,12 +68,22 @@ namespace GunfireLib
 
         public override void OnSceneWasInitialized(int buildIndex, string sceneName)
         {
-
+            if (firstLateHomeLoad && sceneName == "home")
+            {
+                firstLateHomeLoad = false;
+                GunfireEvents.RaiseLateGameLoaded();
+            }
         }
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
+            if (firstHomeLoad && sceneName == "home")
+            {
+                MapData.Setup();
 
+                firstHomeLoad = false;
+                GunfireEvents.RaiseGameLoaded();
+            }
         }
 
         public override void OnUpdate()
