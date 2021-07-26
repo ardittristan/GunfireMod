@@ -1,4 +1,6 @@
 ﻿using StringList = System.Collections.Generic.List<string>;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.IO;
 using DataHelper;
 using FileParser;
@@ -13,6 +15,7 @@ namespace GunfireLib.Data
 
         private static StringList mapNameList = new StringList();
         private static StringList devMapNameList = new StringList();
+        private static readonly StringList fullDevMapNameList = new StringList();
 
         internal static void Setup()
         {
@@ -23,7 +26,7 @@ namespace GunfireLib.Data
                 SetupMapNameStore();
                 foreach (KeyValuePair<string, levelconfigdataclass> item in levelList)
                 {
-                    HandleMapNameStore("[" + item.Value.Name + "]", string.IsNullOrWhiteSpace(item.Value.DevName) ? "" : "[" + item.Value.DevName + "]");
+                    HandleMapNameStore(item.Value.Name, string.IsNullOrWhiteSpace(item.Value.DevName) ? "" : item.Value.DevName);
                 }
             }
         }
@@ -38,6 +41,11 @@ namespace GunfireLib.Data
                 IParsedFile file = new ParsedFile(Path.Combine(GunfireLib.libConfigDirectory, "mapNameList.txt"));
                 mapNameList = file.ToList<string>();
             }
+            if (File.Exists(Path.Combine(GunfireLib.libConfigDirectory, "devMapNameList.txt")))
+            {
+                IParsedFile file = new ParsedFile(Path.Combine(GunfireLib.libConfigDirectory, "devMapNameList.txt"));
+                devMapNameList = file.ToList<string>();
+            }
         }
 
         private static void SaveMapNameStore()
@@ -50,19 +58,41 @@ namespace GunfireLib.Data
             {
                 File.WriteAllLines(Path.Combine(GunfireLib.libConfigDirectory, "devMapNameList.txt"), devMapNameList);
             }
+            if (fullDevMapNameList.Count > 0)
+            {
+                File.WriteAllLines(Path.Combine(GunfireLib.libConfigDirectory, "fullDevMapNameList.txt"), fullDevMapNameList);
+            }
         }
 
         private static void HandleMapNameStore(string name, string devName)
         {
             if (GunfireLib.fileLog)
             {
+                name = "[" + name + "]";
                 if (!mapNameList.Contains(name))
                 {
                     mapNameList.Add(name);
                 }
-                if (!devMapNameList.Contains(devName))
+
+                devName = devName.Replace("（", "(");
+                devName = devName.Replace("）", ")");
+                StringList devMatches = Regex.Matches(devName, "[^\x00-\x7F]+")
+                                                .OfType<Match>()
+                                                .Select(m => m.Groups[0].Value)
+                                                .ToList();
+                foreach(string DevName in devMatches)
                 {
-                    devMapNameList.Add(devName);
+                    string ParsedDevName = "[" + DevName + "]";
+                    if (!devMapNameList.Contains(ParsedDevName))
+                    {
+                        devMapNameList.Add(ParsedDevName);
+                    }
+                }
+
+                devName = "[" + devName + "]";
+                if (!fullDevMapNameList.Contains(devName))
+                {
+                    fullDevMapNameList.Add(devName);
                 }
             }
         }
