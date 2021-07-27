@@ -6,6 +6,7 @@ using UnityEngine;
 using GunfireLib.Data;
 using GunfireLib.Instances;
 using GunfireLib.Patches;
+using GunfireLib.Stores;
 using GunfireLib.Utils;
 
 namespace GunfireLib
@@ -47,6 +48,7 @@ namespace GunfireLib
 
         public override void OnApplicationStart()
         {
+            if (fileLog) SetupStore.Setup();
             PortalInstance.Setup();
             ScriptEventManagerPatch.Setup();
         }
@@ -79,6 +81,7 @@ namespace GunfireLib
         {
             if (firstHomeLoad && sceneName == "home")
             {
+                if (fileLog) SetupStore.LateSetup();
                 MapData.Setup();
 
                 firstHomeLoad = false;

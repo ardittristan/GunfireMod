@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using FileParser;
+using GunfireLib.Stores;
 using GunfireLib.Utils;
 using HarmonyLib;
 using UnhollowerBaseLib;
@@ -15,52 +14,14 @@ namespace GunfireLib.Patches
     [HarmonyPatch]
     public static class ScriptEventManagerPatch
     {
-        private static List<string> eventList = new List<string>();
-
         internal static void Setup()
         {
-            if (GunfireLib.fileLog)
-            {
-                SetupEventStore();
-            }
-
             if (GunfireLib.verboseLog)
             {
                 SetupExecEvent();
                 SetupAddEvent();
             }
         }
-
-        #region[EventStore]
-        private static void SetupEventStore()
-        {
-            GunfireEvents.QuitEvent += SaveEventStore;
-
-            if (File.Exists(Path.Combine(GunfireLib.libConfigDirectory, "eventList.txt")))
-            {
-                IParsedFile file = new ParsedFile(Path.Combine(GunfireLib.libConfigDirectory, "eventList.txt"));
-                eventList = file.ToList<string>();
-            }
-        }
-
-        private static void SaveEventStore()
-        {
-            if (eventList.Count > 0)
-            {
-                File.WriteAllLines(Path.Combine(GunfireLib.libConfigDirectory, "eventList.txt"), eventList);
-            }
-        }
-
-        private static void HandleEventStore(string func){
-            if (GunfireLib.fileLog)
-            {
-                if (!eventList.Contains(func))
-                {
-                    eventList.Add(func);
-                }
-            }
-        }
-        #endregion
 
         private static string GenerateLogString(MethodInfo method, MethodBase calledMethod)
         {
@@ -78,7 +39,7 @@ namespace GunfireLib.Patches
 
                 GunfireLogger.Verbose("ExecEvent", __0, "Handler -> " + eventHandler.Method.Name);
                 GunfireEvents.RaiseExecEvent(new GunfireEvents.ExecEventArgs(__0, eventHandler));
-                HandleEventStore(eventHandler.Method.Name);
+                EventStore.HandleEventStore(eventHandler.Method.Name);
             }
             catch (Exception ex) when (ex is Il2CppException || ex is KeyNotFoundException)
             {
@@ -97,7 +58,7 @@ namespace GunfireLib.Patches
 
                 GunfireLogger.Verbose("ExecEventByAction", __0, __1, "Handler -> " + eventHandler.Method.Name);
                 GunfireEvents.RaiseExecEvent(new GunfireEvents.ExecEventArgs(__0, eventHandler, __1));
-                HandleEventStore(eventHandler.Method.Name);
+                EventStore.HandleEventStore(eventHandler.Method.Name);
             }
             catch (Exception ex) when (ex is Il2CppException || ex is KeyNotFoundException)
             {

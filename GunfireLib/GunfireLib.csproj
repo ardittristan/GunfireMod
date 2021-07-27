@@ -895,13 +895,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\AchievementData.cs" />
     <Compile Include="Data\MapData.cs" />
-    <Compile Include="Data\MapData.Translations.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="GunfireLib.cs" />
     <Compile Include="Patches\ScriptEventManagerPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Instances\PortalInstance.cs" />
+    <Compile Include="Stores\AchievementDataStore.cs" />
+    <Compile Include="Stores\EventStore.cs" />
+    <Compile Include="Stores\MapDataStore.cs" />
+    <Compile Include="Stores\SetupStore.cs" />
+    <Compile Include="Stores\SpecialTranslationStore.cs" />
+    <Compile Include="Stores\TranslationsStore.cs" />
     <Compile Include="Utils\DataHelpers.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.EmptyExecEvent.cs" />
