@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using FileParser;
 using GunfireLib.Utils;
 
 namespace GunfireLib.Stores
@@ -20,8 +19,8 @@ namespace GunfireLib.Stores
 
             if (File.Exists(Path.Combine(GunfireLib.libConfigDirectory, "eventList.txt")))
             {
-                IParsedFile file = new ParsedFile(Path.Combine(GunfireLib.libConfigDirectory, "eventList.txt"));
-                eventList = file.ToList<string>();
+                string[] file = File.ReadAllLines(Path.Combine(GunfireLib.libConfigDirectory, "eventList.txt"));
+                eventList = new List<string>(file);
             }
         }
 

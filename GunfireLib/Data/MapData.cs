@@ -1,15 +1,71 @@
-﻿using LevelListDictionary = Il2CppSystem.Collections.Generic.Dictionary<string, DataHelper.levelconfigdataclass>;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using DataHelper;
+using UnhollowerBaseLib;
 
 namespace GunfireLib.Data
 {
+    public static partial class Extensions
+    {
+        public static string GetEnglishName(this levelconfigdataclass baseClass) => MapData.MODleveladditiondataclass.GetEnglishName(baseClass.Name);
+        public static string GetEnglishDevName(this levelconfigdataclass baseClass) => MapData.MODleveladditiondataclass.GetEnglishDevName(baseClass.DevName);
+    }
+
     public static class MapData
     {
-        public static LevelListDictionary levelList;
+        public static Il2CppSystem.Collections.Generic.Dictionary<string, levelconfigdataclass> levelList;
+        public static Dictionary<string, MODleveladditiondataclass> parsedLevelList = new Dictionary<string, MODleveladditiondataclass>();
 
         internal static void Setup()
         {
             levelList = levelconfigdata.GetData();
+            foreach (Il2CppSystem.Collections.Generic.KeyValuePair<string, levelconfigdataclass> level in levelList)
+            {
+                parsedLevelList.Add(level.Key, new MODleveladditiondataclass(level.Key));
+            }
+        }
+
+        public class MODleveladditiondataclass
+        {
+            private readonly string key;
+            public MODleveladditiondataclass(string key) { this.key = key; }
+
+            public int ID { get => levelList[key].ID; }
+            public Il2CppSystem.Collections.Generic.Dictionary<string, OneLevelInfo> Info { get => levelList[key].Info; }
+            public int LevelID { get => levelList[key].LevelID; }
+            public int ModelID { get => levelList[key].ModelID; }
+            public string Name { get => levelList[key].Name; }
+            public string EnglishName { get => GetEnglishName(levelList[key].Name); }
+            public string DevName { get => levelList[key].DevName; }
+            public string EnglishDevName { get => GetEnglishDevName(levelList[key].DevName); }
+
+            internal static string GetEnglishName(string name)
+            {
+                if (string.IsNullOrWhiteSpace(name)) return "";
+                try { return MapNames[name]; }
+                catch (Exception ex) when (ex is Il2CppException || ex is KeyNotFoundException) { return name; }
+            }
+
+            internal static string GetEnglishDevName(string devName)
+            {
+                if (string.IsNullOrWhiteSpace(devName)) return "";
+                try { return DevMapNames[devName]; }
+                catch (Exception ex) when (ex is Il2CppException || ex is KeyNotFoundException)
+                {
+                    devName = devName.Replace("（", "(");
+                    devName = devName.Replace("）", ")");
+                    List<string> matches = Regex.Matches(devName, "[^\x00-\x7F]+").OfType<Match>().Select(m => m.Groups[0].Value).ToList();
+
+                    foreach (string match in matches)
+                    {
+                        try { devName = devName.Replace(match, DevMapNames[match]); }
+                        catch (Exception exc) when (exc is Il2CppException || exc is KeyNotFoundException) { };
+                    }
+                    return devName;
+                }
+            }
         }
 
         public static IReadOnlyDictionary<string, string> MapNames = new Dictionary<string, string>()

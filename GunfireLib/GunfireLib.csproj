@@ -908,7 +908,6 @@
     <Compile Include="Stores\SetupStore.cs" />
     <Compile Include="Stores\SpecialTranslationStore.cs" />
     <Compile Include="Stores\TranslationsStore.cs" />
-    <Compile Include="Utils\DataHelpers.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.EmptyExecEvent.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.ExecEvent.cs" />
@@ -1137,9 +1136,6 @@
     <Content Include="MelonLoader\MelonLoader.dll" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FileParser">
-      <Version>1.4.4</Version>
-    </PackageReference>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task">
       <Version>2.0.18.2</Version>
     </PackageReference>
