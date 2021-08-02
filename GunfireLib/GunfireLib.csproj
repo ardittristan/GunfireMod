@@ -897,6 +897,8 @@
   <ItemGroup>
     <Compile Include="Data\AchievementData.cs" />
     <Compile Include="Data\AttackData.cs" />
+    <Compile Include="Data\AttributePlusData.cs" />
+    <Compile Include="Data\AttributeScrollData.cs" />
     <Compile Include="Data\LevelConfigData.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="GunfireLib.cs" />
