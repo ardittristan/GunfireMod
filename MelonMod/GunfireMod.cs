@@ -1,35 +1,7 @@
 ﻿using UnityEngine;
 using MelonLoader;
-<<<<<<< HEAD
-<<<<<<< HEAD
-using Il2CppSystem;
-using UnhollowerBaseLib;
-using Guide;
-using HarmonyLib;
-using DYPublic.Duonet;
-using Game;
-<<<<<<< HEAD
-=======
-using Il2CppSystem.Text;
-using System.Reflection.Emit;
-using System.Reflection;
-using System.Collections.Generic;
-<<<<<<< HEAD:GunfireMod.cs
->>>>>>> e26310b... Try more things
-=======
-using UnhollowerRuntimeLib;
-<<<<<<< HEAD
->>>>>>> fd037b3... split into 2 different loaders:MelonMod/GunfireMod.cs
-=======
-using HarmonyLib.Tools;
-using Logger = HarmonyLib.Tools.Logger;
->>>>>>> 71a63e2... let the console spam commence
-=======
->>>>>>> bbde83e... add initial fontfix mod
-=======
 using HarmonyLib;
 using GameCoder.Engine;
->>>>>>> 2e3c525... switch logic over to lib mod
 
 namespace GunfireBaseMod
 {
@@ -50,33 +22,11 @@ namespace GunfireBaseMod
         }
         public override void OnApplicationStart() // Runs after Game Initialization.
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-            
 
-            DYPublic.XLog.Logger.Log(DYPublic.XLog.LogLevel.LevelWarn, "Test");
->>>>>>> e26310b... Try more things
-=======
-=======
-
->>>>>>> bbde83e... add initial fontfix mod
             //ClassInjector.RegisterTypeInIl2Cpp<Patches.LuaComponentPatch>();
             //ClassInjector.RegisterTypeInIl2Cpp<NPCGate>();
 
             //HarmonyInstance.PatchAll(typeof(Patches.LuaComponentPatch));
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-
->>>>>>> 71a63e2... let the console spam commence
-            MelonLogger.Msg("OnApplicationStart");
-=======
-            Modifications.PortalBehaviour.Setup();
->>>>>>> bbde83e... add initial fontfix mod
-=======
->>>>>>> 2e3c525... switch logic over to lib mod
         }
 
         public override void OnFixedUpdate() // Can run multiple times per frame. Mostly used for Physics.
