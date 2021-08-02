@@ -1,7 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+using Il2CppSystem.Collections.Generic;
 using DataHelper;
 using UnhollowerBaseLib;
+using KeyNotFoundException = System.Collections.Generic.KeyNotFoundException;
+using StringDictionary = System.Collections.Generic.Dictionary<string, string>;
+using RStringDictionary = System.Collections.Generic.IReadOnlyDictionary<string, string>;
 
 namespace GunfireLib.Data
 {
@@ -13,13 +16,13 @@ namespace GunfireLib.Data
 
     public static class AchievementData
     {
-        public static Il2CppSystem.Collections.Generic.Dictionary<string, achievementdataclass> achievementList;
-        public static Dictionary<string, MODachievementdataclass> parsedAchievementList = new Dictionary<string, MODachievementdataclass>();
+        public static Dictionary<string, achievementdataclass> achievementList;
+        public static System.Collections.Generic.Dictionary<string, MODachievementdataclass> parsedAchievementList = new System.Collections.Generic.Dictionary<string, MODachievementdataclass>();
 
         internal static void Setup()
         {
             achievementList = achievementdata.GetData();
-            foreach (Il2CppSystem.Collections.Generic.KeyValuePair<string, achievementdataclass> achievement in achievementList)
+            foreach (KeyValuePair<string, achievementdataclass> achievement in achievementList)
             {
                 parsedAchievementList.Add(achievement.Key, new MODachievementdataclass(achievement.Key));
             }
@@ -51,12 +54,12 @@ namespace GunfireLib.Data
             }
         }
 
-        public static IReadOnlyDictionary<string, string> AchievementNames = new Dictionary<string, string>()
+        public static RStringDictionary AchievementNames = new StringDictionary()
         {
             
         };
 
-        public static IReadOnlyDictionary<string, string> AchievementDescriptions = new Dictionary<string, string>()
+        public static RStringDictionary AchievementDescriptions = new StringDictionary()
         {
             
         };

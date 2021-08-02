@@ -1,27 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
+using Il2CppSystem.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using DataHelper;
 using UnhollowerBaseLib;
+using KeyNotFoundException = System.Collections.Generic.KeyNotFoundException;
+using StringDictionary = System.Collections.Generic.Dictionary<string, string>;
+using RStringDictionary = System.Collections.Generic.IReadOnlyDictionary<string, string>;
 
 namespace GunfireLib.Data
 {
     public static partial class Extensions
     {
-        public static string GetEnglishName(this levelconfigdataclass baseClass) => MapData.MODleveladditiondataclass.GetEnglishName(baseClass.Name);
-        public static string GetEnglishDevName(this levelconfigdataclass baseClass) => MapData.MODleveladditiondataclass.GetEnglishDevName(baseClass.DevName);
+        public static string GetEnglishName(this levelconfigdataclass baseClass) => LevelConfigData.MODleveladditiondataclass.GetEnglishName(baseClass.Name);
+        public static string GetEnglishDevName(this levelconfigdataclass baseClass) => LevelConfigData.MODleveladditiondataclass.GetEnglishDevName(baseClass.DevName);
     }
 
-    public static class MapData
+    public static class LevelConfigData
     {
-        public static Il2CppSystem.Collections.Generic.Dictionary<string, levelconfigdataclass> levelList;
-        public static Dictionary<string, MODleveladditiondataclass> parsedLevelList = new Dictionary<string, MODleveladditiondataclass>();
+        public static Dictionary<string, levelconfigdataclass> levelList;
+        public static System.Collections.Generic.Dictionary<string, MODleveladditiondataclass> parsedLevelList = new System.Collections.Generic.Dictionary<string, MODleveladditiondataclass>();
 
         internal static void Setup()
         {
             levelList = levelconfigdata.GetData();
-            foreach (Il2CppSystem.Collections.Generic.KeyValuePair<string, levelconfigdataclass> level in levelList)
+            foreach (KeyValuePair<string, levelconfigdataclass> level in levelList)
             {
                 parsedLevelList.Add(level.Key, new MODleveladditiondataclass(level.Key));
             }
@@ -33,7 +36,7 @@ namespace GunfireLib.Data
             public MODleveladditiondataclass(string key) { this.key = key; }
 
             public int ID { get => levelList[key].ID; }
-            public Il2CppSystem.Collections.Generic.Dictionary<string, OneLevelInfo> Info { get => levelList[key].Info; }
+            public Dictionary<string, OneLevelInfo> Info { get => levelList[key].Info; }
             public int LevelID { get => levelList[key].LevelID; }
             public int ModelID { get => levelList[key].ModelID; }
             public string Name { get => levelList[key].Name; }
@@ -44,23 +47,23 @@ namespace GunfireLib.Data
             internal static string GetEnglishName(string name)
             {
                 if (string.IsNullOrWhiteSpace(name)) return "";
-                try { return MapNames[name]; }
+                try { return LevelNames[name]; }
                 catch (Exception ex) when (ex is Il2CppException || ex is KeyNotFoundException) { return name; }
             }
 
             internal static string GetEnglishDevName(string devName)
             {
                 if (string.IsNullOrWhiteSpace(devName)) return "";
-                try { return DevMapNames[devName]; }
+                try { return DevLevelNames[devName]; }
                 catch (Exception ex) when (ex is Il2CppException || ex is KeyNotFoundException)
                 {
                     devName = devName.Replace("（", "(");
                     devName = devName.Replace("）", ")");
-                    List<string> matches = Regex.Matches(devName, "[^\x00-\x7F]+").OfType<Match>().Select(m => m.Groups[0].Value).ToList();
+                    System.Collections.Generic.List<string> matches = Regex.Matches(devName, "[^\x00-\x7F]+").OfType<Match>().Select(m => m.Groups[0].Value).ToList();
 
                     foreach (string match in matches)
                     {
-                        try { devName = devName.Replace(match, DevMapNames[match]); }
+                        try { devName = devName.Replace(match, DevLevelNames[match]); }
                         catch (Exception exc) when (exc is Il2CppException || exc is KeyNotFoundException) { };
                     }
                     return devName;
@@ -68,7 +71,7 @@ namespace GunfireLib.Data
             }
         }
 
-        public static IReadOnlyDictionary<string, string> MapNames = new Dictionary<string, string>()
+        public static RStringDictionary LevelNames = new StringDictionary()
         {
             {
                 "龙陵墓穴-入口",
@@ -192,7 +195,7 @@ namespace GunfireLib.Data
             }
         };
 
-        public static IReadOnlyDictionary<string, string> DevMapNames = new Dictionary<string, string>()
+        public static RStringDictionary DevLevelNames = new StringDictionary()
         {
             {
                 "关",

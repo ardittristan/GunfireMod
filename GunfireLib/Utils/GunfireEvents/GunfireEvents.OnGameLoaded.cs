@@ -2,10 +2,10 @@
 {
     public static partial class GunfireEvents
     {
-        public static event EmptyEventHandler OnLateGameLoaded = delegate { };
-        internal static void RaiseLateGameLoaded()
+        public static event EmptyEventHandler OnGameLoaded = delegate { };
+        internal static void RaiseGameLoaded()
         {
-            OnLateGameLoaded?.Invoke();
+            OnGameLoaded?.Invoke();
         }
     }
 }

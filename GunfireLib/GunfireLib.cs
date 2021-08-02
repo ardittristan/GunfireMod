@@ -82,7 +82,7 @@ namespace GunfireLib
             if (firstHomeLoad && sceneName == "home")
             {
                 if (fileLog) SetupStore.LateSetup();
-                MapData.Setup();
+                LevelConfigData.Setup();
 
                 firstHomeLoad = false;
                 GunfireEvents.RaiseGameLoaded();
