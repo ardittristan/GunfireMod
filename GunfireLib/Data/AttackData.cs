@@ -35,6 +35,7 @@ namespace GunfireLib.Data
             public MODattackdataclass(string key) { this.key = key; }
 
             public int CarreerPerformSubType { get => attackList[key].CareerPerformSubType; }
+            // TODO:
             public Dictionary<string, SCommonProp> CommonProp { get => attackList[key].CommonProp; }
             public string Desc { get => attackList[key].Desc; }
             public string EnglishDesc { get => GetEnglishDesc(attackList[key].Desc); }

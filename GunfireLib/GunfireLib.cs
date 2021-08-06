@@ -3,10 +3,8 @@ using System.IO;
 using System.Linq;
 using MelonLoader;
 using UnityEngine;
-using GunfireLib.Data;
 using GunfireLib.Instances;
 using GunfireLib.Patches;
-using GunfireLib.Stores;
 using GunfireLib.Utils;
 
 namespace GunfireLib
