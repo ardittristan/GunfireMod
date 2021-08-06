@@ -908,9 +908,10 @@
     <Compile Include="Stores\AchievementDataStore.cs" />
     <Compile Include="Stores\EventStore.cs" />
     <Compile Include="Stores\MapDataStore.cs" />
-    <Compile Include="Stores\SetupStore.cs" />
+    <Compile Include="Utils\SetupStore.cs" />
     <Compile Include="Stores\SpecialTranslationStore.cs" />
     <Compile Include="Stores\TranslationsStore.cs" />
+    <Compile Include="Utils\SetupData.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.EmptyExecEvent.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.ExecEvent.cs" />
@@ -918,6 +919,7 @@
     <Compile Include="Utils\GunfireEvents\GunfireEvents.OnGameLoaded.cs" />
     <Compile Include="Utils\GunfireEvents\GunfireEvents.Quit.cs" />
     <Compile Include="Utils\GunfireLogger.cs" />
+    <Compile Include="Utils\Reflection.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MelonLoader\Dependencies\SupportModules\Il2Cpp.dll" />
@@ -1145,6 +1147,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ILRepack.targets" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,7 +14,7 @@ namespace GunfireLib.Stores
         private static readonly StringList devMapNameList = new StringList();
         private static readonly StringList fullDevMapNameList = new StringList();
 
-        internal static void Setup()
+        internal static void LateSetup()
         {
             Dictionary<string, levelconfigdataclass> levelList = levelconfigdata.GetData();
 

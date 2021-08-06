@@ -10,11 +10,6 @@ namespace GunfireLib.Stores
 
         internal static void Setup()
         {
-            SetupEventStore();
-        }
-
-        private static void SetupEventStore()
-        {
             GunfireEvents.QuitEvent += SaveEventStore;
 
             if (File.Exists(Path.Combine(GunfireLib.libConfigDirectory, "eventList.txt")))

@@ -9,7 +9,7 @@ namespace GunfireLib.Stores
     {
         private static readonly StringList specialTranslationList = new StringList();
 
-        internal static void Setup()
+        internal static void LateSetup()
         {
             Dictionary<string, string> specialTranslationDictionary = specialtextdata_English.GetData();
 

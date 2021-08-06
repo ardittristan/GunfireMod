@@ -10,7 +10,7 @@ namespace GunfireLib.Stores
     {
         private static readonly StringList achievementList = new StringList();
 
-        internal static void Setup()
+        internal static void LateSetup()
         {
             Dictionary<string, achievementdataclass> achievements = achievementdata.GetData();
 
