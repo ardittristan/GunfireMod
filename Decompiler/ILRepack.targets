@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Target Name="ILRepacker" AfterTargets="Build">
+		<ItemGroup>
+			<AssemblyFile Include="$(OutputPath)$(AssemblyName).exe" />
+		</ItemGroup>
+		<ItemGroup>
+			<InputAssemblies Include="@(AssemblyFile)" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Cpp2IL.Core'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Gameloop.Vdf'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Gameloop.Vdf.JsonConverter'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Iced'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'IndexRange'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'LibCpp2IL'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Mono.Cecil'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Mono.Cecil.Mdb'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Mono.Cecil.Pdb'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Mono.Cecil.Rocks'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Newtonsoft.Json'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'System.ValueTuple'" />
+		</ItemGroup>
+		<ILRepack
+			Parallel="true"
+			DebugInfo="false"
+			InputAssemblies="@(InputAssemblies)"
+			TargetKind="Exe"
+			OutputFile="@(AssemblyFile)"
+		/>
+	</Target>
+	<Target Name="Cleanup" AfterTargets="ILRepacker">
+		<ItemGroup>
+			<FilesToDelete Include="$(OutputPath)*.dll" />
+			<FilesToDelete Include="$(OutputPath)*.pdb" />
+		</ItemGroup>
+		<Delete Files="@(FilesToDelete)" />
+	</Target>
+	<Target Name="Decompile" AfterTargets="Cleanup">
+		<Exec Command="$(OutputPath)Decompiler.exe" />
+	</Target>
+	<Target Name="CopyDecompiled" AfterTargets="Decompile">
+		<PropertyGroup>
+			<GeneratedDir>$(MSBuildProjectDirectory)\cache\generated</GeneratedDir>
+		</PropertyGroup>
+		<ItemGroup>
+			<SourceFiles Include="$(GeneratedDir)\*.dll" />
+		</ItemGroup>
+		<Copy
+			SourceFiles="@(SourceFiles)"
+			DestinationFolder="$(OutputPath)"
+		/>
+	</Target>
+	<Target Name="FinalCleanup" AfterTargets="CopyDecompiled">
+		<ItemGroup>
+			<FileToDelete Include="$(OutputPath)Decompiler.exe" />
+			<FileToDelete Include="$(OutputPath)Decompiler.exe.config" />
+		</ItemGroup>
+		<Delete Files="@(FileToDelete)" />
+	</Target>
+</Project>
