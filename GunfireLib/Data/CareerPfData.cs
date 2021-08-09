@@ -3,7 +3,7 @@ using DataHelper;
 
 namespace GunfireLib.Data
 {
-    public static class AttackData
+    public static class CareerPfData
     {
         public static Dictionary<string, attackdataclass> attackList;
 
@@ -12,7 +12,7 @@ namespace GunfireLib.Data
 
         internal static void Setup()
         {
-            attackList = attackdata.GetData();
+            attackList = careerpfdata.GetData();
             foreach (KeyValuePair<string, attackdataclass> attack in attackList)
             {
                 parsedAttackList.Add(attack.Key, new Classes.AttackDataClass(attack.Key, attackList));

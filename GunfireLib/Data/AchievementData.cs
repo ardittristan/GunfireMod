@@ -1,67 +1,24 @@
-﻿using System;
-using Il2CppSystem.Collections.Generic;
+﻿using Il2CppSystem.Collections.Generic;
 using DataHelper;
-using UnhollowerBaseLib;
-using KeyNotFoundException = System.Collections.Generic.KeyNotFoundException;
-using StringDictionary = System.Collections.Generic.Dictionary<string, string>;
-using RStringDictionary = System.Collections.Generic.IReadOnlyDictionary<string, string>;
 
 namespace GunfireLib.Data
 {
-    public static partial class Extensions
-    {
-        public static string GetEnglishName(this achievementdataclass baseClass) => AchievementData.MODachievementdataclass.GetEnglishName(baseClass.Name);
-        public static string GetEnglishDesc(this achievementdataclass baseClass) => AchievementData.MODachievementdataclass.GetEnglishDesc(baseClass.Desc);
-    }
-
     public static class AchievementData
     {
         public static Dictionary<string, achievementdataclass> achievementList;
-        public static System.Collections.Generic.Dictionary<string, MODachievementdataclass> parsedAchievementList = new System.Collections.Generic.Dictionary<string, MODachievementdataclass>();
+
+        public static System.Collections.Generic.Dictionary<string, Classes.AchievementDataClass>
+            parsedAchievementList = new System.Collections.Generic.Dictionary<string, Classes.AchievementDataClass>();
 
         internal static void Setup()
         {
             achievementList = achievementdata.GetData();
             foreach (KeyValuePair<string, achievementdataclass> achievement in achievementList)
             {
-                parsedAchievementList.Add(achievement.Key, new MODachievementdataclass(achievement.Key));
+                parsedAchievementList.Add(achievement.Key, new Classes.AchievementDataClass(achievement.Key, achievementList));
             }
         }
 
-        public class MODachievementdataclass
-        {
-            private readonly string key;
-            public MODachievementdataclass(string key) { this.key = key; }
-
-            public string Desc { get => achievementList[key].Desc; }
-            public string EnglishDesc { get => GetEnglishDesc(achievementList[key].Desc); }
-            public int IconID { get => achievementList[key].IconID; }
-            public string Name { get => achievementList[key].Name; }
-            public string EnglishName { get => GetEnglishName(achievementList[key].Name); }
-
-            internal static string GetEnglishName(string name)
-            {
-                if (string.IsNullOrWhiteSpace(name)) return "";
-                try { return AchievementNames[name]; }
-                catch (Exception ex) when (ex is Il2CppException || ex is KeyNotFoundException) { return name; }
-            }
-
-            internal static string GetEnglishDesc(string desc)
-            {
-                if (string.IsNullOrWhiteSpace(desc)) return "";
-                try { return AchievementDescriptions[desc]; }
-                catch (Exception ex) when (ex is Il2CppException || ex is KeyNotFoundException) { return desc; }
-            }
-        }
-
-        public static RStringDictionary AchievementNames = new StringDictionary()
-        {
-            
-        };
-
-        public static RStringDictionary AchievementDescriptions = new StringDictionary()
-        {
-            
-        };
+        
     }
 }

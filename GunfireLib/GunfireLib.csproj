@@ -898,13 +898,22 @@
     <Compile Include="Data\AchievementData.cs" />
     <Compile Include="Data\AttackData.cs" />
     <Compile Include="Data\AttributePlusData.cs" />
-    <Compile Include="Data\Items\AttributeScrollData.cs" />
+    <Compile Include="Data\AttributeScrollData.cs" />
     <Compile Include="Data\BenedictionData.cs" />
-    <Compile Include="Data\Items\BulletData.cs" />
+    <Compile Include="Data\BulletData.cs" />
+    <Compile Include="Data\CareerPfData.cs" />
+    <Compile Include="Data\CheekData.cs" />
+    <Compile Include="Data\Classes\AchievementDataClass.cs" />
+    <Compile Include="Data\Classes\AttackDataClass.cs" />
+    <Compile Include="Data\Classes\AttrPlusDataClass.cs" />
+    <Compile Include="Data\Classes\BenedictionDataClass.cs" />
+    <Compile Include="Data\Classes\CheekDataClass.cs" />
     <Compile Include="Data\Classes\ItemDataClass.cs" />
+    <Compile Include="Data\Classes\LevelConfigDataClass.cs" />
     <Compile Include="Data\Special\BossDropData.cs" />
     <Compile Include="Data\LevelConfigData.cs" />
     <Compile Include="Data\Special\BuildData.cs" />
+    <Compile Include="Data\Special\ChallengePosData.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="GunfireLib.cs" />
     <Compile Include="Patches\ScriptEventManagerPatch.cs" />
@@ -1148,5 +1157,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,12 +1,14 @@
 ﻿using DataHelper;
 using Il2CppSystem.Collections.Generic;
 
-namespace GunfireLib.Data.Items
+namespace GunfireLib.Data
 {
     public static class BulletData
     {
         public static Dictionary<string, itemdataclass> attributeList;
-        public static System.Collections.Generic.Dictionary<string, Classes.ItemDataClass> parsedAttributeList = new System.Collections.Generic.Dictionary<string, Classes.ItemDataClass>();
+
+        public static System.Collections.Generic.Dictionary<string, Classes.ItemDataClass> parsedAttributeList =
+            new System.Collections.Generic.Dictionary<string, Classes.ItemDataClass>();
 
         internal static void Setup()
         {
