@@ -3,7 +3,7 @@ using DataHelper;
 
 namespace GunfireLib.Data
 {
-    class CheekData
+    public static class CheekData
     {
         public static Dictionary<string, cheekdataclass> cheekList;
 
