@@ -54,6 +54,10 @@
 			<FileToDelete Include="$(OutputPath)Decompiler.exe" />
 			<FileToDelete Include="$(OutputPath)Decompiler.exe.config" />
 		</ItemGroup>
+		<Copy
+			SourceFiles="@(FileToDelete)"
+			DestinationFolder="$(MSBuildProjectDirectory)\cache"
+		/>
 		<Delete Files="@(FileToDelete)" />
 	</Target>
 </Project>
