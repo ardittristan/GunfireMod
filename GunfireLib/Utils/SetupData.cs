@@ -5,7 +5,8 @@ namespace GunfireLib.Utils
 {
     internal static class SetupData
     {
-        private static readonly BindingFlags bindingFlags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static;
+        private static readonly BindingFlags bindingFlags =
+            BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static;
 
         internal static void Setup()
         {

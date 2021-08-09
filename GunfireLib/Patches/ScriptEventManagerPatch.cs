@@ -16,7 +16,7 @@ namespace GunfireLib.Patches
     {
         internal static void Setup()
         {
-            if (GunfireLib.verboseLog)
+            if (GunfireLib.VerboseLog)
             {
                 SetupExecEvent();
                 SetupAddEvent();
@@ -25,10 +25,12 @@ namespace GunfireLib.Patches
 
         private static string GenerateLogString(MethodInfo method, MethodBase calledMethod)
         {
-            return "Func: " + method.Name + " | Args: " + method.GetParameters().Length.ToString() + " | Caller: " + calledMethod.Name;
+            return "Func: " + method.Name + " | Args: " + method.GetParameters().Length.ToString() + " | Caller: " +
+                   calledMethod.Name;
         }
 
         #region[ExecEvent]
+
         [HarmonyPatch(typeof(ScriptEventManager), "ExecEvent", new Type[] { typeof(string) })]
         [HarmonyPostfix]
         static void ExecEvent(string __0)
@@ -69,7 +71,8 @@ namespace GunfireLib.Patches
 
         private static void SetupExecEvent()
         {
-            IEnumerable<MethodInfo> methods = typeof(ScriptEventManager).GetMethods().Where(method => method.Name == "ExecEvent");
+            IEnumerable<MethodInfo> methods =
+                typeof(ScriptEventManager).GetMethods().Where(method => method.Name == "ExecEvent");
 
             foreach (MethodInfo method in methods)
             {
@@ -85,9 +88,11 @@ namespace GunfireLib.Patches
                 }
             }
         }
+
         #endregion
 
         #region[AddEvent]
+
         [HarmonyPatch(typeof(ScriptEventManager), "AddEvent")]
         static void AddEvent(string __0, ScriptEventManager.EventHandler __1)
         {
@@ -109,6 +114,7 @@ namespace GunfireLib.Patches
                 }
             }
         }
+
         #endregion
     }
 }

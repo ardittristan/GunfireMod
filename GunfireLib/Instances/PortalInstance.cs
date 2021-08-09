@@ -11,8 +11,8 @@ namespace GunfireLib.Instances
     public class PortalInstance : MonoBehaviour
     {
 
-        public static GameObject Instance = null;
-        public static bool portalFound = false;
+        public static GameObject Instance;
+        public static bool portalFound;
 
         internal static void Setup()
         {
@@ -33,7 +33,7 @@ namespace GunfireLib.Instances
         }
 
         [HideFromIl2Cpp]
-        private IEnumerator CheckPortal()
+        private static IEnumerator CheckPortal()
         {
             while (true)
             {
@@ -57,6 +57,7 @@ namespace GunfireLib.Instances
                 }
                 yield return new WaitForSeconds(1f);
             }
+            // ReSharper disable once IteratorNeverReturns
         }
     }
 }

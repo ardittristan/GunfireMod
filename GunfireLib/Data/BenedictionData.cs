@@ -15,7 +15,8 @@ namespace GunfireLib.Data
             benedictionList = benedictiondata.GetData();
             foreach (KeyValuePair<string, benedictiondataclass> benediction in benedictionList)
             {
-                parsedBenedictionList.Add(benediction.Key, new Classes.BenedictionDataClass(benediction.Key, benedictionList));
+                parsedBenedictionList.Add(benediction.Key,
+                    new Classes.BenedictionDataClass(benediction.Key, benedictionList));
             }
         }
     }

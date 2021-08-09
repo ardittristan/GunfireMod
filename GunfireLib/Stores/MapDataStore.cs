@@ -10,9 +10,9 @@ namespace GunfireLib.Stores
 {
     internal static class MapDataStore
     {
-        private static readonly StringList mapNameList = new StringList();
-        private static readonly StringList devMapNameList = new StringList();
-        private static readonly StringList fullDevMapNameList = new StringList();
+        private static readonly StringList MapNameList = new StringList();
+        private static readonly StringList DevMapNameList = new StringList();
+        private static readonly StringList FullDevMapNameList = new StringList();
 
         internal static void LateSetup()
         {
@@ -22,32 +22,34 @@ namespace GunfireLib.Stores
 
             foreach (KeyValuePair<string, levelconfigdataclass> item in levelList)
             {
-                HandleMapNameStore(item.Value.Name, string.IsNullOrWhiteSpace(item.Value.DevName) ? "" : item.Value.DevName);
+                HandleMapNameStore(item.Value.Name,
+                    string.IsNullOrWhiteSpace(item.Value.DevName) ? "" : item.Value.DevName);
             }
         }
 
         private static void SaveMapNameStore()
         {
-            if (mapNameList.Count > 0)
+            if (MapNameList.Count > 0)
             {
-                File.WriteAllLines(Path.Combine(GunfireLib.libConfigDirectory, "mapNameList.txt"), mapNameList);
+                File.WriteAllLines(Path.Combine(GunfireLib.LibConfigDirectory, "mapNameList.txt"), MapNameList);
             }
-            if (devMapNameList.Count > 0)
+            if (DevMapNameList.Count > 0)
             {
-                File.WriteAllLines(Path.Combine(GunfireLib.libConfigDirectory, "devMapNameList.txt"), devMapNameList);
+                File.WriteAllLines(Path.Combine(GunfireLib.LibConfigDirectory, "devMapNameList.txt"), DevMapNameList);
             }
-            if (fullDevMapNameList.Count > 0)
+            if (FullDevMapNameList.Count > 0)
             {
-                File.WriteAllLines(Path.Combine(GunfireLib.libConfigDirectory, "fullDevMapNameList.txt"), fullDevMapNameList);
+                File.WriteAllLines(Path.Combine(GunfireLib.LibConfigDirectory, "fullDevMapNameList.txt"),
+                    FullDevMapNameList);
             }
         }
 
         private static void HandleMapNameStore(string name, string devName)
         {
             name = "[" + name + "]";
-            if (!mapNameList.Contains(name))
+            if (!MapNameList.Contains(name))
             {
-                mapNameList.Add(name);
+                MapNameList.Add(name);
             }
 
             devName = devName.Replace("（", "(");
@@ -56,19 +58,20 @@ namespace GunfireLib.Stores
                                             .OfType<Match>()
                                             .Select(m => m.Groups[0].Value)
                                             .ToList();
+            // ReSharper disable once InconsistentNaming
             foreach (string DevName in devMatches)
             {
-                string ParsedDevName = "[" + DevName + "]";
-                if (!devMapNameList.Contains(ParsedDevName))
+                string parsedDevName = "[" + DevName + "]";
+                if (!DevMapNameList.Contains(parsedDevName))
                 {
-                    devMapNameList.Add(ParsedDevName);
+                    DevMapNameList.Add(parsedDevName);
                 }
             }
 
             devName = "[" + devName + "]";
-            if (!fullDevMapNameList.Contains(devName))
+            if (!FullDevMapNameList.Contains(devName))
             {
-                fullDevMapNameList.Add(devName);
+                FullDevMapNameList.Add(devName);
             }
         }
     }

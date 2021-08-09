@@ -5,12 +5,14 @@ namespace GunfireLib.Utils
 {
     internal static class SetupStore
     {
-        private static readonly BindingFlags bindingFlags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static;
-        private static readonly Type[] types = Reflection.GetTypesInNamespace("GunfireLib.Stores");
+        private static readonly BindingFlags bindingFlags =
+            BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static;
+
+        private static readonly Type[] Types = Reflection.GetTypesInNamespace("GunfireLib.Stores");
 
         internal static void Setup()
         {
-            foreach (Type type in types)
+            foreach (Type type in Types)
             {
                 if (type.Name == "<>c") continue;
 
@@ -26,7 +28,7 @@ namespace GunfireLib.Utils
 
         internal static void LateSetup()
         {
-            foreach (Type type in types)
+            foreach (Type type in Types)
             {
                 if (type.Name == "<>c") continue;
 

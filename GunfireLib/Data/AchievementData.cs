@@ -15,7 +15,8 @@ namespace GunfireLib.Data
             achievementList = achievementdata.GetData();
             foreach (KeyValuePair<string, achievementdataclass> achievement in achievementList)
             {
-                parsedAchievementList.Add(achievement.Key, new Classes.AchievementDataClass(achievement.Key, achievementList));
+                parsedAchievementList.Add(achievement.Key,
+                    new Classes.AchievementDataClass(achievement.Key, achievementList));
             }
         }
 

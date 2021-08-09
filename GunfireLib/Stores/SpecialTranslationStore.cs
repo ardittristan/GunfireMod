@@ -7,7 +7,7 @@ namespace GunfireLib.Stores
 {
     internal static class SpecialTranslationsStore
     {
-        private static readonly StringList specialTranslationList = new StringList();
+        private static readonly StringList SpecialTranslationList = new StringList();
 
         internal static void LateSetup()
         {
@@ -23,18 +23,19 @@ namespace GunfireLib.Stores
 
         private static void SaveSpecialTranslationStore()
         {
-            if (specialTranslationList.Count > 0)
+            if (SpecialTranslationList.Count > 0)
             {
-                File.WriteAllLines(Path.Combine(GunfireLib.libConfigDirectory, "specialTranslationList.txt"), specialTranslationList);
+                File.WriteAllLines(Path.Combine(GunfireLib.LibConfigDirectory, "specialTranslationList.txt"),
+                    SpecialTranslationList);
             }
         }
 
         private static void HandleSpecialTranslationStore(string id, string value)
         {
             string text = "[" + id + " = " + value + "]";
-            if (!specialTranslationList.Contains(text))
+            if (!SpecialTranslationList.Contains(text))
             {
-                specialTranslationList.Add(text);
+                SpecialTranslationList.Add(text);
             }
         }
     }

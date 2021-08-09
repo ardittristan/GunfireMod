@@ -1,4 +1,5 @@
-﻿using System;
+﻿// ReSharper disable StringLiteralTypo
+using System;
 using System.IO;
 using System.Linq;
 using MelonLoader;
@@ -12,12 +13,20 @@ namespace GunfireLib
     public class GunfireLib : MelonMod
     {
         internal static HarmonyLib.Harmony harmony;
-        internal static readonly bool verboseLog = Environment.GetCommandLineArgs().Any(s => s.Contains("--gunfirelib.verbose"));
-        internal static readonly bool fileLog = Environment.GetCommandLineArgs().Any(s => s.Contains("--gunfirelib.filelog"));
-        internal static readonly string libConfigDirectory = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "GunfireLib");
 
-        private static bool firstHomeLoad = true;
-        private static bool firstLateHomeLoad = true;
+        internal static readonly bool VerboseLog =
+            Environment.GetCommandLineArgs().Any(s => s.Contains("--gunfirelib.verbose"));
+
+        internal static readonly bool FileLog =
+            Environment.GetCommandLineArgs().Any(s => s.Contains("--gunfirelib.filelog"));
+
+        internal static readonly string LibConfigDirectory =
+            Path.Combine(
+                Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) ??
+                throw new InvalidOperationException(), "GunfireLib");
+
+        private static bool _firstHomeLoad = true;
+        private static bool _firstLateHomeLoad = true;
 
         public GunfireLib()
         {
@@ -28,9 +37,9 @@ namespace GunfireLib
 
             Debug.developerConsoleVisible = true;
 
-            if (fileLog)
-            { 
-                Directory.CreateDirectory(libConfigDirectory);
+            if (FileLog)
+            {
+                Directory.CreateDirectory(LibConfigDirectory);
             }
         }
 
@@ -46,7 +55,7 @@ namespace GunfireLib
 
         public override void OnApplicationStart()
         {
-            if (fileLog) SetupStore.Setup();
+            if (FileLog) SetupStore.Setup();
             PortalInstance.Setup();
             ScriptEventManagerPatch.Setup();
         }
@@ -68,21 +77,21 @@ namespace GunfireLib
 
         public override void OnSceneWasInitialized(int buildIndex, string sceneName)
         {
-            if (firstLateHomeLoad && sceneName == "home")
+            if (_firstLateHomeLoad && sceneName == "home")
             {
-                firstLateHomeLoad = false;
+                _firstLateHomeLoad = false;
                 GunfireEvents.RaiseLateGameLoaded();
             }
         }
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
-            if (firstHomeLoad && sceneName == "home")
+            if (_firstHomeLoad && sceneName == "home")
             {
-                if (fileLog) SetupStore.LateSetup();
+                if (FileLog) SetupStore.LateSetup();
                 SetupData.Setup();
 
-                firstHomeLoad = false;
+                _firstHomeLoad = false;
                 GunfireEvents.RaiseGameLoaded();
             }
         }

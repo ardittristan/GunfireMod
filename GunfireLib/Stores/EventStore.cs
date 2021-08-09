@@ -6,34 +6,34 @@ namespace GunfireLib.Stores
 {
     internal static class EventStore
     {
-        private static List<string> eventList = new List<string>();
+        private static List<string> _eventList = new List<string>();
 
         internal static void Setup()
         {
             GunfireEvents.QuitEvent += SaveEventStore;
 
-            if (File.Exists(Path.Combine(GunfireLib.libConfigDirectory, "eventList.txt")))
+            if (File.Exists(Path.Combine(GunfireLib.LibConfigDirectory, "eventList.txt")))
             {
-                string[] file = File.ReadAllLines(Path.Combine(GunfireLib.libConfigDirectory, "eventList.txt"));
-                eventList = new List<string>(file);
+                string[] file = File.ReadAllLines(Path.Combine(GunfireLib.LibConfigDirectory, "eventList.txt"));
+                _eventList = new List<string>(file);
             }
         }
 
         private static void SaveEventStore()
         {
-            if (eventList.Count > 0)
+            if (_eventList.Count > 0)
             {
-                File.WriteAllLines(Path.Combine(GunfireLib.libConfigDirectory, "eventList.txt"), eventList);
+                File.WriteAllLines(Path.Combine(GunfireLib.LibConfigDirectory, "eventList.txt"), _eventList);
             }
         }
 
         internal static void HandleEventStore(string func)
         {
-            if (GunfireLib.fileLog)
+            if (GunfireLib.FileLog)
             {
-                if (!eventList.Contains(func))
+                if (!_eventList.Contains(func))
                 {
-                    eventList.Add(func);
+                    _eventList.Add(func);
                 }
             }
         }

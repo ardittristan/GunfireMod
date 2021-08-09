@@ -8,7 +8,7 @@ namespace GunfireLib.Stores
 {
     internal static class AchievementDataStore
     {
-        private static readonly StringList achievementList = new StringList();
+        private static readonly StringList AchievementList = new StringList();
 
         internal static void LateSetup()
         {
@@ -18,24 +18,25 @@ namespace GunfireLib.Stores
 
             foreach (KeyValuePair<string, achievementdataclass> item in achievements)
             {
-                HandleAchievementStore(item.Value.Name, string.IsNullOrWhiteSpace(item.Value.Desc) ? "" : item.Value.Desc);
+                HandleAchievementStore(item.Value.Name,
+                    string.IsNullOrWhiteSpace(item.Value.Desc) ? "" : item.Value.Desc);
             }
         }
 
         private static void SaveAchievementStore()
         {
-            if (achievementList.Count > 0)
+            if (AchievementList.Count > 0)
             {
-                File.WriteAllLines(Path.Combine(GunfireLib.libConfigDirectory, "achievementList.txt"), achievementList);
+                File.WriteAllLines(Path.Combine(GunfireLib.LibConfigDirectory, "achievementList.txt"), AchievementList);
             }
         }
 
         private static void HandleAchievementStore(string name, string desc)
         {
             name = "[" + name + " | " + desc + "]";
-            if (!achievementList.Contains(name))
+            if (!AchievementList.Contains(name))
             {
-                achievementList.Add(name);
+                AchievementList.Add(name);
             }
         }
     }

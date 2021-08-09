@@ -13,9 +13,14 @@ namespace GunfireLib.Data.Extensions
 {
     public static partial class Extensions
     {
-        public static string GetEnglishName(this attackdataclass baseClass) => Classes.AttackDataClass.GetEnglishName(baseClass.Name);
-        public static string GetEnglishDesc(this attackdataclass baseClass) => Classes.AttackDataClass.GetEnglishDesc(baseClass.Desc);
-        public static string GetPerformType(this attackdataclass baseClass) => Classes.AttackDataClass.GetEnglishPerformType(baseClass.PerformType);
+        public static string GetEnglishName(this attackdataclass baseClass) =>
+            Classes.AttackDataClass.GetEnglishName(baseClass.Name);
+
+        public static string GetEnglishDesc(this attackdataclass baseClass) =>
+            Classes.AttackDataClass.GetEnglishDesc(baseClass.Desc);
+
+        public static string GetPerformType(this attackdataclass baseClass) =>
+            Classes.AttackDataClass.GetEnglishPerformType(baseClass.PerformType);
     }
 }
 
@@ -32,7 +37,7 @@ namespace GunfireLib.Data.Classes
             this.attackList = attackList;
         }
 
-        public int CarreerPerformSubType
+        public int CareerPerformSubType
         {
             get => attackList[key].CareerPerformSubType;
         }
