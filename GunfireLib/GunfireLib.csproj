@@ -917,6 +917,11 @@
     <Compile Include="Data\Classes\ConversationDataClass.cs" />
     <Compile Include="Data\Classes\CourseWindowsDataClass.cs" />
     <Compile Include="Data\Classes\DamageNumberDataClass.cs" />
+    <Compile Include="Data\Classes\EANoticeDataClass.cs" />
+    <Compile Include="Data\Classes\EffectDataClass.cs" />
+    <Compile Include="Data\Classes\EleabNormalDataClass.cs" />
+    <Compile Include="Data\Classes\EnhanceDataClass.cs" />
+    <Compile Include="Data\Classes\GarnishGoodsDataClass.cs" />
     <Compile Include="Data\Classes\ItemDataClass.cs" />
     <Compile Include="Data\Classes\LevelConfigDataClass.cs" />
     <Compile Include="Data\ClientCustomRulesData.cs" />
@@ -928,6 +933,11 @@
     <Compile Include="Data\CourseWindowsData.cs" />
     <Compile Include="Data\DamageNumberData.cs" />
     <Compile Include="Data\DrugsData.cs" />
+    <Compile Include="Data\EANoticeData.cs" />
+    <Compile Include="Data\EffectData.cs" />
+    <Compile Include="Data\EleabNormalData.cs" />
+    <Compile Include="Data\EnhanceData.cs" />
+    <Compile Include="Data\GarnishGoodsData.cs" />
     <Compile Include="Data\Special\BossDropData.cs" />
     <Compile Include="Data\LevelConfigData.cs" />
     <Compile Include="Data\Special\BuildData.cs" />
