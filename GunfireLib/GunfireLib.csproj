@@ -922,6 +922,10 @@
     <Compile Include="Data\Classes\EleabNormalDataClass.cs" />
     <Compile Include="Data\Classes\EnhanceDataClass.cs" />
     <Compile Include="Data\Classes\GarnishGoodsDataClass.cs" />
+    <Compile Include="Data\Classes\GmListDataClass.cs" />
+    <Compile Include="Data\Classes\GraphPaperDataClass.cs" />
+    <Compile Include="Data\Classes\GrenadeEffectsDataClass.cs" />
+    <Compile Include="Data\Classes\HeroDataClass.cs" />
     <Compile Include="Data\Classes\ItemDataClass.cs" />
     <Compile Include="Data\Classes\LevelConfigDataClass.cs" />
     <Compile Include="Data\ClientCustomRulesData.cs" />
@@ -938,6 +942,9 @@
     <Compile Include="Data\EleabNormalData.cs" />
     <Compile Include="Data\EnhanceData.cs" />
     <Compile Include="Data\GarnishGoodsData.cs" />
+    <Compile Include="Data\GmListData.cs" />
+    <Compile Include="Data\GraphPaperData.cs" />
+    <Compile Include="Data\GrenadeEffectsData.cs" />
     <Compile Include="Data\Special\BossDropData.cs" />
     <Compile Include="Data\LevelConfigData.cs" />
     <Compile Include="Data\Special\BuildData.cs" />
