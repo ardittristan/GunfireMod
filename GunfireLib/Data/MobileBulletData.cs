@@ -1,9 +1,9 @@
-﻿using Il2CppSystem.Collections.Generic;
-using DataHelper;
+﻿using DataHelper;
+using Il2CppSystem.Collections.Generic;
 
 namespace GunfireLib.Data
 {
-    public static class AttributeScrollData
+    public static class MobileBulletData
     {
         public static Dictionary<string, itemdataclass> attributeList;
 
@@ -12,10 +12,10 @@ namespace GunfireLib.Data
 
         internal static void Setup()
         {
-            attributeList = attrscrolldata.GetData();
-            foreach (KeyValuePair<string, itemdataclass> attribute in attributeList)
+            attributeList = mobilebulletdata.GetData();
+            foreach (KeyValuePair<string, itemdataclass> bullet in attributeList)
             {
-                parsedAttributeList.Add(attribute.Key, new Classes.ItemDataClass(attribute.Key, attributeList));
+                parsedAttributeList.Add(bullet.Key, new Classes.ItemDataClass(bullet.Key, attributeList));
             }
         }
     }

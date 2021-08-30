@@ -3,7 +3,7 @@ using DataHelper;
 
 namespace GunfireLib.Data
 {
-    public static class AttributeScrollData
+    public static class MobileAttributeScrollData
     {
         public static Dictionary<string, itemdataclass> attributeList;
 
@@ -12,7 +12,7 @@ namespace GunfireLib.Data
 
         internal static void Setup()
         {
-            attributeList = attrscrolldata.GetData();
+            attributeList = mobileattrscrolldata.GetData();
             foreach (KeyValuePair<string, itemdataclass> attribute in attributeList)
             {
                 parsedAttributeList.Add(attribute.Key, new Classes.ItemDataClass(attribute.Key, attributeList));
