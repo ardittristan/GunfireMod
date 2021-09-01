@@ -345,3 +345,4 @@ ASALocalRun/
 **.nuget
 MigrationBackup
 **/cache
+/Test

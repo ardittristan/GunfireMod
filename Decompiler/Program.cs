@@ -3,22 +3,23 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 using Cpp2IL.Core;
 using Cpp2IL.Core.Exceptions;
 using Gameloop.Vdf;
-using Gameloop.Vdf.JsonConverter;
+using Gameloop.Vdf.Linq;
 using LibCpp2IL;
 using LibCpp2IL.PE;
 using Microsoft.Win32;
 using Mono.Cecil;
-using Newtonsoft.Json.Linq;
 
 namespace Decompiler
 {
-    internal class Program
+    internal static class Program
     {
         private static readonly Regex NumMatch = new Regex(@"[0-9]+");
 
@@ -43,7 +44,9 @@ namespace Decompiler
             if (File.Exists(Path.Combine(CachePath, "checksum.txt")))
                 _checksum = File.ReadAllText(Path.Combine(CachePath, "checksum.txt"));
 
-            var newChecksum = GetMd5Checksum(Path.Combine(_gunfirePath, "GameAssembly.dll"));
+            string newChecksum = GetChecksum(Path.Combine(_gunfirePath, "GameAssembly.dll"));
+            
+            Console.WriteLine($"\nChecksum: {newChecksum}\n");
 
             if (_checksum == newChecksum) return 0;
             Console.WriteLine("===Cpp2IL by Samboy063===");
@@ -80,17 +83,17 @@ namespace Decompiler
 
         internal static void GetGunfirePath()
         {
-            var steamPath = (string)Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Valve\Steam", "SteamPath", "");
-            var vdf = VdfConvert.Deserialize(File.ReadAllText(Path.Combine(steamPath, "steamapps", "libraryfolders.vdf"))).ToJson();
-
-            foreach (var jToken in vdf.Values())
+            string steamPath = (string)Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Valve\Steam", "SteamPath", "");
+            VProperty vdf = VdfConvert.Deserialize(File.ReadAllText(Path.Combine(steamPath, "steamapps", "libraryfolders.vdf")));
+            
+            foreach (VToken vToken in vdf.Value.Children())
             {
-                var value = (JProperty)jToken;
-                if (!NumMatch.IsMatch(value.Name)) continue;
-                var isRightLibrary = value.First?["apps"]?["1217060"] != null;
+                VProperty value = (VProperty)vToken;
+                if (!NumMatch.IsMatch(value.Key)) continue;
+                bool isRightLibrary = value.Value["apps"]?["1217060"] != null;
                 if (isRightLibrary)
                 {
-                    _gunfirePath = Path.Combine((string)value.First["path"] ?? @"C:\Program Files (x86)\Steam",
+                    _gunfirePath = Path.Combine(value.Value["path"]?.ToString() ?? @"C:\Program Files (x86)\Steam",
                         @"steamapps\common\Gunfire Reborn");
                 }
             }
@@ -127,7 +130,7 @@ namespace Decompiler
 
             Cpp2IlApi.SaveAssemblies(_args.OutputRootDirectory);
 
-            foreach (var assembly in AssembliesToCheck)
+            foreach (string assembly in AssembliesToCheck)
             {
                 DoAssemblyCSharpAnalysis(assembly, _args.OutputRootDirectory, keyFunctionAddresses);
             }
@@ -135,7 +138,7 @@ namespace Decompiler
 
         private static void DoAssemblyCSharpAnalysis(string assemblyName, string rootDir, KeyFunctionAddresses keyFunctionAddresses)
         {
-            var assemblyCsharp = Cpp2IlApi.GetAssemblyByName(assemblyName);
+            AssemblyDefinition assemblyCsharp = Cpp2IlApi.GetAssemblyByName(assemblyName);
 
             if (assemblyCsharp == null)
                 return;
@@ -147,14 +150,42 @@ namespace Decompiler
 
         internal static string GetMd5Checksum(string filename)
         {
-            using (var md5 = MD5.Create())
+            using (MD5 md5 = MD5.Create())
             {
-                using (var stream = File.OpenRead(filename))
+                using (FileStream stream = File.OpenRead(filename))
                 {
-                    var hash = md5.ComputeHash(stream);
+                    byte[] hash = md5.ComputeHash(stream);
                     return BitConverter.ToString(hash).Replace("-", "");
                 }
             }
         }
+
+        internal static string GetCpp2IlVersion()
+        {
+            string output = "";
+
+            Assembly assembly = Assembly.GetExecutingAssembly();
+
+            string ilRepackName = assembly.GetManifestResourceNames().First(s => s.Contains("ILRepack.List"));
+            Stream stream = assembly.GetManifestResourceStream(ilRepackName);
+
+            if (stream == null) return output;
+
+            byte[] buffer = new byte[stream.Length];
+            stream.Read(buffer, 0, buffer.Length);
+
+            string binaryText = Encoding.ASCII.GetString(buffer);
+            string text = Regex.Replace(binaryText, @"[^0-9a-zA-Z.,= ]+", "|");
+            foreach (string entry in text.Split('|'))
+            {
+                string[] values = entry.Split(',');
+                if (values[0].Trim().Length == 0) continue;
+                if (values[0].Substring(1) == "Cpp2IL.Core") output = values[1].Substring(9);
+            }
+
+            return output;
+        }
+
+        internal static string GetChecksum(string filename) => GetMd5Checksum(filename) + GetCpp2IlVersion();
     }
 }

@@ -1,24 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Import Project="ListDependencies.targets" />
+	<Target Name="ListDependencies" AfterTargets="ResolveAssemblyReferences">
+		<Exec Command="echo ===References===" />
+		<LogDependencies Files="@(ReferenceCopyLocalPaths)" />
+		<Exec Command="echo ===End References===" />
+		<Exec Command="echo." />
+	</Target>
 	<Target Name="ILRepacker" AfterTargets="Build">
 		<ItemGroup>
 			<AssemblyFile Include="$(OutputPath)$(AssemblyName).exe" />
 		</ItemGroup>
 		<ItemGroup>
 			<InputAssemblies Include="@(AssemblyFile)" />
-			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Cpp2IL.Core'" />
+			<!-- ReSharper disable UnknownItemGroup -->
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Gameloop.Vdf'" />
-			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Gameloop.Vdf.JsonConverter'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Iced'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'IndexRange'" />
-			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'LibCpp2IL'" />
-			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Mono.Cecil'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Mono.Cecil.Mdb'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Mono.Cecil.Pdb'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Mono.Cecil.Rocks'" />
-			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Newtonsoft.Json'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Mono.Cecil'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Cpp2IL.Core'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'LibCpp2IL'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'System.ValueTuple'" />
+			<!-- ReSharper restore UnknownItemGroup -->
 		</ItemGroup>
+		<!-- ReSharper disable once UnknownTask -->
 		<ILRepack
 			Parallel="true"
 			DebugInfo="false"

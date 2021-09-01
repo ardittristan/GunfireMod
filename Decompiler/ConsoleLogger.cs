@@ -1,9 +1,6 @@
 ﻿// ReSharper disable InconsistentNaming
 using System;
-using System.Drawing;
-using System.IO;
 using Cpp2IL.Core;
-//using Pastel;
 
 // https://github.com/SamboyCoding/Cpp2IL/blob/new-analysis/Cpp2IL/ConsoleLogger.cs
 

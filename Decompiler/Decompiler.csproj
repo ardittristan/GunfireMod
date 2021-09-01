@@ -39,16 +39,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ListDependencies.targets" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Gameloop.Vdf">
       <Version>0.6.1</Version>
     </PackageReference>
-    <PackageReference Include="Gameloop.Vdf.JsonConverter">
-      <Version>0.2.1</Version>
-    </PackageReference>
     <PackageReference Include="Samboy063.Cpp2IL.Core">
-      <Version>2021.3.4</Version>
+      <Version>2021.3.5</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
