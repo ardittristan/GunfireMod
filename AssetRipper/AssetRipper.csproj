@@ -4,17 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FE6D91A1-2DB5-40DF-8A8C-01E59174B940}</ProjectGuid>
+    <ProjectGuid>{6CF0B0DB-93FB-4247-AB6D-9FB5F10F3301}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Decompiler</RootNamespace>
-    <AssemblyName>Decompiler</AssemblyName>
+    <RootNamespace>AssetRipper</RootNamespace>
+    <AssemblyName>AssetRipper</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,32 +33,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ConsoleLogger.cs" />
+    <Reference Include="System" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ListDependencies.targets" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AngleSharp">
+      <Version>1.0.0-alpha-844</Version>
+    </PackageReference>
+    <PackageReference Include="ChildProcesses">
+      <Version>1.2.5577.529</Version>
+    </PackageReference>
+    <PackageReference Include="ChildProcesses.VisualStudioDebug">
+      <Version>1.2.5577.529</Version>
+    </PackageReference>
     <PackageReference Include="Gameloop.Vdf">
       <Version>0.6.1</Version>
     </PackageReference>
-    <PackageReference Include="Samboy063.Cpp2IL.Core">
-      <Version>2021.3.7</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task">
       <Version>2.0.18.2</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ILRepack.targets" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
