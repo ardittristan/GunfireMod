@@ -11,9 +11,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AngleSharp;
 using AngleSharp.Dom;
-#if DEBUG
-using ChildProcesses.VisualStudioDebug;
-#endif
 using Gameloop.Vdf;
 using Gameloop.Vdf.Linq;
 using Microsoft.Win32;
@@ -41,9 +38,6 @@ namespace AssetRipper
 
         public static async Task<int> Main(string[] args)
         {
-#if DEBUG
-            VisualStudioDebugHelper.Register();
-#endif
             GetGunfirePath();
 
             Directory.CreateDirectory(CachePath);
@@ -53,10 +47,13 @@ namespace AssetRipper
 
             string newChecksum = await GetChecksum(Path.Combine(_gunfirePath, "GameAssembly.dll"));
 
+#if DEBUG
             Debug.WriteLine($"\nChecksum: {newChecksum}\n");
+#else
             Console.WriteLine($"\nChecksum: {newChecksum}\n");
+#endif
 
-            //if (_checksum == newChecksum) return 0;
+            if (_checksum == newChecksum) return 0;
 
             using (WebClient client = new WebClient())
             {
@@ -69,7 +66,20 @@ namespace AssetRipper
             ZipFile.ExtractToDirectory(Path.Combine(CachePath, "AssetRipper.zip"),
                 Path.Combine(CachePath, "AssetRipper"));
 
-            RunAssetRipper();
+            using (Process cmdProcess = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = Path.Combine(CachePath, "AssetRipper", "AssetRipperConsole.exe"),
+                    Arguments = $"-o \"{Path.Combine(CachePath, "Assets")}\" -q \"{_gunfirePath}\""
+                }
+            })
+            {
+                cmdProcess.Start();
+                cmdProcess.WaitForExit();
+            }
+
+            File.WriteAllText(Path.Combine(CachePath, "checksum.txt"), newChecksum);
 
             return 0;
         }
@@ -119,50 +129,5 @@ namespace AssetRipper
 
         internal static async Task<string> GetChecksum(string filename) =>
             GetMd5Checksum(filename) + (await GetAssetRipperVersion()).Trim();
-
-        internal static void RunAssetRipper()
-        {
-            //using (Process cmdProcess = new Process
-            //{
-            //    StartInfo = new ProcessStartInfo
-            //    {
-            //        FileName = "cmd",
-            //        WindowStyle = ProcessWindowStyle.Hidden,
-            //        CreateNoWindow = true,
-            //        RedirectStandardInput = true,
-            //        RedirectStandardOutput = true,
-            //        RedirectStandardError = true,
-            //        UseShellExecute = false
-            //    }
-            //})
-            //{
-            //    cmdProcess.Start();
-            //    StreamReader so = cmdProcess.StandardOutput;
-            //    StreamReader se = cmdProcess.StandardError;
-            //    StreamWriter si = cmdProcess.StandardInput;
-
-            //    si.WriteLine("@echo on");
-            //    si.WriteLine(
-            //        $"{Path.Combine(CachePath, "AssetRipper", "AssetRipperConsole.exe")} -o \"{Path.Combine(CachePath, "Assets")}\" -q \"{_gunfirePath}\"");
-
-            //    si.WriteLine("exit");
-            //    Debug.WriteLine(so.ReadToEnd());
-            //    so.Close();
-            //    se.Close();
-            //    si.Close();
-            //}
-
-            using (Process cmdProcess = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = Path.Combine(CachePath, "AssetRipper", "AssetRipperConsole.exe"),
-                    Arguments = $"-o \"{Path.Combine(CachePath, "Assets")}\" -q \"{_gunfirePath}\""
-                }
-            })
-            {
-                cmdProcess.Start();
-            }
-        }
     }
 }
