@@ -8,12 +8,10 @@ using System.Net;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using AngleSharp;
-using AngleSharp.Dom;
 using Gameloop.Vdf;
 using Gameloop.Vdf.Linq;
 using Microsoft.Win32;
+using Supremes;
 
 namespace AssetRipper
 {
@@ -36,7 +34,7 @@ namespace AssetRipper
 
         private static string _gunfirePath;
 
-        public static async Task<int> Main(string[] args)
+        public static int Main(string[] args)
         {
             GetGunfirePath();
 
@@ -45,7 +43,7 @@ namespace AssetRipper
             if (File.Exists(Path.Combine(CachePath, "checksum.txt")))
                 _checksum = File.ReadAllText(Path.Combine(CachePath, "checksum.txt"));
 
-            string newChecksum = await GetChecksum(Path.Combine(_gunfirePath, "GameAssembly.dll"));
+            string newChecksum = GetChecksum(Path.Combine(_gunfirePath, "GameAssembly.dll"));
 
 #if DEBUG
             Debug.WriteLine($"\nChecksum: {newChecksum}\n");
@@ -114,20 +112,14 @@ namespace AssetRipper
             }
         }
 
-        internal static async Task<string> GetAssetRipperVersion()
+        internal static string GetAssetRipperVersion()
         {
-            using (IBrowsingContext context = BrowsingContext.New(Configuration.Default.WithDefaultLoader()))
-            {
-                IDocument document = await context.OpenAsync(CommitUrl);
-
-                string lastCommit = document
-                    .QuerySelector(".js-navigation-container .Box-row .BtnGroup a.BtnGroup-item").TextContent;
-
-                return lastCommit;
-            }
+            return Dcsoup.Parse(new Uri(CommitUrl), 5000)
+                .Select(".js-navigation-container .Box-row .BtnGroup a.BtnGroup-item")
+                .First.Text;
         }
 
-        internal static async Task<string> GetChecksum(string filename) =>
-            GetMd5Checksum(filename) + (await GetAssetRipperVersion()).Trim();
+        internal static string GetChecksum(string filename) =>
+            GetMd5Checksum(filename) + GetAssetRipperVersion().Trim();
     }
 }
