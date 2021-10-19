@@ -25,10 +25,10 @@ namespace GunfireLib.Data.Classes
 {
     public class StateDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, statedataclass> stateList;
+        private readonly int key;
+        private readonly Dictionary<int, statedataclass> stateList;
 
-        public StateDataClass(string key, Dictionary<string, statedataclass> stateList)
+        public StateDataClass(int key, Dictionary<int, statedataclass> stateList)
         {
             this.key = key;
             this.stateList = stateList;
@@ -100,7 +100,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, SStateDescDic> StateDescDic
+        public Dictionary<int, SStateDescDic> StateDescDic
         {
             get => stateList[key].StateDescDic;
         }

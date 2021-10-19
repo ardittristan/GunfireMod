@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public class LoadingTipsData
     {
-        public static Dictionary<string, loadingtipsdataclass> loadingTipsList;
+        public static Dictionary<int, loadingtipsdataclass> loadingTipsList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.LoadingTipsDataClass> parsedLoadingTipsList =
-            new System.Collections.Generic.Dictionary<string, Classes.LoadingTipsDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.LoadingTipsDataClass> parsedLoadingTipsList =
+            new System.Collections.Generic.Dictionary<int, Classes.LoadingTipsDataClass>();
 
         internal static void Setup()
         {
             loadingTipsList = loadingtipsdata.GetData();
-            foreach (KeyValuePair<string, loadingtipsdataclass> loadingTips in loadingTipsList)
+            foreach (KeyValuePair<int, loadingtipsdataclass> loadingTips in loadingTipsList)
             {
                 parsedLoadingTipsList.Add(loadingTips.Key, new Classes.LoadingTipsDataClass(loadingTips.Key, loadingTipsList));
             }

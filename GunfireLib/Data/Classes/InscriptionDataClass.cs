@@ -25,10 +25,10 @@ namespace GunfireLib.Data.Classes
 {
     public class InscriptionDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, inscriptiondataclass> inscriptionList;
+        private readonly int key;
+        private readonly Dictionary<int, inscriptiondataclass> inscriptionList;
 
-        public InscriptionDataClass(string key, Dictionary<string, inscriptiondataclass> inscriptionList)
+        public InscriptionDataClass(int key, Dictionary<int, inscriptiondataclass> inscriptionList)
         {
             this.key = key;
             this.inscriptionList = inscriptionList;

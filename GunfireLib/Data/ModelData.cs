@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class ModelData
     {
-        public static Dictionary<string, modeldataclass> modelList;
+        public static Dictionary<int, modeldataclass> modelList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.ModelDataClass> parsedModelList =
-            new System.Collections.Generic.Dictionary<string, Classes.ModelDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.ModelDataClass> parsedModelList =
+            new System.Collections.Generic.Dictionary<int, Classes.ModelDataClass>();
 
         internal static void Setup()
         {
             modelList = modeldata.GetData();
-            foreach (KeyValuePair<string, modeldataclass> model in modelList)
+            foreach (KeyValuePair<int, modeldataclass> model in modelList)
             {
                 parsedModelList.Add(model.Key, new Classes.ModelDataClass(model.Key, modelList));
             }

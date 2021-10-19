@@ -38,10 +38,10 @@ namespace GunfireLib.Data.Classes
 {
     public class GraphPaperDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, graphpaperdataclass> graphPaperList;
+        private readonly int key;
+        private readonly Dictionary<int, graphpaperdataclass> graphPaperList;
 
-        public GraphPaperDataClass(string key, Dictionary<string, graphpaperdataclass> graphPaperList)
+        public GraphPaperDataClass(int key, Dictionary<int, graphpaperdataclass> graphPaperList)
         {
             this.key = key;
             this.graphPaperList = graphPaperList;
@@ -78,7 +78,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, GraphGetSub> GraphGetInfo
+        public Dictionary<int, GraphGetSub> GraphGetInfo
         {
             get => graphPaperList[key].GraphGetInfo;
         }
@@ -110,7 +110,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, GraphRewardSub> RewardInfo
+        public Dictionary<int, GraphRewardSub> RewardInfo
         {
             get => graphPaperList[key].RewardInfo;
         }

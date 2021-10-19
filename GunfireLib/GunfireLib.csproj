@@ -889,10 +889,6 @@
       <HintPath>MelonLoader\Managed\WindowsBase.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="XLogStandalone">
-      <HintPath>MelonLoader\Managed\XLogStandalone.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\AchievementData.cs" />
@@ -1258,7 +1254,6 @@
     <Content Include="MelonLoader\Managed\UnityEngine.XRModule.dll" />
     <Content Include="MelonLoader\Managed\ValueTupleBridge.dll" />
     <Content Include="MelonLoader\Managed\WindowsBase.dll" />
-    <Content Include="MelonLoader\Managed\XLogStandalone.dll" />
     <Content Include="MelonLoader\MelonLoader.dll" />
   </ItemGroup>
   <ItemGroup>

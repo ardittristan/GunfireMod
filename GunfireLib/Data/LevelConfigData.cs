@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class LevelConfigData
     {
-        public static Dictionary<string, levelconfigdataclass> levelList;
+        public static Dictionary<int, levelconfigdataclass> levelList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.LevelConfigDataClass> parsedLevelList =
-            new System.Collections.Generic.Dictionary<string, Classes.LevelConfigDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.LevelConfigDataClass> parsedLevelList =
+            new System.Collections.Generic.Dictionary<int, Classes.LevelConfigDataClass>();
 
         internal static void Setup()
         {
             levelList = levelconfigdata.GetData();
-            foreach (KeyValuePair<string, levelconfigdataclass> level in levelList)
+            foreach (KeyValuePair<int, levelconfigdataclass> level in levelList)
             {
                 parsedLevelList.Add(level.Key, new Classes.LevelConfigDataClass(level.Key, levelList));
             }

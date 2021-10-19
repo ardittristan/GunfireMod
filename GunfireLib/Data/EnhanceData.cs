@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class EnhanceData
     {
-        public static Dictionary<string, enhancedataclass> enhanceList;
+        public static Dictionary<int, enhancedataclass> enhanceList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.EnhanceDataClass> parsedEnhanceList =
-            new System.Collections.Generic.Dictionary<string, Classes.EnhanceDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.EnhanceDataClass> parsedEnhanceList =
+            new System.Collections.Generic.Dictionary<int, Classes.EnhanceDataClass>();
 
         internal static void Setup()
         {
             enhanceList = enhancedata.GetData();
-            foreach (KeyValuePair<string, enhancedataclass> enhance in enhanceList)
+            foreach (KeyValuePair<int, enhancedataclass> enhance in enhanceList)
             {
                 parsedEnhanceList.Add(enhance.Key, new Classes.EnhanceDataClass(enhance.Key, enhanceList));
             }

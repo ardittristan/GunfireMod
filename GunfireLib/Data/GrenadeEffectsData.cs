@@ -5,16 +5,16 @@ namespace GunfireLib.Data
 {
     public static class GrenadeEffectsData
     {
-        public static Dictionary<string, grenadeeffectsdataclass> grenadeEffectsList;
+        public static Dictionary<int, grenadeeffectsdataclass> grenadeEffectsList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.GrenadeEffectsDataClass>
+        public static System.Collections.Generic.Dictionary<int, Classes.GrenadeEffectsDataClass>
             parsedGrenadeEffectsList =
-                new System.Collections.Generic.Dictionary<string, Classes.GrenadeEffectsDataClass>();
+                new System.Collections.Generic.Dictionary<int, Classes.GrenadeEffectsDataClass>();
 
         internal static void Setup()
         {
             grenadeEffectsList = grenadeeffectsdata.GetData();
-            foreach (KeyValuePair<string, grenadeeffectsdataclass> grenadeEffects in grenadeEffectsList)
+            foreach (KeyValuePair<int, grenadeeffectsdataclass> grenadeEffects in grenadeEffectsList)
             {
                 parsedGrenadeEffectsList.Add(grenadeEffects.Key, new Classes.GrenadeEffectsDataClass(grenadeEffects.Key, grenadeEffectsList));
             }

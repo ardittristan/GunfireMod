@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class InscriptionData
     {
-        public static Dictionary<string, inscriptiondataclass> inscriptionList;
+        public static Dictionary<int, inscriptiondataclass> inscriptionList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.InscriptionDataClass> parsedInscriptionList =
-            new System.Collections.Generic.Dictionary<string, Classes.InscriptionDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.InscriptionDataClass> parsedInscriptionList =
+            new System.Collections.Generic.Dictionary<int, Classes.InscriptionDataClass>();
 
         internal static void Setup()
         {
             inscriptionList = inscriptiondata.GetData();
-            foreach (KeyValuePair<string, inscriptiondataclass> inscription in inscriptionList)
+            foreach (KeyValuePair<int, inscriptiondataclass> inscription in inscriptionList)
             {
                 parsedInscriptionList.Add(inscription.Key, new Classes.InscriptionDataClass(inscription.Key, inscriptionList));
             }

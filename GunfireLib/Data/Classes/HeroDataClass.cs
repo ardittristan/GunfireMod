@@ -28,10 +28,10 @@ namespace GunfireLib.Data.Classes
 {
     public class HeroDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, herodataclass> heroList;
+        private readonly int key;
+        private readonly Dictionary<int, herodataclass> heroList;
 
-        public HeroDataClass(string key, Dictionary<string, herodataclass> heroList)
+        public HeroDataClass(int key, Dictionary<int, herodataclass> heroList)
         {
             this.key = key;
             this.heroList = heroList;
@@ -99,7 +99,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, HeroGrade> HeroGradeInfo
+        public Dictionary<int, HeroGrade> HeroGradeInfo
         {
             get => heroList[key].HeroGradeInfo;
         }
@@ -146,7 +146,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, TalentIconInfo> TalentIconInfo
+        public Dictionary<int, TalentIconInfo> TalentIconInfo
         {
             get => heroList[key].TalentIconInfo;
         }

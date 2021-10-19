@@ -28,10 +28,10 @@ namespace GunfireLib.Data.Classes
 {
     public class AttackDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, attackdataclass> attackList;
+        private readonly int key;
+        private readonly Dictionary<int, attackdataclass> attackList;
 
-        public AttackDataClass(string key, Dictionary<string, attackdataclass> attackList)
+        public AttackDataClass(int key, Dictionary<int, attackdataclass> attackList)
         {
             this.key = key;
             this.attackList = attackList;
@@ -43,7 +43,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, SCommonProp> CommonProp
+        public Dictionary<int, SCommonProp> CommonProp
         {
             get => attackList[key].CommonProp;
         }

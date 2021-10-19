@@ -25,10 +25,10 @@ namespace GunfireLib.Data.Classes
 {
     public class GarnishGoodsDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, garnishgoodsdataclass> goodsList;
+        private readonly int key;
+        private readonly Dictionary<int, garnishgoodsdataclass> goodsList;
 
-        public GarnishGoodsDataClass(string key, Dictionary<string, garnishgoodsdataclass> goodsList)
+        public GarnishGoodsDataClass(int key, Dictionary<int, garnishgoodsdataclass> goodsList)
         {
             this.key = key;
             this.goodsList = goodsList;

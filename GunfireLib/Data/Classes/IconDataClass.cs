@@ -22,10 +22,10 @@ namespace GunfireLib.Data.Classes
 {
     public class IconDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, icondataclass> iconList;
+        private readonly int key;
+        private readonly Dictionary<int, icondataclass> iconList;
 
-        public IconDataClass(string key, Dictionary<string, icondataclass> iconList)
+        public IconDataClass(int key, Dictionary<int, icondataclass> iconList)
         {
             this.key = key;
             this.iconList = iconList;

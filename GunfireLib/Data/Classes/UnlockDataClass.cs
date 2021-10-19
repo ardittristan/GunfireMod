@@ -8,24 +8,24 @@ namespace GunfireLib.Data.Classes
 {
     public class UnlockDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, unlockdataclass> unlockList;
+        private readonly int key;
+        private readonly Dictionary<int, unlockdataclass> unlockList;
 
-        public UnlockDataClass(string key, Dictionary<string, unlockdataclass> unlockList)
+        public UnlockDataClass(int key, Dictionary<int, unlockdataclass> unlockList)
         {
             this.key = key;
             this.unlockList = unlockList;
         }
 
-        public int SceneID
-        {
-            get => unlockList[key].SceneID;
-        }
+        //public int SceneID
+        //{
+        //    get => unlockList[key].SceneID;
+        //}
 
-        public int TarNum
-        {
-            get => unlockList[key].TarNum;
-        }
+        //public int TarNum
+        //{
+        //    get => unlockList[key].TarNum;
+        //}
 
         public int Type
         {

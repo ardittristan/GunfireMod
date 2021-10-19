@@ -896,10 +896,6 @@
       <HintPath>MelonLoader\Managed\WindowsBase.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="XLogStandalone">
-      <HintPath>MelonLoader\Managed\XLogStandalone.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MelonLoader\Dependencies\SupportModules\Il2Cpp.dll" />
@@ -1118,7 +1114,6 @@
     <Content Include="MelonLoader\Managed\UnityEngine.XRModule.dll" />
     <Content Include="MelonLoader\Managed\ValueTupleBridge.dll" />
     <Content Include="MelonLoader\Managed\WindowsBase.dll" />
-    <Content Include="MelonLoader\Managed\XLogStandalone.dll" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

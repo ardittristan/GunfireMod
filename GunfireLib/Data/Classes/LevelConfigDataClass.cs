@@ -27,10 +27,10 @@ namespace GunfireLib.Data.Classes
 {
     public class LevelConfigDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, levelconfigdataclass> levelList;
+        private readonly int key;
+        private readonly Dictionary<int, levelconfigdataclass> levelList;
 
-        public LevelConfigDataClass(string key, Dictionary<string, levelconfigdataclass> levelList)
+        public LevelConfigDataClass(int key, Dictionary<int, levelconfigdataclass> levelList)
         {
             this.key = key;
             this.levelList = levelList;
@@ -41,7 +41,7 @@ namespace GunfireLib.Data.Classes
             get => levelList[key].ID;
         }
 
-        public Dictionary<string, OneLevelInfo> Info
+        public Dictionary<int, OneLevelInfo> Info
         {
             get => levelList[key].Info;
         }

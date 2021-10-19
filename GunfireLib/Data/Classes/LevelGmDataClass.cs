@@ -25,10 +25,10 @@ namespace GunfireLib.Data.Classes
 {
     public class LevelGmDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, levelgmdataclass> gmList;
+        private readonly int key;
+        private readonly Dictionary<int, levelgmdataclass> gmList;
 
-        public LevelGmDataClass(string key, Dictionary<string, levelgmdataclass> gmList)
+        public LevelGmDataClass(int key, Dictionary<int, levelgmdataclass> gmList)
         {
             this.key = key;
             this.gmList = gmList;

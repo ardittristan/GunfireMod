@@ -34,10 +34,10 @@ namespace GunfireLib.Data.Classes
 {
     public class ItemDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, itemdataclass> attributeList;
+        private readonly int key;
+        private readonly Dictionary<int, itemdataclass> attributeList;
 
-        public ItemDataClass(string key, Dictionary<string, itemdataclass> attributeList)
+        public ItemDataClass(int key, Dictionary<int, itemdataclass> attributeList)
         {
             this.key = key;
             this.attributeList = attributeList;
@@ -70,7 +70,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, SAutoAttackInfoSub> AutoAttackInfo
+        public Dictionary<int, SAutoAttackInfoSub> AutoAttackInfo
         {
             get => attributeList[key].AutoAttackInfo;
         }
@@ -81,13 +81,13 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, SBulletFlyInfoSub> BulletFlyInfo
+        public Dictionary<int, SBulletFlyInfoSub> BulletFlyInfo
         {
             get => attributeList[key].BulletFlyInfo;
         }
 
         // TODO:
-        public Dictionary<string, SBulletInfoSub> BulletInfo
+        public Dictionary<int, SBulletInfoSub> BulletInfo
         {
             get => attributeList[key].BulletInfo;
         }
@@ -103,7 +103,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, SContinueShootInfoSub> ContinueShootInfo
+        public Dictionary<int, SContinueShootInfoSub> ContinueShootInfo
         {
             get => attributeList[key].ContinueShootInfo;
         }
@@ -169,7 +169,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, ElementInfo> ElementInfo
+        public Dictionary<int, ElementInfo> ElementInfo
         {
             get => attributeList[key].ElementInfo;
         }
@@ -190,7 +190,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, SItemSkillInfoSub> ItemSkillInfo
+        public Dictionary<int, SItemSkillInfoSub> ItemSkillInfo
         {
             get => attributeList[key].ItemSkillInfo;
         }
@@ -216,7 +216,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, SOpenSnipeInfoSub> OpenSnipeInfo
+        public Dictionary<int, SOpenSnipeInfoSub> OpenSnipeInfo
         {
             get => attributeList[key].OpenSnipeInfo;
         }
@@ -227,7 +227,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, RelicDescInfo> RelicDescInfo
+        public Dictionary<int, RelicDescInfo> RelicDescInfo
         {
             get => attributeList[key].RelicDescInfo;
         }
@@ -248,7 +248,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, ShopInfoInfo> ShopInfo
+        public Dictionary<int, ShopInfoInfo> ShopInfo
         {
             get => attributeList[key].ShopInfo;
         }
@@ -259,7 +259,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, ShowInfo> ShowInfo
+        public Dictionary<int, ShowInfo> ShowInfo
         {
             get => attributeList[key].ShowInfo;
         }
@@ -300,7 +300,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, WeaponMusicEffect> WeaponMusic
+        public Dictionary<int, WeaponMusicEffect> WeaponMusic
         {
             get => attributeList[key].WeaponMusic;
         }

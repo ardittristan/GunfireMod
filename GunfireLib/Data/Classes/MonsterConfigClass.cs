@@ -22,10 +22,10 @@ namespace GunfireLib.Data.Classes
 {
     public class MonsterConfigClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, monsterconfigclass> configList;
+        private readonly int key;
+        private readonly Dictionary<int, monsterconfigclass> configList;
 
-        public MonsterConfigClass(string key, Dictionary<string, monsterconfigclass> configList)
+        public MonsterConfigClass(int key, Dictionary<int, monsterconfigclass> configList)
         {
             this.key = key;
             this.configList = configList;

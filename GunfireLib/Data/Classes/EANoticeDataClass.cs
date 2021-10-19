@@ -22,10 +22,10 @@ namespace GunfireLib.Data.Classes
 {
     public class EANoticeDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, eanoticedataclass> noticeList;
+        private readonly int key;
+        private readonly Dictionary<int, eanoticedataclass> noticeList;
 
-        public EANoticeDataClass(string key, Dictionary<string, eanoticedataclass> noticeList)
+        public EANoticeDataClass(int key, Dictionary<int, eanoticedataclass> noticeList)
         {
             this.key = key;
             this.noticeList = noticeList;

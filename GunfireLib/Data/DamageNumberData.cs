@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class DamageNumberData
     {
-        public static Dictionary<string, damagenumberdataclass> damageNumberList;
+        public static Dictionary<int, damagenumberdataclass> damageNumberList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.DamageNumberDataClass> parsedDamageNumberList =
-            new System.Collections.Generic.Dictionary<string, Classes.DamageNumberDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.DamageNumberDataClass> parsedDamageNumberList =
+            new System.Collections.Generic.Dictionary<int, Classes.DamageNumberDataClass>();
 
         internal static void Setup()
         {
             damageNumberList = damagenumberdata.GetData();
-            foreach (KeyValuePair<string, damagenumberdataclass> damageNumber in damageNumberList)
+            foreach (KeyValuePair<int, damagenumberdataclass> damageNumber in damageNumberList)
             {
                 parsedDamageNumberList.Add(damageNumber.Key,
                     new Classes.DamageNumberDataClass(damageNumber.Key, damageNumberList));

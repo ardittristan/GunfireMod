@@ -25,10 +25,10 @@ namespace GunfireLib.Data.Classes
 {
     public class ChatDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, chatdataclass> chatList;
+        private readonly int key;
+        private readonly Dictionary<int, chatdataclass> chatList;
 
-        public ChatDataClass(string key, Dictionary<string, chatdataclass> chatList)
+        public ChatDataClass(int key, Dictionary<int, chatdataclass> chatList)
         {
             this.key = key;
             this.chatList = chatList;

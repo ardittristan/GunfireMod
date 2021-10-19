@@ -25,10 +25,10 @@ namespace GunfireLib.Data.Classes
 {
     public class CourseWindowsDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, coursewindowsdataclass> windowList;
+        private readonly int key;
+        private readonly Dictionary<int, coursewindowsdataclass> windowList;
 
-        public CourseWindowsDataClass(string key, Dictionary<string, coursewindowsdataclass> windowList)
+        public CourseWindowsDataClass(int key, Dictionary<int, coursewindowsdataclass> windowList)
         {
             this.key = key;
             this.windowList = windowList;

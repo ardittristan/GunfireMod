@@ -22,10 +22,10 @@ namespace GunfireLib.Data.Classes
 {
     public class MusicEffectDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, musiceffectdataclass> effectList;
+        private readonly int key;
+        private readonly Dictionary<int, musiceffectdataclass> effectList;
 
-        public MusicEffectDataClass(string key, Dictionary<string, musiceffectdataclass> effectList)
+        public MusicEffectDataClass(int key, Dictionary<int, musiceffectdataclass> effectList)
         {
             this.key = key;
             this.effectList = effectList;

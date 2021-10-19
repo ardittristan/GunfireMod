@@ -8,10 +8,10 @@ namespace GunfireLib.Data.Classes
 {
     public class HeroRelevanceDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, herorelevancedataclass> relevanceList;
+        private readonly int key;
+        private readonly Dictionary<int, herorelevancedataclass> relevanceList;
 
-        public HeroRelevanceDataClass(string key, Dictionary<string, herorelevancedataclass> relevanceList)
+        public HeroRelevanceDataClass(int key, Dictionary<int, herorelevancedataclass> relevanceList)
         {
             this.key = key;
             this.relevanceList = relevanceList;

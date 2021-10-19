@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class EANoticeData
     {
-        public static Dictionary<string, eanoticedataclass> noticeList;
+        public static Dictionary<int, eanoticedataclass> noticeList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.EANoticeDataClass> parsedNoticeList =
-            new System.Collections.Generic.Dictionary<string, Classes.EANoticeDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.EANoticeDataClass> parsedNoticeList =
+            new System.Collections.Generic.Dictionary<int, Classes.EANoticeDataClass>();
 
         internal static void Setup()
         {
             noticeList = eanoticedata.GetData();
-            foreach (KeyValuePair<string, eanoticedataclass> notice in noticeList)
+            foreach (KeyValuePair<int, eanoticedataclass> notice in noticeList)
             {
                 parsedNoticeList.Add(notice.Key, new Classes.EANoticeDataClass(notice.Key, noticeList));
             }

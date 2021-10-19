@@ -25,10 +25,10 @@ namespace GunfireLib.Data.Classes
 {
     public class ClientsGDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, clientsgdataclass> clientList;
+        private readonly int key;
+        private readonly Dictionary<int, clientsgdataclass> clientList;
 
-        public ClientsGDataClass(string key, Dictionary<string, clientsgdataclass> clientList)
+        public ClientsGDataClass(int key, Dictionary<int, clientsgdataclass> clientList)
         {
             this.key = key;
             this.clientList = clientList;

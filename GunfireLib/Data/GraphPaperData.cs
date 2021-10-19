@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class GraphPaperData
     {
-        public static Dictionary<string, graphpaperdataclass> graphPaperList;
+        public static Dictionary<int, graphpaperdataclass> graphPaperList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.GraphPaperDataClass> parsedGraphPaperList =
-            new System.Collections.Generic.Dictionary<string, Classes.GraphPaperDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.GraphPaperDataClass> parsedGraphPaperList =
+            new System.Collections.Generic.Dictionary<int, Classes.GraphPaperDataClass>();
 
         internal static void Setup()
         {
             graphPaperList = graphpaperdata.GetData();
-            foreach (KeyValuePair<string, graphpaperdataclass> graphPaper in graphPaperList)
+            foreach (KeyValuePair<int, graphpaperdataclass> graphPaper in graphPaperList)
             {
                 parsedGraphPaperList.Add(graphPaper.Key, new Classes.GraphPaperDataClass(graphPaper.Key, graphPaperList));
             }

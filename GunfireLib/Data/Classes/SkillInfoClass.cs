@@ -22,10 +22,10 @@ namespace GunfireLib.Data.Classes
 {
     public class SkillInfoClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, skillinfoclass> skillList;
+        private readonly int key;
+        private readonly Dictionary<int, skillinfoclass> skillList;
 
-        public SkillInfoClass(string key, Dictionary<string, skillinfoclass> skillList)
+        public SkillInfoClass(int key, Dictionary<int, skillinfoclass> skillList)
         {
             this.key = key;
             this.skillList = skillList;

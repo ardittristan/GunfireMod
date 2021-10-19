@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class LaserHitSoundData
     {
-        public static Dictionary<string, laserhitsounddataclass> hitSoundList;
+        public static Dictionary<int, laserhitsounddataclass> hitSoundList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.LaserHitSoundDataClass> parsedHitSoundList =
-            new System.Collections.Generic.Dictionary<string, Classes.LaserHitSoundDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.LaserHitSoundDataClass> parsedHitSoundList =
+            new System.Collections.Generic.Dictionary<int, Classes.LaserHitSoundDataClass>();
 
         internal static void Setup()
         {
             hitSoundList = laserhitsounddata.GetData();
-            foreach (KeyValuePair<string, laserhitsounddataclass> hitSound in hitSoundList)
+            foreach (KeyValuePair<int, laserhitsounddataclass> hitSound in hitSoundList)
             {
                 parsedHitSoundList.Add(hitSound.Key, new Classes.LaserHitSoundDataClass(hitSound.Key, hitSoundList));
             }

@@ -8,10 +8,10 @@ namespace GunfireLib.Data.Classes
 {
     public class EffectDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, effectdataclass> effectList;
+        private readonly int key;
+        private readonly Dictionary<int, effectdataclass> effectList;
 
-        public EffectDataClass(string key, Dictionary<string, effectdataclass> effectList)
+        public EffectDataClass(int key, Dictionary<int, effectdataclass> effectList)
         {
             this.key = key;
             this.effectList = effectList;

@@ -25,10 +25,10 @@ namespace GunfireLib.Data.Classes
 {
     public class AttrPlusDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, attrplusdataclass> attributeList;
+        private readonly int key;
+        private readonly Dictionary<int, attrplusdataclass> attributeList;
 
-        public AttrPlusDataClass(string key, Dictionary<string, attrplusdataclass> attributeList)
+        public AttrPlusDataClass(int key, Dictionary<int, attrplusdataclass> attributeList)
         {
             this.key = key;
             this.attributeList = attributeList;

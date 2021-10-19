@@ -22,10 +22,10 @@ namespace GunfireLib.Data.Classes
 {
     public class LimitDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, limitdataclass> limitList;
+        private readonly int key;
+        private readonly Dictionary<int, limitdataclass> limitList;
 
-        public LimitDataClass(string key, Dictionary<string, limitdataclass> limitList)
+        public LimitDataClass(int key, Dictionary<int, limitdataclass> limitList)
         {
             this.key = key;
             this.limitList = limitList;

@@ -22,10 +22,10 @@ namespace GunfireLib.Data.Classes
 {
     public class GmListDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, gmlistdataclass> gmList;
+        private readonly int key;
+        private readonly Dictionary<int, gmlistdataclass> gmList;
 
-        public GmListDataClass(string key, Dictionary<string, gmlistdataclass> gmList)
+        public GmListDataClass(int key, Dictionary<int, gmlistdataclass> gmList)
         {
             this.key = key;
             this.gmList = gmList;

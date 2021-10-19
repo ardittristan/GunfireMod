@@ -16,11 +16,11 @@ namespace GunfireLib.Stores
 
         internal static void LateSetup()
         {
-            Dictionary<string, levelconfigdataclass> levelList = levelconfigdata.GetData();
+            Dictionary<int, levelconfigdataclass> levelList = levelconfigdata.GetData();
 
             GunfireEvents.QuitEvent += SaveMapNameStore;
 
-            foreach (KeyValuePair<string, levelconfigdataclass> item in levelList)
+            foreach (KeyValuePair<int, levelconfigdataclass> item in levelList)
             {
                 HandleMapNameStore(item.Value.Name,
                     string.IsNullOrWhiteSpace(item.Value.DevName) ? "" : item.Value.DevName);

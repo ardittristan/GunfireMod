@@ -22,10 +22,10 @@ namespace GunfireLib.Data.Classes
 {
     public class EnhanceDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, enhancedataclass> enhanceList;
+        private readonly int key;
+        private readonly Dictionary<int, enhancedataclass> enhanceList;
 
-        public EnhanceDataClass(string key, Dictionary<string, enhancedataclass> enhanceList)
+        public EnhanceDataClass(int key, Dictionary<int, enhancedataclass> enhanceList)
         {
             this.key = key;
             this.enhanceList = enhanceList;
@@ -47,7 +47,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, PropertyEnhance> PropertyEnhance
+        public Dictionary<int, PropertyEnhance> PropertyEnhance
         {
             get => enhanceList[key].PropertyEnhance;
         }

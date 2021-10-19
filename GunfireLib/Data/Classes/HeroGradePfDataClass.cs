@@ -25,10 +25,10 @@ namespace GunfireLib.Data.Classes
 {
     public class HeroGradePfDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, herogradepfdataclass> heroGradeList;
+        private readonly int key;
+        private readonly Dictionary<int, herogradepfdataclass> heroGradeList;
 
-        public HeroGradePfDataClass(string key, Dictionary<string, herogradepfdataclass> heroGradeList)
+        public HeroGradePfDataClass(int key, Dictionary<int, herogradepfdataclass> heroGradeList)
         {
             this.key = key;
             this.heroGradeList = heroGradeList;

@@ -8,10 +8,10 @@ namespace GunfireLib.Data.Classes
 {
     public class LocalWarBornPosDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, localwarbornposdataclass> posList;
+        private readonly int key;
+        private readonly Dictionary<int, localwarbornposdataclass> posList;
 
-        public LocalWarBornPosDataClass(string key, Dictionary<string, localwarbornposdataclass> posList)
+        public LocalWarBornPosDataClass(int key, Dictionary<int, localwarbornposdataclass> posList)
         {
             this.key = key;
             this.posList = posList;

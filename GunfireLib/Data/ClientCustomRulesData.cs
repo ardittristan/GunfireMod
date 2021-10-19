@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class ClientCustomRulesData
     {
-        public static Dictionary<string, clientcustomrulesdataclass> ruleList;
+        public static Dictionary<int, clientcustomrulesdataclass> ruleList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.ClientCustomRulesDataClass> parsedRuleList =
-            new System.Collections.Generic.Dictionary<string, Classes.ClientCustomRulesDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.ClientCustomRulesDataClass> parsedRuleList =
+            new System.Collections.Generic.Dictionary<int, Classes.ClientCustomRulesDataClass>();
 
         internal static void Setup()
         {
             ruleList = clientcustomrulesdata.GetData();
-            foreach (KeyValuePair<string, clientcustomrulesdataclass> rule in ruleList)
+            foreach (KeyValuePair<int, clientcustomrulesdataclass> rule in ruleList)
             {
                 parsedRuleList.Add(rule.Key, new Classes.ClientCustomRulesDataClass(rule.Key, ruleList));
             }

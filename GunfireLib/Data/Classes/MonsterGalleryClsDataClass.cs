@@ -25,10 +25,10 @@ namespace GunfireLib.Data.Classes
 {
     public class MonsterGalleryClsDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, monstergalleryclsdataclass> galleryList;
+        private readonly int key;
+        private readonly Dictionary<int, monstergalleryclsdataclass> galleryList;
 
-        public MonsterGalleryClsDataClass(string key, Dictionary<string, monstergalleryclsdataclass> galleryList)
+        public MonsterGalleryClsDataClass(int key, Dictionary<int, monstergalleryclsdataclass> galleryList)
         {
             this.key = key;
             this.galleryList = galleryList;

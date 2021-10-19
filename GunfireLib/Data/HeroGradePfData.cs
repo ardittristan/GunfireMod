@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class HeroGradePfData
     {
-        public static Dictionary<string, herogradepfdataclass> heroGradeList;
+        public static Dictionary<int, herogradepfdataclass> heroGradeList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.HeroGradePfDataClass> parsedHeroGradePfList =
-            new System.Collections.Generic.Dictionary<string, Classes.HeroGradePfDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.HeroGradePfDataClass> parsedHeroGradePfList =
+            new System.Collections.Generic.Dictionary<int, Classes.HeroGradePfDataClass>();
 
         internal static void Setup()
         {
             heroGradeList = herogradepfdata.GetData();
-            foreach (KeyValuePair<string, herogradepfdataclass> heroGrade in heroGradeList)
+            foreach (KeyValuePair<int, herogradepfdataclass> heroGrade in heroGradeList)
             {
                 parsedHeroGradePfList.Add(heroGrade.Key, new Classes.HeroGradePfDataClass(heroGrade.Key, heroGradeList));
             }

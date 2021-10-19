@@ -2,12 +2,14 @@
 // ReSharper disable CommentTypo
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using Cpp2IL;
 using Cpp2IL.Core;
 using Cpp2IL.Core.Exceptions;
 using Gameloop.Vdf;
@@ -27,6 +29,9 @@ namespace Decompiler
             Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? throw new InvalidOperationException(), @"..\..\", "cache")
         );
 
+        // ReSharper disable once InconsistentNaming
+        private static readonly Stopwatch stopwatch = new Stopwatch();
+
         private static readonly string[] AssembliesToCheck = { "Assembly-CSharp", "Assembly-CSharp-firstpass", /*"csharpdata"*/ };
 
         private static Cpp2IlRuntimeArgs _args;
@@ -35,8 +40,21 @@ namespace Decompiler
 
         private static string _gunfirePath;
 
+        public static void Log(string txt)
+        {
+#if DEBUG
+            Debug.WriteLine(txt);
+#else
+            Console.WriteLine(txt);
+#endif
+        }
+
         public static int Main(string[] args)
         {
+            stopwatch.Start();
+
+            Log("Starting Decompiler");
+
             GetGunfirePath();
 
             Directory.CreateDirectory(CachePath);
@@ -46,11 +64,11 @@ namespace Decompiler
 
             string newChecksum = GetChecksum(Path.Combine(_gunfirePath, "GameAssembly.dll"));
             
-            Console.WriteLine($"\nChecksum: {newChecksum}\n");
+            Log($"\nChecksum: {newChecksum}\n");
 
             if (_checksum == newChecksum) return 0;
-            Console.WriteLine("===Cpp2IL by Samboy063===");
-            Console.WriteLine("A Tool to Reverse Unity's \"il2cpp\" Build Process.\n");
+            Log("===Cpp2IL by Samboy063===");
+            Log("A Tool to Reverse Unity's \"il2cpp\" Build Process.\n");
 
             ConsoleLogger.Initialize();
             try
@@ -77,6 +95,11 @@ namespace Decompiler
             #endregion
 
             File.WriteAllText(Path.Combine(CachePath, "checksum.txt"), newChecksum);
+
+            stopwatch.Stop();
+            TimeSpan ts = stopwatch.Elapsed;
+            Log("Decompiler Duration: " + string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes,
+                ts.Seconds, ts.Milliseconds / 10));
 
             return 0;
         }
@@ -115,7 +138,7 @@ namespace Decompiler
 
             Cpp2IlApi.MakeDummyDLLs();
 
-            KeyFunctionAddresses keyFunctionAddresses = null;
+            BaseKeyFunctionAddresses keyFunctionAddresses = null;
 
             if (LibCpp2IlMain.Binary?.InstructionSet == InstructionSet.X86_32 ||
                 LibCpp2IlMain.Binary?.InstructionSet == InstructionSet.X86_64 && LibCpp2IlMain.Binary is PE)
@@ -136,14 +159,14 @@ namespace Decompiler
             }
         }
 
-        private static void DoAssemblyCSharpAnalysis(string assemblyName, string rootDir, KeyFunctionAddresses keyFunctionAddresses)
+        private static void DoAssemblyCSharpAnalysis(string assemblyName, string rootDir, BaseKeyFunctionAddresses keyFunctionAddresses)
         {
             AssemblyDefinition assemblyCsharp = Cpp2IlApi.GetAssemblyByName(assemblyName);
 
             if (assemblyCsharp == null)
                 return;
 
-            Cpp2IlApi.AnalyseAssembly(AnalysisLevel.PRINT_ALL, assemblyCsharp, keyFunctionAddresses, Path.Combine(rootDir, "types"), true);
+            Cpp2IlApi.AnalyseAssembly(AnalysisLevel.PRINT_ALL, assemblyCsharp, keyFunctionAddresses, Path.Combine(rootDir, "types"), true, true);
 
             Cpp2IlApi.SaveAssemblies(rootDir, new List<AssemblyDefinition> { assemblyCsharp });
         }

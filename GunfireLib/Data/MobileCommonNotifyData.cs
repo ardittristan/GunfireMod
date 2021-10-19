@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class MobileCommonNotifyData
     {
-        public static Dictionary<string, commonnotifydataclass> notifyList;
+        public static Dictionary<int, commonnotifydataclass> notifyList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.CommonNotifyDataClass> parsedNotifyList =
-            new System.Collections.Generic.Dictionary<string, Classes.CommonNotifyDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.CommonNotifyDataClass> parsedNotifyList =
+            new System.Collections.Generic.Dictionary<int, Classes.CommonNotifyDataClass>();
 
         internal static void Setup()
         {
             notifyList = mobilecommonnotifydata.GetData();
-            foreach (KeyValuePair<string, commonnotifydataclass> notify in notifyList)
+            foreach (KeyValuePair<int, commonnotifydataclass> notify in notifyList)
             {
                 parsedNotifyList.Add(notify.Key, new Classes.CommonNotifyDataClass(notify.Key, notifyList));
             }

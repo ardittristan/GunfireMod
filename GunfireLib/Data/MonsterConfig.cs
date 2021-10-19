@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class MonsterConfig
     {
-        public static Dictionary<string, monsterconfigclass> configList;
+        public static Dictionary<int, monsterconfigclass> configList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.MonsterConfigClass> parsedConfigList =
-            new System.Collections.Generic.Dictionary<string, Classes.MonsterConfigClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.MonsterConfigClass> parsedConfigList =
+            new System.Collections.Generic.Dictionary<int, Classes.MonsterConfigClass>();
 
         internal static void Setup()
         {
             configList = monsterconfig_16.GetData();
-            foreach (KeyValuePair<string, monsterconfigclass> config in configList)
+            foreach (KeyValuePair<int, monsterconfigclass> config in configList)
             {
                 parsedConfigList.Add(config.Key, new Classes.MonsterConfigClass(config.Key, configList));
             }

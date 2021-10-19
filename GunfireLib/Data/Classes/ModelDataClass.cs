@@ -25,10 +25,10 @@ namespace GunfireLib.Data.Classes
 {
     public class ModelDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, modeldataclass> modelList;
+        private readonly int key;
+        private readonly Dictionary<int, modeldataclass> modelList;
 
-        public ModelDataClass(string key, Dictionary<string, modeldataclass> modelList)
+        public ModelDataClass(int key, Dictionary<int, modeldataclass> modelList)
         {
             this.key = key;
             this.modelList = modelList;
@@ -60,7 +60,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, SDieInfoSub> DieInfo
+        public Dictionary<int, SDieInfoSub> DieInfo
         {
             get => modelList[key].DieInfo;
         }
@@ -101,7 +101,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, SJumpInfoSub> JumpInfo
+        public Dictionary<int, SJumpInfoSub> JumpInfo
         {
             get => modelList[key].JumpInfo;
         }
@@ -152,7 +152,7 @@ namespace GunfireLib.Data.Classes
         }
 
         // TODO:
-        public Dictionary<string, SoundEffectInfoSub> SoundEffectInfo
+        public Dictionary<int, SoundEffectInfoSub> SoundEffectInfo
         {
             get => modelList[key].SoundEffectInfo;
         }

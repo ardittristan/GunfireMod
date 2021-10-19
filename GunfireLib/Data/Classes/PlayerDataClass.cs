@@ -8,17 +8,17 @@ namespace GunfireLib.Data.Classes
 {
     public class PlayerDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, playerdataclass> playerList;
+        private readonly int key;
+        private readonly Dictionary<int, playerdataclass> playerList;
 
-        public PlayerDataClass(string key, Dictionary<string, playerdataclass> playerList)
+        public PlayerDataClass(int key, Dictionary<int, playerdataclass> playerList)
         {
             this.key = key;
             this.playerList = playerList;
         }
 
         // TODO:
-        public Dictionary<string, PlayerGradeInfo> PlayerInfo
+        public Dictionary<int, PlayerGradeInfo> PlayerInfo
         {
             get => playerList[key].PlayerInfo;
         }

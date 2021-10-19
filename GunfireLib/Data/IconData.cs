@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class IconData
     {
-        public static Dictionary<string, icondataclass> iconList;
+        public static Dictionary<int, icondataclass> iconList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.IconDataClass> parsedIconList =
-            new System.Collections.Generic.Dictionary<string, Classes.IconDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.IconDataClass> parsedIconList =
+            new System.Collections.Generic.Dictionary<int, Classes.IconDataClass>();
 
         internal static void Setup()
         {
             iconList = icondata.GetData();
-            foreach (KeyValuePair<string, icondataclass> icon in iconList)
+            foreach (KeyValuePair<int, icondataclass> icon in iconList)
             {
                 parsedIconList.Add(icon.Key, new Classes.IconDataClass(icon.Key, iconList));
             }

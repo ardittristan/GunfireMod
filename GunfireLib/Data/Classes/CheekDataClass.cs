@@ -28,10 +28,10 @@ namespace GunfireLib.Data.Classes
 {
     public class CheekDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, cheekdataclass> cheekList;
+        private readonly int key;
+        private readonly Dictionary<int, cheekdataclass> cheekList;
 
-        public CheekDataClass(string key, Dictionary<string, cheekdataclass> cheekList)
+        public CheekDataClass(int key, Dictionary<int, cheekdataclass> cheekList)
         {
             this.key = key;
             this.cheekList = cheekList;

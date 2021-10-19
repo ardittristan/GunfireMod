@@ -25,10 +25,10 @@ namespace GunfireLib.Data.Classes
 {
     public class BenedictionDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, benedictiondataclass> benedictionList;
+        private readonly int key;
+        private readonly Dictionary<int, benedictiondataclass> benedictionList;
 
-        public BenedictionDataClass(string key, Dictionary<string, benedictiondataclass> benedictionList)
+        public BenedictionDataClass(int key, Dictionary<int, benedictiondataclass> benedictionList)
         {
             this.key = key;
             this.benedictionList = benedictionList;

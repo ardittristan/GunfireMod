@@ -8,10 +8,10 @@ namespace GunfireLib.Data.Classes
 {
     public class EleabNormalDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, eleabnormaldataclass> eleabList;
+        private readonly int key;
+        private readonly Dictionary<int, eleabnormaldataclass> eleabList;
 
-        public EleabNormalDataClass(string key, Dictionary<string, eleabnormaldataclass> eleabList)
+        public EleabNormalDataClass(int key, Dictionary<int, eleabnormaldataclass> eleabList)
         {
             this.key = key;
             this.eleabList = eleabList;

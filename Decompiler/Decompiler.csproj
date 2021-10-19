@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ConsoleLogger.cs" />
+    <Compile Include="Cpp2IlRuntimeArgs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -46,7 +47,7 @@
       <Version>0.6.1</Version>
     </PackageReference>
     <PackageReference Include="Samboy063.Cpp2IL.Core">
-      <Version>2021.3.7</Version>
+      <Version>2021.4.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

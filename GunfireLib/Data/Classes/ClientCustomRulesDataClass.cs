@@ -8,10 +8,10 @@ namespace GunfireLib.Data.Classes
 {
     public class ClientCustomRulesDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, clientcustomrulesdataclass> ruleList;
+        private readonly int key;
+        private readonly Dictionary<int, clientcustomrulesdataclass> ruleList;
 
-        public ClientCustomRulesDataClass(string key, Dictionary<string, clientcustomrulesdataclass> ruleList)
+        public ClientCustomRulesDataClass(int key, Dictionary<int, clientcustomrulesdataclass> ruleList)
         {
             this.key = key;
             this.ruleList = ruleList;

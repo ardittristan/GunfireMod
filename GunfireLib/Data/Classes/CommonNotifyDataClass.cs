@@ -25,10 +25,10 @@ namespace GunfireLib.Data.Classes
 {
     public class CommonNotifyDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, commonnotifydataclass> notifyList;
+        private readonly int key;
+        private readonly Dictionary<int, commonnotifydataclass> notifyList;
 
-        public CommonNotifyDataClass(string key, Dictionary<string, commonnotifydataclass> notifyList)
+        public CommonNotifyDataClass(int key, Dictionary<int, commonnotifydataclass> notifyList)
         {
             this.key = key;
             this.notifyList = notifyList;

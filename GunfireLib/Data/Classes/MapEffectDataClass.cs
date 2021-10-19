@@ -8,10 +8,10 @@ namespace GunfireLib.Data.Classes
 {
     public class MapEffectDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, mapeffectdataclass> effectList;
+        private readonly int key;
+        private readonly Dictionary<int, mapeffectdataclass> effectList;
 
-        public MapEffectDataClass(string key, Dictionary<string, mapeffectdataclass> effectList)
+        public MapEffectDataClass(int key, Dictionary<int, mapeffectdataclass> effectList)
         {
             this.key = key;
             this.effectList = effectList;

@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class MobileRelicData
     {
-        public static Dictionary<string, itemdataclass> itemList;
+        public static Dictionary<int, itemdataclass> itemList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.ItemDataClass> parsedItemList =
-            new System.Collections.Generic.Dictionary<string, Classes.ItemDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.ItemDataClass> parsedItemList =
+            new System.Collections.Generic.Dictionary<int, Classes.ItemDataClass>();
 
         internal static void Setup()
         {
             itemList = mobilerelicdata.GetData();
-            foreach (KeyValuePair<string, itemdataclass> item in itemList)
+            foreach (KeyValuePair<int, itemdataclass> item in itemList)
             {
                 parsedItemList.Add(item.Key, new Classes.ItemDataClass(item.Key, itemList));
             }

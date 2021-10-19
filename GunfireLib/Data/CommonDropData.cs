@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class CommonDropData
     {
-        public static Dictionary<string, itemdataclass> dropList;
+        public static Dictionary<int, itemdataclass> dropList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.ItemDataClass> parsedDropList =
-            new System.Collections.Generic.Dictionary<string, Classes.ItemDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.ItemDataClass> parsedDropList =
+            new System.Collections.Generic.Dictionary<int, Classes.ItemDataClass>();
 
         internal static void Setup()
         {
             dropList = commondropdata.GetData();
-            foreach (KeyValuePair<string, itemdataclass> drop in dropList)
+            foreach (KeyValuePair<int, itemdataclass> drop in dropList)
             {
                 parsedDropList.Add(drop.Key, new Classes.ItemDataClass(drop.Key, dropList));
             }

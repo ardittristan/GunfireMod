@@ -8,10 +8,10 @@ namespace GunfireLib.Data.Classes
 {
     public class LaserHitSoundDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, laserhitsounddataclass> hitSoundList;
+        private readonly int key;
+        private readonly Dictionary<int, laserhitsounddataclass> hitSoundList;
 
-        public LaserHitSoundDataClass(string key, Dictionary<string, laserhitsounddataclass> hitSoundList)
+        public LaserHitSoundDataClass(int key, Dictionary<int, laserhitsounddataclass> hitSoundList)
         {
             this.key = key;
             this.hitSoundList = hitSoundList;

@@ -22,10 +22,10 @@ namespace GunfireLib.Data.Classes
 {
     public class DamageNumberDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, damagenumberdataclass> damageNumberList;
+        private readonly int key;
+        private readonly Dictionary<int, damagenumberdataclass> damageNumberList;
 
-        public DamageNumberDataClass(string key, Dictionary<string, damagenumberdataclass> damageNumberList)
+        public DamageNumberDataClass(int key, Dictionary<int, damagenumberdataclass> damageNumberList)
         {
             this.key = key;
             this.damageNumberList = damageNumberList;

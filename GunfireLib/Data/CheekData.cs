@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class CheekData
     {
-        public static Dictionary<string, cheekdataclass> cheekList;
+        public static Dictionary<int, cheekdataclass> cheekList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.CheekDataClass> parsedCheekList =
-            new System.Collections.Generic.Dictionary<string, Classes.CheekDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.CheekDataClass> parsedCheekList =
+            new System.Collections.Generic.Dictionary<int, Classes.CheekDataClass>();
 
         internal static void Setup()
         {
             cheekList = cheekdata.GetData();
-            foreach (KeyValuePair<string, cheekdataclass> cheek in cheekList)
+            foreach (KeyValuePair<int, cheekdataclass> cheek in cheekList)
             {
                 parsedCheekList.Add(cheek.Key, new Classes.CheekDataClass(cheek.Key, cheekList));
             }

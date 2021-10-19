@@ -22,10 +22,10 @@ namespace GunfireLib.Data.Classes
 {
     public class ObjSignalClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, objsignalclass> signalList;
+        private readonly int key;
+        private readonly Dictionary<int, objsignalclass> signalList;
 
-        public ObjSignalClass(string key, Dictionary<string, objsignalclass> signalList)
+        public ObjSignalClass(int key, Dictionary<int, objsignalclass> signalList)
         {
             this.key = key;
             this.signalList = signalList;

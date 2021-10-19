@@ -22,17 +22,17 @@ namespace GunfireLib.Data.Classes
 {
     public class CloseDataClass
     {
-        private readonly string key;
-        private readonly Dictionary<string, closedataclass> closeList;
+        private readonly int key;
+        private readonly Dictionary<int, closedataclass> closeList;
 
-        public CloseDataClass(string key, Dictionary<string, closedataclass> closeList)
+        public CloseDataClass(int key, Dictionary<int, closedataclass> closeList)
         {
             this.key = key;
             this.closeList = closeList;
         }
 
         // TODO:
-        public Dictionary<string, OneComboData> ComboInfo
+        public Dictionary<int, OneComboData> ComboInfo
         {
             get => closeList[key].ComboInfo;
         }

@@ -30,12 +30,28 @@ namespace AssetRipper
                 throw new InvalidOperationException(), @"..\..\", "cache")
         );
 
+        // ReSharper disable once InconsistentNaming
+        private static readonly Stopwatch stopwatch = new Stopwatch();
+
         private static string _checksum = string.Empty;
 
         private static string _gunfirePath;
 
-        public static int Main(string[] args)
+        public static void Log(string txt)
         {
+#if DEBUG
+            Debug.WriteLine(txt);
+#else
+            Console.WriteLine(txt);
+#endif
+        }
+
+        public static int Main()
+        {
+            stopwatch.Start();
+
+            Log("Starting AssetRipper");
+
             GetGunfirePath();
 
             Directory.CreateDirectory(CachePath);
@@ -45,11 +61,7 @@ namespace AssetRipper
 
             string newChecksum = GetChecksum(Path.Combine(_gunfirePath, "GameAssembly.dll"));
 
-#if DEBUG
-            Debug.WriteLine($"\nChecksum: {newChecksum}\n");
-#else
-            Console.WriteLine($"\nChecksum: {newChecksum}\n");
-#endif
+            Log($"\nChecksum: {newChecksum}\n");
 
             if (_checksum == newChecksum) return 0;
 
@@ -78,6 +90,11 @@ namespace AssetRipper
             }
 
             File.WriteAllText(Path.Combine(CachePath, "checksum.txt"), newChecksum);
+
+            stopwatch.Stop();
+            TimeSpan ts = stopwatch.Elapsed;
+            Log("AssetRipper Duration: " + string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes,
+                ts.Seconds, ts.Milliseconds / 10));
 
             return 0;
         }

@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class SysChatData
     {
-        public static Dictionary<string, chatdataclass> chatList;
+        public static Dictionary<int, chatdataclass> chatList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.ChatDataClass> parsedChatList =
-            new System.Collections.Generic.Dictionary<string, Classes.ChatDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.ChatDataClass> parsedChatList =
+            new System.Collections.Generic.Dictionary<int, Classes.ChatDataClass>();
 
         internal static void Setup()
         {
             chatList = c_syschatdata.GetData();
-            foreach (KeyValuePair<string, chatdataclass> chat in chatList)
+            foreach (KeyValuePair<int, chatdataclass> chat in chatList)
             {
                 parsedChatList.Add(chat.Key, new Classes.ChatDataClass(chat.Key, chatList));
             }

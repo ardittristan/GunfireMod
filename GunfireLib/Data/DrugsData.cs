@@ -5,15 +5,15 @@ namespace GunfireLib.Data
 {
     public static class DrugData
     {
-        public static Dictionary<string, itemdataclass> drugList;
+        public static Dictionary<int, itemdataclass> drugList;
 
-        public static System.Collections.Generic.Dictionary<string, Classes.ItemDataClass> parsedDrugList =
-            new System.Collections.Generic.Dictionary<string, Classes.ItemDataClass>();
+        public static System.Collections.Generic.Dictionary<int, Classes.ItemDataClass> parsedDrugList =
+            new System.Collections.Generic.Dictionary<int, Classes.ItemDataClass>();
 
         internal static void Setup()
         {
             drugList = drugdata.GetData();
-            foreach (KeyValuePair<string, itemdataclass> drug in drugList)
+            foreach (KeyValuePair<int, itemdataclass> drug in drugList)
             {
                 parsedDrugList.Add(drug.Key, new Classes.ItemDataClass(drug.Key, drugList));
             }
