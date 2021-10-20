@@ -9,10 +9,18 @@ namespace GunfireLib.Utils
     {
         public static Type[] GetTypesInNamespace(string nameSpace)
         {
-            return
-              AppDomain.CurrentDomain.GetAssemblies()
+            return AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(t => t.GetLoadableTypes())
-                .Where(t => t.IsClass && t.Namespace == @nameSpace)
+                .Where(t => t.IsClass && t.Namespace == nameSpace)
+                .ToArray();
+        }
+
+        public static Type[] GetTypesInNamespace(string nameSpace, string assemblyName)
+        {
+            return AppDomain.CurrentDomain.GetAssemblies()
+                .Where(a => a.GetName().Name == assemblyName)
+                .SelectMany(t => t.GetLoadableTypes())
+                .Where(t => t.IsClass && t.Namespace == nameSpace)
                 .ToArray();
         }
 

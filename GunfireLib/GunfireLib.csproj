@@ -903,6 +903,7 @@
     <Compile Include="Data\Classes\AttackDataClass.cs" />
     <Compile Include="Data\Classes\AttrPlusDataClass.cs" />
     <Compile Include="Data\Classes\BenedictionDataClass.cs" />
+    <Compile Include="Data\Classes\BoxGoodsDataClass.cs" />
     <Compile Include="Data\Classes\ChatDataClass.cs" />
     <Compile Include="Data\Classes\CheekDataClass.cs" />
     <Compile Include="Data\Classes\ClientCustomRulesDataClass.cs" />
@@ -1001,6 +1002,8 @@
     <Compile Include="Data\MusicEffectData.cs" />
     <Compile Include="Data\ObjSignal.cs" />
     <Compile Include="Data\PlayerData.cs" />
+    <Compile Include="Data\RelicBoxGoodsData.cs" />
+    <Compile Include="Data\RelicData.cs" />
     <Compile Include="Data\Special\LevelGmData.cs" />
     <Compile Include="Data\Special\BossDropData.cs" />
     <Compile Include="Data\LevelConfigData.cs" />
@@ -1016,6 +1019,9 @@
     <Compile Include="Data\Special\MobileSpecialTextData_English.cs" />
     <Compile Include="Data\Special\MonsterData.cs" />
     <Compile Include="Data\Special\NormalTextData_English.cs" />
+    <Compile Include="Data\Special\PlayItemData.cs" />
+    <Compile Include="Data\Special\PlayThemeData.cs" />
+    <Compile Include="Data\Special\PveData.cs" />
     <Compile Include="Data\SysChatData.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="GunfireLib.cs" />
