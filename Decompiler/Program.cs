@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,7 +16,6 @@ using Cpp2IL.Core.Exceptions;
 using Gameloop.Vdf;
 using Gameloop.Vdf.Linq;
 using LibCpp2IL;
-using LibCpp2IL.PE;
 using Microsoft.Win32;
 using Mono.Cecil;
 
@@ -32,7 +32,7 @@ namespace Decompiler
         // ReSharper disable once InconsistentNaming
         private static readonly Stopwatch stopwatch = new Stopwatch();
 
-        private static readonly string[] AssembliesToCheck = { "Assembly-CSharp", "Assembly-CSharp-firstpass", /*"csharpdata"*/ };
+        private static readonly string[] AssembliesToCheck = { "Assembly-CSharp", "Assembly-CSharp-firstpass", "csharpdata" };
 
         private static Cpp2IlRuntimeArgs _args;
 
@@ -134,24 +134,32 @@ namespace Decompiler
                 Path.Combine(_gunfirePath, "Gunfire Reborn_Data"));
             _args.OutputRootDirectory = Path.Combine(CachePath, "generated");
 
+            GCSettings.LatencyMode = GCLatencyMode.SustainedLowLatency;
+
             Cpp2IlApi.InitializeLibCpp2Il(_args.PathToAssembly, _args.PathToMetadata, _args.UnityVersion, false);
 
             Cpp2IlApi.MakeDummyDLLs();
 
+            Cpp2IlApi.GenerateMetadataForAllAssemblies(_args.OutputRootDirectory);
+
             BaseKeyFunctionAddresses keyFunctionAddresses = null;
 
-            if (LibCpp2IlMain.Binary?.InstructionSet == InstructionSet.X86_32 ||
-                LibCpp2IlMain.Binary?.InstructionSet == InstructionSet.X86_64 && LibCpp2IlMain.Binary is PE)
+            if (LibCpp2IlMain.Binary?.InstructionSet != InstructionSet.ARM32)
             {
                 Logger.InfoNewline("Running Scan for Known Functions...");
                 keyFunctionAddresses = Cpp2IlApi.ScanForKeyFunctionAddresses();
             }
 
-            Cpp2IlApi.RunAttributeRestorationForAllAssemblies(keyFunctionAddresses);
+            Cpp2IlApi.RunAttributeRestorationForAllAssemblies(keyFunctionAddresses,
+                LibCpp2IlMain.MetadataVersion >= 29 ||
+                (LibCpp2IlMain.Binary?.InstructionSet == InstructionSet.X86_32 ||
+                 LibCpp2IlMain.Binary?.InstructionSet == InstructionSet.X86_64));
 
             Cpp2IlApi.PopulateConcreteImplementations();
 
             Cpp2IlApi.SaveAssemblies(_args.OutputRootDirectory);
+
+            Cpp2IlApi.HarmonyPatchCecilForBetterExceptions();
 
             foreach (string assembly in AssembliesToCheck)
             {

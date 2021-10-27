@@ -26,6 +26,9 @@
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Gee.External.Capstone'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'capstone'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'System.ValueTuple'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == '0harmony'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'MonoMod.RuntimeDetour'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'MonoMod.Utils'" />
 			<!-- ReSharper restore UnknownItemGroup -->
 		</ItemGroup>
 		<!-- ReSharper disable once UnknownTask -->

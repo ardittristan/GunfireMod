@@ -47,7 +47,7 @@
       <Version>0.6.1</Version>
     </PackageReference>
     <PackageReference Include="Samboy063.Cpp2IL.Core">
-      <Version>2021.4.1</Version>
+      <Version>2021.5.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
