@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "DecompilerNet6": {
-      "commandName": "Project",
-      "commandLineArgs": "> log.txt 2>err.txt",
-      "nativeDebugging": true
-    }
-  }
-}
