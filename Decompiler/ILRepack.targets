@@ -7,7 +7,7 @@
 		<Exec Command="echo ===End References===" />
 		<Exec Command="echo." />
 	</Target>
-	<Target Name="ILRepacker" AfterTargets="Build">
+	<Target Name="ILRepacker" AfterTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
 		<ItemGroup>
 			<AssemblyFile Include="$(OutputPath)$(AssemblyName).exe" />
 		</ItemGroup>
@@ -26,7 +26,7 @@
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'Gee.External.Capstone'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'capstone'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'System.ValueTuple'" />
-			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == '0harmony'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == '0Harmony'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'MonoMod.RuntimeDetour'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'MonoMod.Utils'" />
 			<!-- ReSharper restore UnknownItemGroup -->
@@ -40,17 +40,17 @@
 			OutputFile="@(AssemblyFile)"
 		/>
 	</Target>
-	<Target Name="Cleanup" AfterTargets="ILRepacker">
+	<Target Name="Cleanup" AfterTargets="ILRepacker" Condition=" '$(Configuration)' == 'Release' ">
 		<ItemGroup>
 			<FilesToDelete Include="$(OutputPath)*.dll" />
 			<FilesToDelete Include="$(OutputPath)*.pdb" />
 		</ItemGroup>
 		<Delete Files="@(FilesToDelete)" />
 	</Target>
-	<Target Name="Decompile" AfterTargets="Cleanup">
+	<Target Name="Decompile" AfterTargets="Cleanup" Condition=" '$(Configuration)' == 'Release' ">
 		<Exec Command="$(OutputPath)Decompiler.exe" />
 	</Target>
-	<Target Name="CopyDecompiled" AfterTargets="Decompile">
+	<Target Name="CopyDecompiled" AfterTargets="Decompile" Condition=" '$(Configuration)' == 'Release' ">
 		<PropertyGroup>
 			<GeneratedDir>$(MSBuildProjectDirectory)\cache\generated</GeneratedDir>
 		</PropertyGroup>
@@ -62,7 +62,7 @@
 			DestinationFolder="$(OutputPath)"
 		/>
 	</Target>
-	<Target Name="FinalCleanup" AfterTargets="CopyDecompiled">
+	<Target Name="FinalCleanup" AfterTargets="CopyDecompiled" Condition=" '$(Configuration)' == 'Release' ">
 		<ItemGroup>
 			<FileToDelete Include="$(OutputPath)Decompiler.exe" />
 			<FileToDelete Include="$(OutputPath)Decompiler.exe.config" />

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <StartupObject></StartupObject>
+    <IsPublishable>False</IsPublishable>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Decompiler\ConsoleLogger.cs" />
+    <Compile Include="..\Decompiler\Cpp2IlRuntimeArgs.cs" />
+    <Compile Include="..\Decompiler\Program.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gameloop.Vdf" Version="0.6.1" />
+    <PackageReference Include="Samboy063.Cpp2IL.Core" Version="2021.6.0" />
+  </ItemGroup>
+</Project>

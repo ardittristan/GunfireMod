@@ -1,10 +1,12 @@
 ﻿// ReSharper disable StringLiteralTypo
 // ReSharper disable CommentTypo
+#if !NET6_0_OR_GREATER
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
+#endif
+using System.Diagnostics;
 using System.Reflection;
 using System.Runtime;
 using System.Security.Cryptography;
@@ -36,9 +38,11 @@ namespace Decompiler
 
         private static Cpp2IlRuntimeArgs _args;
 
+#if !DEBUG
         private static string _checksum = string.Empty;
+#endif
 
-        private static string _gunfirePath;
+        private static string _gunfirePath = null!;
 
         public static void Log(string txt)
         {
@@ -59,6 +63,7 @@ namespace Decompiler
 
             Directory.CreateDirectory(CachePath);
 
+#if !DEBUG
             if (File.Exists(Path.Combine(CachePath, "checksum.txt")))
                 _checksum = File.ReadAllText(Path.Combine(CachePath, "checksum.txt"));
 
@@ -67,6 +72,8 @@ namespace Decompiler
             Log($"\nChecksum: {newChecksum}\n");
 
             if (_checksum == newChecksum) return 0;
+#endif
+
             Log("===Cpp2IL by Samboy063===");
             Log("A Tool to Reverse Unity's \"il2cpp\" Build Process.\n");
 
@@ -75,7 +82,7 @@ namespace Decompiler
             {
                 RunCpp2Il();
             }
-            #region catch
+#region catch
             catch (DllSaveException e)
             {
                 Logger.ErrorNewline(e.ToString());
@@ -92,21 +99,22 @@ namespace Decompiler
                 Console.ReadLine();
                 return -1;
             }
-            #endregion
+#endregion
 
+#if !DEBUG
             File.WriteAllText(Path.Combine(CachePath, "checksum.txt"), newChecksum);
+#endif
 
             stopwatch.Stop();
             TimeSpan ts = stopwatch.Elapsed;
-            Log("Decompiler Duration: " + string.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes,
-                ts.Seconds, ts.Milliseconds / 10));
+            Log($"Decompiler Duration: {ts.Hours:00}:{ts.Minutes:00}:{ts.Seconds:00}.{ts.Milliseconds / 10:00}");
 
             return 0;
         }
 
         internal static void GetGunfirePath()
         {
-            string steamPath = (string)Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Valve\Steam", "SteamPath", "");
+            string steamPath = (string)Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Valve\Steam", "SteamPath", "")!;
             VProperty vdf = VdfConvert.Deserialize(File.ReadAllText(Path.Combine(steamPath, "steamapps", "libraryfolders.vdf")));
             
             foreach (VToken vToken in vdf.Value.Children())
@@ -142,7 +150,7 @@ namespace Decompiler
 
             Cpp2IlApi.GenerateMetadataForAllAssemblies(_args.OutputRootDirectory);
 
-            BaseKeyFunctionAddresses keyFunctionAddresses = null;
+            BaseKeyFunctionAddresses keyFunctionAddresses = null!;
 
             if (LibCpp2IlMain.Binary?.InstructionSet != InstructionSet.ARM32)
             {
@@ -157,9 +165,9 @@ namespace Decompiler
 
             Cpp2IlApi.PopulateConcreteImplementations();
 
-            Cpp2IlApi.SaveAssemblies(_args.OutputRootDirectory);
-
             Cpp2IlApi.HarmonyPatchCecilForBetterExceptions();
+
+            Cpp2IlApi.SaveAssemblies(_args.OutputRootDirectory);
 
             foreach (string assembly in AssembliesToCheck)
             {
@@ -169,7 +177,9 @@ namespace Decompiler
 
         private static void DoAssemblyCSharpAnalysis(string assemblyName, string rootDir, BaseKeyFunctionAddresses keyFunctionAddresses)
         {
+#pragma warning disable CS8600
             AssemblyDefinition assemblyCsharp = Cpp2IlApi.GetAssemblyByName(assemblyName);
+#pragma warning restore CS8600
 
             if (assemblyCsharp == null)
                 return;
@@ -179,8 +189,18 @@ namespace Decompiler
             Cpp2IlApi.SaveAssemblies(rootDir, new List<AssemblyDefinition> { assemblyCsharp });
         }
 
+#if NET6_0_OR_GREATER
         internal static string GetMd5Checksum(string filename)
         {
+            using MD5 md5 = MD5.Create();
+            using FileStream stream = File.OpenRead(filename);
+            byte[] hash = md5.ComputeHash(stream);
+            return BitConverter.ToString(hash).Replace("-", "");
+        }
+#else
+        internal static string GetMd5Checksum(string filename)
+        {
+            // ReSharper disable once ConvertToUsingDeclaration
             using (MD5 md5 = MD5.Create())
             {
                 using (FileStream stream = File.OpenRead(filename))
@@ -190,7 +210,8 @@ namespace Decompiler
                 }
             }
         }
-
+#endif
+        
         internal static string GetCpp2IlVersion()
         {
             string output = "";
@@ -198,7 +219,11 @@ namespace Decompiler
             Assembly assembly = Assembly.GetExecutingAssembly();
 
             string ilRepackName = assembly.GetManifestResourceNames().First(s => s.Contains("ILRepack.List"));
+
+#pragma warning disable CS8600
+            // ReSharper disable once AssignNullToNotNullAttribute
             Stream stream = assembly.GetManifestResourceStream(ilRepackName);
+#pragma warning restore CS8600
 
             if (stream == null) return output;
 
@@ -211,6 +236,7 @@ namespace Decompiler
             {
                 string[] values = entry.Split(',');
                 if (values[0].Trim().Length == 0) continue;
+                // ReSharper disable twice ReplaceSubstringWithRangeIndexer
                 if (values[0].Substring(1) == "Cpp2IL.Core") output = values[1].Substring(9);
             }
 

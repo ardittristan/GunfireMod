@@ -6,7 +6,7 @@ using MelonLoader;
 [assembly: MelonGame("duoyi", "Gunfire Reborn")]
 [assembly: MelonPlatform(MelonPlatformAttribute.CompatiblePlatforms.WINDOWS_X64)]
 [assembly: MelonPlatformDomain(MelonPlatformDomainAttribute.CompatibleDomains.IL2CPP)]
-[assembly: VerifyLoaderVersion(0, 4, 1, true)]
+[assembly: VerifyLoaderVersion(0, 5, 0, true)]
 [assembly: MelonPriority(-100)]
 
 // General Information about an assembly is controlled through the following
