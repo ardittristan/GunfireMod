@@ -346,3 +346,4 @@ ASALocalRun/
 MigrationBackup
 **/cache
 /Test
+GunfireLib/Generated
