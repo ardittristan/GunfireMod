@@ -2,6 +2,7 @@
 using System.Linq;
 using MelonLoader;
 
+#pragma warning disable CS0618 // Type or member is obsolete
 namespace GunfireLib.Utils
 {
     public static class GunfireLogger

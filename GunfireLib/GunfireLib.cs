@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using MelonLoader;
 using UnityEngine;
 using GunfireLib.Instances;
@@ -20,10 +21,15 @@ namespace GunfireLib
         internal static readonly bool FileLog =
             Environment.GetCommandLineArgs().Any(s => s.Contains("--gunfirelib.filelog"));
 
+        internal static readonly bool EnableDevMode =
+            Environment.GetCommandLineArgs().Any(s => s.Contains("--gunfirelib.forcedev"));
+
         internal static readonly string LibConfigDirectory =
             Path.Combine(
                 Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) ??
                 throw new InvalidOperationException(), "GunfireLib");
+
+        internal new static MelonLogger.Instance LoggerInstance;
 
         private static bool _firstHomeLoad = true;
         private static bool _firstLateHomeLoad = true;
@@ -31,6 +37,7 @@ namespace GunfireLib
         public GunfireLib()
         {
             harmony = HarmonyInstance;
+            _ = SetupLogger();
 
             HarmonyLib.Tools.Logger.ChannelFilter = HarmonyLib.Tools.Logger.LogChannel.All;
             HarmonyLib.Tools.HarmonyFileLog.Enabled = true;
@@ -102,6 +109,19 @@ namespace GunfireLib
             {
                 GameSceneManager.BackToHome();
             }
+        }
+
+        private async Task SetupLogger()
+        {
+            await Task.Run(() =>
+            {
+                while (base.LoggerInstance == null)
+                {
+                    Task.Delay(1).Wait();
+                }
+
+                LoggerInstance = base.LoggerInstance;
+            });
         }
     }
 }

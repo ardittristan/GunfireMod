@@ -28,7 +28,7 @@ namespace GunfireLib.Instances
 
         internal void Awake()
         {
-            MelonLogger.Msg("Starting PortalBehaviour");
+            GunfireLib.LoggerInstance.Msg("Starting PortalBehaviour");
             MelonCoroutines.Start(CheckPortal());
         }
 

@@ -46,7 +46,7 @@ namespace FontFixMod.Utils
                 {
                     switch (__1.ToString())
                     {
-                        case string s when s.StartsWith("Material 1309_jian_") && s.EndsWith(" doesn't have _Stencil property"):
+                        case { } s when s.StartsWith("Material 1309_jian_") && s.EndsWith(" doesn't have _Stencil property"):
                             return false;
                     }
                 }

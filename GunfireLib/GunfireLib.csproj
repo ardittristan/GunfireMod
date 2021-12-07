@@ -1026,6 +1026,7 @@
     <Compile Include="Data\SysChatData.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="GunfireLib.cs" />
+    <Compile Include="Patches\MainManagerPatch.cs" />
     <Compile Include="Patches\ScriptEventManagerPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Instances\PortalInstance.cs" />
