@@ -1,5 +1,5 @@
 ﻿using HarmonyLib;
-using Il2CppSystem.Reflection;
+using System.Reflection;
 
 namespace GunfireLib.Patches
 {
@@ -8,7 +8,7 @@ namespace GunfireLib.Patches
     {
         static bool Prepare(MethodBase original)
         {
-            if (original?.FullName?.Contains("HaveGMLimit") == true && !GunfireLib.EnableDevMode) return false;
+            if (original?.Name?.Contains("HaveGMLimit") == true && !GunfireLib.EnableDevMode) return false;
 
             return true;
         }
