@@ -1,1122 +1,125 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{455997F1-0575-4131-89EC-296637DB5B9D}</ProjectGuid>
+    <TargetFramework>net6.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FontFixMod</RootNamespace>
-    <AssemblyName>FontFixMod</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <LangVersion>latest</LangVersion>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
     <NoWarn>MSB3277</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="FontFix.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\LogSilencer.cs" />
+    <Compile Remove="MelonLoader\**" />
+    <EmbeddedResource Remove="MelonLoader\**" />
+    <None Remove="MelonLoader\**" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Il2Cpp, Version=0.4.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>MelonLoader\Dependencies\SupportModules\Il2Cpp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MelonLoader">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>MelonLoader\MelonLoader.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="netstandard">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>MelonLoader\Managed\netstandard.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Preload">
-      <HintPath>MelonLoader\Dependencies\SupportModules\Preload.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Data.Entity.Design" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="Accessibility">
-      <HintPath>MelonLoader\Managed\Accessibility.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>MelonLoader\Managed\Assembly-CSharp-firstpass.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>MelonLoader\Managed\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Bolt.Core.Runtime">
-      <HintPath>MelonLoader\Managed\Bolt.Core.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Boo.Lang.Compiler">
-      <HintPath>MelonLoader\Managed\Boo.Lang.Compiler.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Boo.Lang">
-      <HintPath>MelonLoader\Managed\Boo.Lang.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Boo.Lang.Extensions">
-      <HintPath>MelonLoader\Managed\Boo.Lang.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Boo.Lang.Parser">
-      <HintPath>MelonLoader\Managed\Boo.Lang.Parser.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Boo.Lang.PatternMatching">
-      <HintPath>MelonLoader\Managed\Boo.Lang.PatternMatching.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Boo.Lang.Useful">
-      <HintPath>MelonLoader\Managed\Boo.Lang.Useful.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="BouncyCastle.Crypto">
-      <HintPath>MelonLoader\Managed\BouncyCastle.Crypto.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Coffee.UIParticle">
-      <HintPath>MelonLoader\Managed\Coffee.UIParticle.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Commons.Xml.Relaxng">
-      <HintPath>MelonLoader\Managed\Commons.Xml.Relaxng.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="cscompmgd">
-      <HintPath>MelonLoader\Managed\cscompmgd.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="csharpdata">
-      <HintPath>MelonLoader\Managed\csharpdata.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="CustomMarshalers">
-      <HintPath>MelonLoader\Managed\CustomMarshalers.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>MelonLoader\Managed\DOTween.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DOTweenPro">
-      <HintPath>MelonLoader\Managed\DOTweenPro.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="I18N.CJK">
-      <HintPath>MelonLoader\Managed\I18N.CJK.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="I18N">
-      <HintPath>MelonLoader\Managed\I18N.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="I18N.MidEast">
-      <HintPath>MelonLoader\Managed\I18N.MidEast.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="I18N.Other">
-      <HintPath>MelonLoader\Managed\I18N.Other.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="I18N.Rare">
-      <HintPath>MelonLoader\Managed\I18N.Rare.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="I18N.West">
-      <HintPath>MelonLoader\Managed\I18N.West.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="IBM.Data.DB2">
-      <HintPath>MelonLoader\Managed\IBM.Data.DB2.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Iced">
-      <HintPath>MelonLoader\Managed\Iced.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>MelonLoader\Managed\ICSharpCode.SharpZipLib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppI18N.CJK">
-      <HintPath>MelonLoader\Managed\Il2CppI18N.CJK.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppI18N">
-      <HintPath>MelonLoader\Managed\Il2CppI18N.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppMono.Security">
-      <HintPath>MelonLoader\Managed\Il2CppMono.Security.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2Cppmscorlib">
-      <HintPath>MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppSystem.Configuration">
-      <HintPath>MelonLoader\Managed\Il2CppSystem.Configuration.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppSystem.Core">
-      <HintPath>MelonLoader\Managed\Il2CppSystem.Core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppSystem.Data">
-      <HintPath>MelonLoader\Managed\Il2CppSystem.Data.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppSystem.Diagnostics.StackTrace">
-      <HintPath>MelonLoader\Managed\Il2CppSystem.Diagnostics.StackTrace.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppSystem">
-      <HintPath>MelonLoader\Managed\Il2CppSystem.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppSystem.Globalization.Extensions">
-      <HintPath>MelonLoader\Managed\Il2CppSystem.Globalization.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppSystem.IO.Compression">
-      <HintPath>MelonLoader\Managed\Il2CppSystem.IO.Compression.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppSystem.Numerics">
-      <HintPath>MelonLoader\Managed\Il2CppSystem.Numerics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppSystem.Runtime.Serialization">
-      <HintPath>MelonLoader\Managed\Il2CppSystem.Runtime.Serialization.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppSystem.Text.Encoding.CodePages">
-      <HintPath>MelonLoader\Managed\Il2CppSystem.Text.Encoding.CodePages.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Il2CppSystem.Xml">
-      <HintPath>MelonLoader\Managed\Il2CppSystem.Xml.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Ludiq.Core.Runtime">
-      <HintPath>MelonLoader\Managed\Ludiq.Core.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Ludiq.Graphs.Runtime">
-      <HintPath>MelonLoader\Managed\Ludiq.Graphs.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MailKit">
-      <HintPath>MelonLoader\Managed\MailKit.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.CSharp">
-      <HintPath>MelonLoader\Managed\Microsoft.CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure">
-      <HintPath>MelonLoader\Managed\Microsoft.Web.Infrastructure.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MimeKit">
-      <HintPath>MelonLoader\Managed\MimeKit.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Mono.CompilerServices.SymbolWriter">
-      <HintPath>MelonLoader\Managed\Mono.CompilerServices.SymbolWriter.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Mono.CSharp">
-      <HintPath>MelonLoader\Managed\Mono.CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Mono.Data.Sqlite">
-      <HintPath>MelonLoader\Managed\Mono.Data.Sqlite.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Mono.Data.Tds">
-      <HintPath>MelonLoader\Managed\Mono.Data.Tds.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Mono.Messaging">
-      <HintPath>MelonLoader\Managed\Mono.Messaging.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Mono.Posix">
-      <HintPath>MelonLoader\Managed\Mono.Posix.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Mono.Security">
-      <HintPath>MelonLoader\Managed\Mono.Security.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Mono.WebBrowser">
-      <HintPath>MelonLoader\Managed\Mono.WebBrowser.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="mscorlib">
-      <HintPath>MelonLoader\Managed\mscorlib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>MelonLoader\Managed\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Novell.Directory.Ldap">
-      <HintPath>MelonLoader\Managed\Novell.Directory.Ldap.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ProBuilderCore-Unity5">
-      <HintPath>MelonLoader\Managed\ProBuilderCore-Unity5.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ProBuilderMeshOps-Unity5">
-      <HintPath>MelonLoader\Managed\ProBuilderMeshOps-Unity5.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>MelonLoader\Managed\Sirenix.OdinInspector.Attributes.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sirenix.Serialization.AOTGenerated">
-      <HintPath>MelonLoader\Managed\Sirenix.Serialization.AOTGenerated.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>MelonLoader\Managed\Sirenix.Serialization.Config.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sirenix.Serialization">
-      <HintPath>MelonLoader\Managed\Sirenix.Serialization.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sirenix.Utilities">
-      <HintPath>MelonLoader\Managed\Sirenix.Utilities.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SMDiagnostics">
-      <HintPath>MelonLoader\Managed\SMDiagnostics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ComponentModel.Composition">
-      <HintPath>MelonLoader\Managed\System.ComponentModel.Composition.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ComponentModel.DataAnnotations">
-      <HintPath>MelonLoader\Managed\System.ComponentModel.DataAnnotations.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Configuration">
-      <HintPath>MelonLoader\Managed\System.Configuration.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Configuration.Install">
-      <HintPath>MelonLoader\Managed\System.Configuration.Install.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <HintPath>MelonLoader\Managed\System.Data.DataSetExtensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Data">
-      <HintPath>MelonLoader\Managed\System.Data.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Data.Linq">
-      <HintPath>MelonLoader\Managed\System.Data.Linq.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Data.OracleClient">
-      <HintPath>MelonLoader\Managed\System.Data.OracleClient.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Data.Services.Client">
-      <HintPath>MelonLoader\Managed\System.Data.Services.Client.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Data.Services">
-      <HintPath>MelonLoader\Managed\System.Data.Services.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Design">
-      <HintPath>MelonLoader\Managed\System.Design.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.DirectoryServices">
-      <HintPath>MelonLoader\Managed\System.DirectoryServices.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.DirectoryServices.Protocols">
-      <HintPath>MelonLoader\Managed\System.DirectoryServices.Protocols.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System">
-      <HintPath>MelonLoader\Managed\System.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Drawing.Design">
-      <HintPath>MelonLoader\Managed\System.Drawing.Design.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Drawing">
-      <HintPath>MelonLoader\Managed\System.Drawing.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.EnterpriseServices">
-      <HintPath>MelonLoader\Managed\System.EnterpriseServices.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IdentityModel">
-      <HintPath>MelonLoader\Managed\System.IdentityModel.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IdentityModel.Selectors">
-      <HintPath>MelonLoader\Managed\System.IdentityModel.Selectors.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO.Compression.FileSystem">
-      <HintPath>MelonLoader\Managed\System.IO.Compression.FileSystem.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Json">
-      <HintPath>MelonLoader\Managed\System.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Management">
-      <HintPath>MelonLoader\Managed\System.Management.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Messaging">
-      <HintPath>MelonLoader\Managed\System.Messaging.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net">
-      <HintPath>MelonLoader\Managed\System.Net.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.Formatting">
-      <HintPath>MelonLoader\Managed\System.Net.Http.Formatting.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.WebRequest">
-      <HintPath>MelonLoader\Managed\System.Net.Http.WebRequest.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Numerics">
-      <HintPath>MelonLoader\Managed\System.Numerics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Numerics.Vectors">
-      <HintPath>MelonLoader\Managed\System.Numerics.Vectors.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Reflection.Context">
-      <HintPath>MelonLoader\Managed\System.Reflection.Context.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Caching">
-      <HintPath>MelonLoader\Managed\System.Runtime.Caching.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.DurableInstancing">
-      <HintPath>MelonLoader\Managed\System.Runtime.DurableInstancing.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Remoting">
-      <HintPath>MelonLoader\Managed\System.Runtime.Remoting.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization">
-      <HintPath>MelonLoader\Managed\System.Runtime.Serialization.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization.Formatters.Soap">
-      <HintPath>MelonLoader\Managed\System.Runtime.Serialization.Formatters.Soap.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security">
-      <HintPath>MelonLoader\Managed\System.Security.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ServiceModel.Activation">
-      <HintPath>MelonLoader\Managed\System.ServiceModel.Activation.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ServiceModel.Discovery">
-      <HintPath>MelonLoader\Managed\System.ServiceModel.Discovery.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ServiceModel">
-      <HintPath>MelonLoader\Managed\System.ServiceModel.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ServiceModel.Internals">
-      <HintPath>MelonLoader\Managed\System.ServiceModel.Internals.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ServiceModel.Routing">
-      <HintPath>MelonLoader\Managed\System.ServiceModel.Routing.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ServiceModel.Web">
-      <HintPath>MelonLoader\Managed\System.ServiceModel.Web.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ServiceProcess">
-      <HintPath>MelonLoader\Managed\System.ServiceProcess.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Transactions">
-      <HintPath>MelonLoader\Managed\System.Transactions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Abstractions">
-      <HintPath>MelonLoader\Managed\System.Web.Abstractions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.ApplicationServices">
-      <HintPath>MelonLoader\Managed\System.Web.ApplicationServices.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web">
-      <HintPath>MelonLoader\Managed\System.Web.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.DynamicData">
-      <HintPath>MelonLoader\Managed\System.Web.DynamicData.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Extensions.Design">
-      <HintPath>MelonLoader\Managed\System.Web.Extensions.Design.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Extensions">
-      <HintPath>MelonLoader\Managed\System.Web.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Http">
-      <HintPath>MelonLoader\Managed\System.Web.Http.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Http.SelfHost">
-      <HintPath>MelonLoader\Managed\System.Web.Http.SelfHost.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost">
-      <HintPath>MelonLoader\Managed\System.Web.Http.WebHost.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Mvc">
-      <HintPath>MelonLoader\Managed\System.Web.Mvc.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Razor">
-      <HintPath>MelonLoader\Managed\System.Web.Razor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.RegularExpressions">
-      <HintPath>MelonLoader\Managed\System.Web.RegularExpressions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Routing">
-      <HintPath>MelonLoader\Managed\System.Web.Routing.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Services">
-      <HintPath>MelonLoader\Managed\System.Web.Services.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment">
-      <HintPath>MelonLoader\Managed\System.Web.WebPages.Deployment.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages">
-      <HintPath>MelonLoader\Managed\System.Web.WebPages.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor">
-      <HintPath>MelonLoader\Managed\System.Web.WebPages.Razor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Windows.Forms.DataVisualization">
-      <HintPath>MelonLoader\Managed\System.Windows.Forms.DataVisualization.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Windows.Forms">
-      <HintPath>MelonLoader\Managed\System.Windows.Forms.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xaml">
-      <HintPath>MelonLoader\Managed\System.Xaml.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml">
-      <HintPath>MelonLoader\Managed\System.Xml.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <HintPath>MelonLoader\Managed\System.Xml.Linq.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SystemWebTestShim">
-      <HintPath>MelonLoader\Managed\SystemWebTestShim.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnhollowerBaseLib">
-      <HintPath>MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnhollowerRuntimeLib">
-      <HintPath>MelonLoader\Managed\UnhollowerRuntimeLib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>MelonLoader\Managed\Unity.Analytics.DataPrivacy.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>MelonLoader\Managed\Unity.Postprocessing.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>MelonLoader\Managed\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Lightweight.Runtime">
-      <HintPath>MelonLoader\Managed\Unity.RenderPipelines.Lightweight.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>MelonLoader\Managed\Unity.TextMeshPro.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>MelonLoader\Managed\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.AccessibilityModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.AccessibilityModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.AIModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.AIModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.AnimationModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ARModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.ARModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.AudioModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.AudioModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.BaselibModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.BaselibModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ClothModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.ClothModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ClusterInputModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ClusterRendererModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.CrashReportingModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.CrashReportingModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.DirectorModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.DirectorModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.FileSystemHttpModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.FileSystemHttpModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.GameCenterModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.GameCenterModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.GridModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.GridModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.HotReloadModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.HotReloadModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Il2CppAssetBundleManager">
-      <HintPath>MelonLoader\Managed\UnityEngine.Il2CppAssetBundleManager.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Il2CppImageConversionManager">
-      <HintPath>MelonLoader\Managed\UnityEngine.Il2CppImageConversionManager.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.InputModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.InputModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.LocalizationModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.LocalizationModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>MelonLoader\Managed\UnityEngine.Networking.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.PerformanceReportingModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.Physics2DModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.PhysicsModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ProfilerModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.ProfilerModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ScreenCaptureModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.SharedInternalsModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>MelonLoader\Managed\UnityEngine.SpatialTracking.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.SpriteMaskModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.SpriteShapeModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.SpriteShapeModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.StreamingModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.StreamingModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.StyleSheetsModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.StyleSheetsModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.SubstanceModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.SubstanceModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.TerrainModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.TerrainModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.TerrainPhysicsModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.TextCoreModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.TextCoreModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.TilemapModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.TilemapModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Timeline">
-      <HintPath>MelonLoader\Managed\UnityEngine.Timeline.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.TimelineModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.TimelineModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.TLSModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.TLSModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>MelonLoader\Managed\UnityEngine.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UIElementsModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.UIElementsModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UIModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.UIModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UmbraModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.UmbraModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UNETModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.UNETModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UnityAnalyticsModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UnityConnectModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.UnityConnectModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UnityTestProtocolModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.UnityTestProtocolModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.VehiclesModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.VehiclesModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.VFXModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.VFXModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.VideoModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.VideoModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.VRModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.VRModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.WindModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.WindModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.XRModule">
-      <HintPath>MelonLoader\Managed\UnityEngine.XRModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ValueTupleBridge">
-      <HintPath>MelonLoader\Managed\ValueTupleBridge.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="WindowsBase">
-      <HintPath>MelonLoader\Managed\WindowsBase.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Assembly-CSharp-firstpass.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppBolt.Core.Runtime.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppBouncyCastle.Crypto.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppCoffee.UIParticle.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppDOTween.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppDOTweenPro.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppI18N.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppI18N.CJK.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppICSharpCode.SharpZipLib.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppLudiq.Core.Runtime.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppLudiq.Graphs.Runtime.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppMailKit.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppMimeKit.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppMono.Security.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2Cppmscorlib.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2Cppnetstandard.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppNewtonsoft.Json.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppProBuilderCore-Unity5.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppProBuilderMeshOps-Unity5.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSirenix.OdinInspector.Attributes.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSirenix.Serialization.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSirenix.Serialization.AOTGenerated.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSirenix.Serialization.Config.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSirenix.Utilities.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSystem.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSystem.Configuration.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSystem.Core.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSystem.Data.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSystem.Diagnostics.StackTrace.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSystem.Globalization.Extensions.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSystem.IO.Compression.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSystem.Numerics.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSystem.Runtime.Serialization.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSystem.Text.Encoding.CodePages.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppSystem.Xml.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Il2CppXLog.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Unity.Postprocessing.Runtime.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Unity.RenderPipelines.Core.Runtime.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Unity.RenderPipelines.Lightweight.Runtime.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\Unity.TextMeshPro.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.AccessibilityModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.AIModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.AnimationModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.ARModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.AssetBundleModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.AudioModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.BaselibModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.ClothModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.ClusterInputModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.ClusterRendererModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.CrashReportingModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.DirectorModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.FileSystemHttpModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.GameCenterModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.GridModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.HotReloadModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.ImageConversionModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.IMGUIModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.InputModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.JSONSerializeModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.LocalizationModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.Networking.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.ParticleSystemModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.PerformanceReportingModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.Physics2DModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.PhysicsModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.ProfilerModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.ScreenCaptureModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.SharedInternalsModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.SpriteMaskModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.SpriteShapeModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.StreamingModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.StyleSheetsModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.SubstanceModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.TerrainModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.TerrainPhysicsModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.TextCoreModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.TextRenderingModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.TilemapModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.Timeline.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.TimelineModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.TLSModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.UI.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.UIElementsModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.UIModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.UmbraModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.UNETModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.UnityAnalyticsModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.UnityConnectModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.UnityTestProtocolModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.UnityWebRequestAssetBundleModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.UnityWebRequestAudioModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.UnityWebRequestModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.UnityWebRequestTextureModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.UnityWebRequestWWWModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.VehiclesModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.VFXModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.VideoModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.VRModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.WindModule.dll" />
+    <Reference Include="MelonLoader\Il2CppAssemblies\UnityEngine.XRModule.dll" />
+    <Reference Include="MelonLoader\net6\0Harmony.dll" />
+    <Reference Include="MelonLoader\net6\Il2CppInterop.Common.dll" />
+    <Reference Include="MelonLoader\net6\Il2CppInterop.Runtime.dll" />
+    <Reference Include="MelonLoader\net6\MelonLoader.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="MelonLoader\Dependencies\SupportModules\Il2Cpp.dll" />
-    <Content Include="MelonLoader\Dependencies\SupportModules\Preload.dll" />
-    <Content Include="MelonLoader\MelonLoader.dll" />
-    <Content Include="MelonLoader\Managed\Accessibility.dll" />
-    <Content Include="MelonLoader\Managed\Assembly-CSharp-firstpass.dll" />
-    <Content Include="MelonLoader\Managed\Assembly-CSharp.dll" />
-    <Content Include="MelonLoader\Managed\Bolt.Core.Runtime.dll" />
-    <Content Include="MelonLoader\Managed\Boo.Lang.Compiler.dll" />
-    <Content Include="MelonLoader\Managed\Boo.Lang.dll" />
-    <Content Include="MelonLoader\Managed\Boo.Lang.Extensions.dll" />
-    <Content Include="MelonLoader\Managed\Boo.Lang.Parser.dll" />
-    <Content Include="MelonLoader\Managed\Boo.Lang.PatternMatching.dll" />
-    <Content Include="MelonLoader\Managed\Boo.Lang.Useful.dll" />
-    <Content Include="MelonLoader\Managed\BouncyCastle.Crypto.dll" />
-    <Content Include="MelonLoader\Managed\Coffee.UIParticle.dll" />
-    <Content Include="MelonLoader\Managed\Commons.Xml.Relaxng.dll" />
-    <Content Include="MelonLoader\Managed\cscompmgd.dll" />
-    <Content Include="MelonLoader\Managed\csharpdata.dll" />
-    <Content Include="MelonLoader\Managed\CustomMarshalers.dll" />
-    <Content Include="MelonLoader\Managed\DOTween.dll" />
-    <Content Include="MelonLoader\Managed\DOTweenPro.dll" />
-    <Content Include="MelonLoader\Managed\I18N.CJK.dll" />
-    <Content Include="MelonLoader\Managed\I18N.dll" />
-    <Content Include="MelonLoader\Managed\I18N.MidEast.dll" />
-    <Content Include="MelonLoader\Managed\I18N.Other.dll" />
-    <Content Include="MelonLoader\Managed\I18N.Rare.dll" />
-    <Content Include="MelonLoader\Managed\I18N.West.dll" />
-    <Content Include="MelonLoader\Managed\IBM.Data.DB2.dll" />
-    <Content Include="MelonLoader\Managed\Iced.dll" />
-    <Content Include="MelonLoader\Managed\ICSharpCode.SharpZipLib.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppI18N.CJK.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppI18N.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppMono.Security.dll" />
-    <Content Include="MelonLoader\Managed\Il2Cppmscorlib.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppSystem.Configuration.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppSystem.Core.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppSystem.Data.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppSystem.Diagnostics.StackTrace.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppSystem.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppSystem.Globalization.Extensions.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppSystem.IO.Compression.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppSystem.Numerics.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppSystem.Runtime.Serialization.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppSystem.Text.Encoding.CodePages.dll" />
-    <Content Include="MelonLoader\Managed\Il2CppSystem.Xml.dll" />
-    <Content Include="MelonLoader\Managed\Ludiq.Core.Runtime.dll" />
-    <Content Include="MelonLoader\Managed\Ludiq.Graphs.Runtime.dll" />
-    <Content Include="MelonLoader\Managed\MailKit.dll" />
-    <Content Include="MelonLoader\Managed\Microsoft.CSharp.dll" />
-    <Content Include="MelonLoader\Managed\Microsoft.Web.Infrastructure.dll" />
-    <Content Include="MelonLoader\Managed\MimeKit.dll" />
-    <Content Include="MelonLoader\Managed\Mono.CompilerServices.SymbolWriter.dll" />
-    <Content Include="MelonLoader\Managed\Mono.CSharp.dll" />
-    <Content Include="MelonLoader\Managed\Mono.Data.Sqlite.dll" />
-    <Content Include="MelonLoader\Managed\Mono.Data.Tds.dll" />
-    <Content Include="MelonLoader\Managed\Mono.Messaging.dll" />
-    <Content Include="MelonLoader\Managed\Mono.Posix.dll" />
-    <Content Include="MelonLoader\Managed\Mono.Security.dll" />
-    <Content Include="MelonLoader\Managed\Mono.WebBrowser.dll" />
-    <Content Include="MelonLoader\Managed\mscorlib.dll" />
-    <Content Include="MelonLoader\Managed\netstandard.dll" />
-    <Content Include="MelonLoader\Managed\Newtonsoft.Json.dll" />
-    <Content Include="MelonLoader\Managed\Novell.Directory.Ldap.dll" />
-    <Content Include="MelonLoader\Managed\ProBuilderCore-Unity5.dll" />
-    <Content Include="MelonLoader\Managed\ProBuilderMeshOps-Unity5.dll" />
-    <Content Include="MelonLoader\Managed\Sirenix.OdinInspector.Attributes.dll" />
-    <Content Include="MelonLoader\Managed\Sirenix.Serialization.AOTGenerated.dll" />
-    <Content Include="MelonLoader\Managed\Sirenix.Serialization.Config.dll" />
-    <Content Include="MelonLoader\Managed\Sirenix.Serialization.dll" />
-    <Content Include="MelonLoader\Managed\Sirenix.Utilities.dll" />
-    <Content Include="MelonLoader\Managed\SMDiagnostics.dll" />
-    <Content Include="MelonLoader\Managed\System.ComponentModel.Composition.dll" />
-    <Content Include="MelonLoader\Managed\System.ComponentModel.DataAnnotations.dll" />
-    <Content Include="MelonLoader\Managed\System.Configuration.dll" />
-    <Content Include="MelonLoader\Managed\System.Configuration.Install.dll" />
-    <Content Include="MelonLoader\Managed\System.Core.dll" />
-    <Content Include="MelonLoader\Managed\System.Data.DataSetExtensions.dll" />
-    <Content Include="MelonLoader\Managed\System.Data.dll" />
-    <Content Include="MelonLoader\Managed\System.Data.Entity.dll" />
-    <Content Include="MelonLoader\Managed\System.Data.Linq.dll" />
-    <Content Include="MelonLoader\Managed\System.Data.OracleClient.dll" />
-    <Content Include="MelonLoader\Managed\System.Data.Services.Client.dll" />
-    <Content Include="MelonLoader\Managed\System.Data.Services.dll" />
-    <Content Include="MelonLoader\Managed\System.Design.dll" />
-    <Content Include="MelonLoader\Managed\System.DirectoryServices.dll" />
-    <Content Include="MelonLoader\Managed\System.DirectoryServices.Protocols.dll" />
-    <Content Include="MelonLoader\Managed\System.dll" />
-    <Content Include="MelonLoader\Managed\System.Drawing.Design.dll" />
-    <Content Include="MelonLoader\Managed\System.Drawing.dll" />
-    <Content Include="MelonLoader\Managed\System.EnterpriseServices.dll" />
-    <Content Include="MelonLoader\Managed\System.IdentityModel.dll" />
-    <Content Include="MelonLoader\Managed\System.IdentityModel.Selectors.dll" />
-    <Content Include="MelonLoader\Managed\System.IO.Compression.dll" />
-    <Content Include="MelonLoader\Managed\System.IO.Compression.FileSystem.dll" />
-    <Content Include="MelonLoader\Managed\System.Json.dll" />
-    <Content Include="MelonLoader\Managed\System.Management.dll" />
-    <Content Include="MelonLoader\Managed\System.Messaging.dll" />
-    <Content Include="MelonLoader\Managed\System.Net.dll" />
-    <Content Include="MelonLoader\Managed\System.Net.Http.dll" />
-    <Content Include="MelonLoader\Managed\System.Net.Http.Formatting.dll" />
-    <Content Include="MelonLoader\Managed\System.Net.Http.WebRequest.dll" />
-    <Content Include="MelonLoader\Managed\System.Numerics.dll" />
-    <Content Include="MelonLoader\Managed\System.Numerics.Vectors.dll" />
-    <Content Include="MelonLoader\Managed\System.Reflection.Context.dll" />
-    <Content Include="MelonLoader\Managed\System.Runtime.Caching.dll" />
-    <Content Include="MelonLoader\Managed\System.Runtime.DurableInstancing.dll" />
-    <Content Include="MelonLoader\Managed\System.Runtime.Remoting.dll" />
-    <Content Include="MelonLoader\Managed\System.Runtime.Serialization.dll" />
-    <Content Include="MelonLoader\Managed\System.Runtime.Serialization.Formatters.Soap.dll" />
-    <Content Include="MelonLoader\Managed\System.Security.dll" />
-    <Content Include="MelonLoader\Managed\System.ServiceModel.Activation.dll" />
-    <Content Include="MelonLoader\Managed\System.ServiceModel.Discovery.dll" />
-    <Content Include="MelonLoader\Managed\System.ServiceModel.dll" />
-    <Content Include="MelonLoader\Managed\System.ServiceModel.Internals.dll" />
-    <Content Include="MelonLoader\Managed\System.ServiceModel.Routing.dll" />
-    <Content Include="MelonLoader\Managed\System.ServiceModel.Web.dll" />
-    <Content Include="MelonLoader\Managed\System.ServiceProcess.dll" />
-    <Content Include="MelonLoader\Managed\System.Transactions.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.Abstractions.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.ApplicationServices.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.DynamicData.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.Extensions.Design.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.Extensions.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.Http.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.Http.SelfHost.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.Http.WebHost.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.Mvc.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.Razor.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.RegularExpressions.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.Routing.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.Services.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.WebPages.Deployment.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.WebPages.dll" />
-    <Content Include="MelonLoader\Managed\System.Web.WebPages.Razor.dll" />
-    <Content Include="MelonLoader\Managed\System.Windows.Forms.DataVisualization.dll" />
-    <Content Include="MelonLoader\Managed\System.Windows.Forms.dll" />
-    <Content Include="MelonLoader\Managed\System.Xaml.dll" />
-    <Content Include="MelonLoader\Managed\System.Xml.dll" />
-    <Content Include="MelonLoader\Managed\System.Xml.Linq.dll" />
-    <Content Include="MelonLoader\Managed\SystemWebTestShim.dll" />
-    <Content Include="MelonLoader\Managed\UnhollowerBaseLib.dll" />
-    <Content Include="MelonLoader\Managed\UnhollowerRuntimeLib.dll" />
-    <Content Include="MelonLoader\Managed\Unity.Analytics.DataPrivacy.dll" />
-    <Content Include="MelonLoader\Managed\Unity.Postprocessing.Runtime.dll" />
-    <Content Include="MelonLoader\Managed\Unity.RenderPipelines.Core.Runtime.dll" />
-    <Content Include="MelonLoader\Managed\Unity.RenderPipelines.Lightweight.Runtime.dll" />
-    <Content Include="MelonLoader\Managed\Unity.TextMeshPro.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.AccessibilityModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.AIModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.AnimationModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.ARModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.AssetBundleModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.AudioModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.BaselibModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.ClothModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.ClusterInputModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.ClusterRendererModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.CoreModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.CrashReportingModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.DirectorModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.FileSystemHttpModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.GameCenterModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.GridModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.HotReloadModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.Il2CppAssetBundleManager.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.Il2CppImageConversionManager.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.ImageConversionModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.IMGUIModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.InputModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.JSONSerializeModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.LocalizationModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.Networking.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.ParticleSystemModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.PerformanceReportingModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.Physics2DModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.PhysicsModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.ProfilerModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.ScreenCaptureModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.SharedInternalsModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.SpatialTracking.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.SpriteMaskModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.SpriteShapeModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.StreamingModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.StyleSheetsModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.SubstanceModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.TerrainModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.TerrainPhysicsModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.TextCoreModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.TextRenderingModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.TilemapModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.Timeline.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.TimelineModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.TLSModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.UI.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.UIElementsModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.UIModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.UmbraModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.UNETModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.UnityAnalyticsModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.UnityConnectModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.UnityTestProtocolModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.UnityWebRequestAudioModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.UnityWebRequestModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.UnityWebRequestTextureModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.UnityWebRequestWWWModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.VehiclesModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.VFXModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.VideoModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.VRModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.WindModule.dll" />
-    <Content Include="MelonLoader\Managed\UnityEngine.XRModule.dll" />
-    <Content Include="MelonLoader\Managed\ValueTupleBridge.dll" />
-    <Content Include="MelonLoader\Managed\WindowsBase.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="README.md" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

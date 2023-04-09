@@ -2,7 +2,8 @@
 using UnityEngine;
 using MelonLoader;
 using HarmonyLib;
-using GameCoder.Engine;
+using Il2Cpp;
+using Il2CppGameCoder.Engine;
 
 namespace GunfireBaseMod
 {
@@ -15,16 +16,11 @@ namespace GunfireBaseMod
             _ = SetupLogger();
         }
 
-        public override void OnApplicationLateStart() // Runs after Application Start has finished.
-        {
-            //GunfireMod.LoggerInstance.Msg("OnApplicationLateStart");
-        }
-
         public override void OnApplicationQuit() // Runs when the Game is told to Close.
         {
             //GunfireMod.LoggerInstance.Msg("OnApplicationQuit");
         }
-        public override void OnApplicationStart() // Runs after Game Initialization.
+        public override void OnInitializeMelon() // Runs after Game Initialization.
         {
             //ClassInjector.RegisterTypeInIl2Cpp<Patches.LuaComponentPatch>();
             //ClassInjector.RegisterTypeInIl2Cpp<NPCGate>();

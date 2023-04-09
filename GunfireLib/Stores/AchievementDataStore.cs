@@ -1,7 +1,8 @@
 ﻿using StringList = System.Collections.Generic.List<string>;
 using System.IO;
-using DataHelper;
+using Il2CppDataHelper;
 using GunfireLib.Utils;
+using Il2Cpp;
 using Il2CppSystem.Collections.Generic;
 
 namespace GunfireLib.Stores

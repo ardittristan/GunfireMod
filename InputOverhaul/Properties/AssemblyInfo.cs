@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AssetRipper")]
+[assembly: AssemblyTitle("InputOverhaul")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AssetRipper")]
+[assembly: AssemblyProduct("InputOverhaul")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6cf0b0db-93fb-4247-ab6d-9fb5f10f3301")]
+[assembly: Guid("7fbcb417-9b4b-4ae7-8a6d-ff38f7913507")]
 
 // Version information for an assembly consists of the following four values:
 //

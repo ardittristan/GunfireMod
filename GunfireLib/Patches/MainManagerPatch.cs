@@ -1,5 +1,8 @@
-﻿using HarmonyLib;
+﻿// ReSharper disable InconsistentNaming
+// ReSharper disable RedundantAssignment
+using HarmonyLib;
 using System.Reflection;
+using Il2Cpp;
 
 namespace GunfireLib.Patches
 {

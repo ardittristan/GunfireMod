@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
 using GunfireLib.Utils;
+using Il2Cpp;
+using Il2CppInterop.Runtime.Attributes;
+using Il2CppInterop.Runtime.Injection;
 using MelonLoader;
-using UnhollowerBaseLib.Attributes;
-using UnhollowerRuntimeLib;
 using UnityEngine;
 
 namespace GunfireLib.Instances

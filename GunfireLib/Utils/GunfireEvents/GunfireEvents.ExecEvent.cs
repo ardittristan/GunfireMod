@@ -1,4 +1,5 @@
 ﻿using System;
+using Il2Cpp;
 using Il2CppObject = Il2CppSystem.Object;
 
 namespace GunfireLib.Utils

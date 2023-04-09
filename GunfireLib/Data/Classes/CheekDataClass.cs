@@ -3,8 +3,8 @@
 // ReSharper disable StringLiteralTypo
 using System;
 using Il2CppSystem.Collections.Generic;
-using DataHelper;
-using UnhollowerBaseLib;
+using Il2CppDataHelper;
+using Il2CppInterop.Runtime;
 using KeyNotFoundException = System.Collections.Generic.KeyNotFoundException;
 using StringDictionary = System.Collections.Generic.Dictionary<string, string>;
 using RStringDictionary = System.Collections.Generic.IReadOnlyDictionary<string, string>;
@@ -52,10 +52,10 @@ namespace GunfireLib.Data.Classes
             get => cheekList[key].IconID;
         }
 
-        public int LockState
-        {
-            get => cheekList[key].LockState;
-        }
+        //public int LockState
+        //{
+        //    get => cheekList[key].LockState;
+        //}
 
         public string Name
         {

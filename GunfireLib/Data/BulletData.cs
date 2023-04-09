@@ -1,4 +1,5 @@
-﻿using DataHelper;
+﻿using Il2Cpp;
+using Il2CppDataHelper;
 using Il2CppSystem.Collections.Generic;
 
 namespace GunfireLib.Data

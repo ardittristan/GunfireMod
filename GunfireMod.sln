@@ -1,34 +1,35 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31911.196
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GunfireMod", "MelonMod\GunfireMod.csproj", "{616C7559-9FC0-48B8-A30E-47CA3566D019}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GunfireMod", "MelonMod\GunfireMod.csproj", "{616C7559-9FC0-48B8-A30E-47CA3566D019}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FontFixMod", "FontFixMod\FontFixMod.csproj", "{455997F1-0575-4131-89EC-296637DB5B9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FontFixMod", "FontFixMod\FontFixMod.csproj", "{455997F1-0575-4131-89EC-296637DB5B9D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{3E7FE219-89DF-457B-BA7F-3899F9DE91A8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{9D217651-297D-4CD7-BDF4-4082FDEF6AD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GunfireLib", "GunfireLib\GunfireLib.csproj", "{ED0C2330-5FF7-46B5-96B1-EE2FFAFFFF7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GunfireLib", "GunfireLib\GunfireLib.csproj", "{ED0C2330-5FF7-46B5-96B1-EE2FFAFFFF7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decompiler", "Decompiler\Decompiler.csproj", "{FE6D91A1-2DB5-40DF-8A8C-01E59174B940}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{4A0FF0DF-28E1-47EF-BE05-5951C5C6D84D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Decompiler", "Decompiler\Decompiler.csproj", "{FE6D91A1-2DB5-40DF-8A8C-01E59174B940}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D4503417-7428-4428-A92F-AC355A566A9F}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		NuGet.Config = NuGet.Config
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssetRipper", "AssetRipper\AssetRipper.csproj", "{6CF0B0DB-93FB-4247-AB6D-9FB5F10F3301}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetRipper", "AssetRipper\AssetRipper.csproj", "{6CF0B0DB-93FB-4247-AB6D-9FB5F10F3301}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslationGenerator", "TranslationGenerator\TranslationGenerator.csproj", "{BA420861-81FD-4C53-A930-5243CDD3AFE9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{FE6D91A1-2DB5-40DF-8A8C-01E59174B940} = {FE6D91A1-2DB5-40DF-8A8C-01E59174B940}
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InputOverhaul", "InputOverhaul\InputOverhaul.csproj", "{7FBCB417-9B4B-4AE7-8A6D-FF38F7913507}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,16 +89,6 @@ Global
 		{FE6D91A1-2DB5-40DF-8A8C-01E59174B940}.Release|x64.Build.0 = Release|Any CPU
 		{FE6D91A1-2DB5-40DF-8A8C-01E59174B940}.Release|x86.ActiveCfg = Release|Any CPU
 		{FE6D91A1-2DB5-40DF-8A8C-01E59174B940}.Release|x86.Build.0 = Release|Any CPU
-		{4A0FF0DF-28E1-47EF-BE05-5951C5C6D84D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A0FF0DF-28E1-47EF-BE05-5951C5C6D84D}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{4A0FF0DF-28E1-47EF-BE05-5951C5C6D84D}.Debug|x64.Build.0 = Debug|Any CPU
-		{4A0FF0DF-28E1-47EF-BE05-5951C5C6D84D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{4A0FF0DF-28E1-47EF-BE05-5951C5C6D84D}.Debug|x86.Build.0 = Debug|Any CPU
-		{4A0FF0DF-28E1-47EF-BE05-5951C5C6D84D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A0FF0DF-28E1-47EF-BE05-5951C5C6D84D}.Release|x64.ActiveCfg = Release|Any CPU
-		{4A0FF0DF-28E1-47EF-BE05-5951C5C6D84D}.Release|x64.Build.0 = Release|Any CPU
-		{4A0FF0DF-28E1-47EF-BE05-5951C5C6D84D}.Release|x86.ActiveCfg = Release|Any CPU
-		{4A0FF0DF-28E1-47EF-BE05-5951C5C6D84D}.Release|x86.Build.0 = Release|Any CPU
 		{6CF0B0DB-93FB-4247-AB6D-9FB5F10F3301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6CF0B0DB-93FB-4247-AB6D-9FB5F10F3301}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{6CF0B0DB-93FB-4247-AB6D-9FB5F10F3301}.Debug|x64.Build.0 = Debug|Any CPU
@@ -120,6 +111,18 @@ Global
 		{BA420861-81FD-4C53-A930-5243CDD3AFE9}.Release|x64.Build.0 = Release|Any CPU
 		{BA420861-81FD-4C53-A930-5243CDD3AFE9}.Release|x86.ActiveCfg = Release|Any CPU
 		{BA420861-81FD-4C53-A930-5243CDD3AFE9}.Release|x86.Build.0 = Release|Any CPU
+		{7FBCB417-9B4B-4AE7-8A6D-FF38F7913507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FBCB417-9B4B-4AE7-8A6D-FF38F7913507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FBCB417-9B4B-4AE7-8A6D-FF38F7913507}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7FBCB417-9B4B-4AE7-8A6D-FF38F7913507}.Debug|x64.Build.0 = Debug|Any CPU
+		{7FBCB417-9B4B-4AE7-8A6D-FF38F7913507}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7FBCB417-9B4B-4AE7-8A6D-FF38F7913507}.Debug|x86.Build.0 = Debug|Any CPU
+		{7FBCB417-9B4B-4AE7-8A6D-FF38F7913507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FBCB417-9B4B-4AE7-8A6D-FF38F7913507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FBCB417-9B4B-4AE7-8A6D-FF38F7913507}.Release|x64.ActiveCfg = Release|Any CPU
+		{7FBCB417-9B4B-4AE7-8A6D-FF38F7913507}.Release|x64.Build.0 = Release|Any CPU
+		{7FBCB417-9B4B-4AE7-8A6D-FF38F7913507}.Release|x86.ActiveCfg = Release|Any CPU
+		{7FBCB417-9B4B-4AE7-8A6D-FF38F7913507}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

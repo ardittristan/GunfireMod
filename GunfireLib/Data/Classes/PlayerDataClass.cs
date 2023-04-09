@@ -2,7 +2,7 @@
 // ReSharper disable ArrangeAccessorOwnerBody
 // ReSharper disable StringLiteralTypo
 using Il2CppSystem.Collections.Generic;
-using DataHelper;
+using Il2CppDataHelper;
 
 namespace GunfireLib.Data.Classes
 {

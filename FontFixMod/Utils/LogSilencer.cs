@@ -1,6 +1,6 @@
 ﻿using System;
 using HarmonyLib;
-using UnhollowerBaseLib;
+using Il2CppInterop.Runtime;
 using UnityEngine;
 using Il2CppObject = Il2CppSystem.Object;
 using UnityObject = UnityEngine.Object;

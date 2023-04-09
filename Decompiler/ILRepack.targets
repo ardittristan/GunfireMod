@@ -29,6 +29,7 @@
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == '0Harmony'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'MonoMod.RuntimeDetour'" />
 			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'MonoMod.Utils'" />
+			<InputAssemblies Include="@(ReferencePathWithRefAssemblies)" Condition="'%(filename)' == 'WasmDisassembler'" />
 			<!-- ReSharper restore UnknownItemGroup -->
 		</ItemGroup>
 		<!-- ReSharper disable once UnknownTask -->

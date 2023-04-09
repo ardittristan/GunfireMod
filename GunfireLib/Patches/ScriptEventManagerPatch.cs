@@ -5,8 +5,10 @@ using System.Reflection;
 using GunfireLib.Stores;
 using GunfireLib.Utils;
 using HarmonyLib;
-using UnhollowerBaseLib;
-using UnhollowerRuntimeLib.XrefScans;
+using Il2Cpp;
+using Il2CppInterop.Common.XrefScans;
+using Il2CppInterop.Runtime;
+using Il2CppInterop.Runtime.XrefScans;
 using Il2CppObject = Il2CppSystem.Object;
 
 namespace GunfireLib.Patches

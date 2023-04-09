@@ -8,13 +8,12 @@ using UnityEngine;
 using GunfireLib.Instances;
 using GunfireLib.Patches;
 using GunfireLib.Utils;
+using Il2Cpp;
 
 namespace GunfireLib
 {
     public class GunfireLib : MelonMod
     {
-        internal static HarmonyLib.Harmony harmony;
-
         internal static readonly bool VerboseLog =
             Environment.GetCommandLineArgs().Any(s => s.Contains("--gunfirelib.verbose"));
 
@@ -36,13 +35,10 @@ namespace GunfireLib
 
         public GunfireLib()
         {
-            harmony = HarmonyInstance;
             _ = SetupLogger();
 
             HarmonyLib.Tools.Logger.ChannelFilter = HarmonyLib.Tools.Logger.LogChannel.All;
             HarmonyLib.Tools.HarmonyFileLog.Enabled = true;
-
-            Debug.developerConsoleVisible = true;
 
             if (FileLog)
             {
@@ -50,17 +46,12 @@ namespace GunfireLib
             }
         }
 
-        public override void OnApplicationLateStart()
-        {
-
-        }
-
         public override void OnApplicationQuit()
         {
             GunfireEvents.RaiseQuitEvent();
         }
 
-        public override void OnApplicationStart()
+        public override void OnInitializeMelon()
         {
             if (FileLog) SetupStore.Setup();
             PortalInstance.Setup();

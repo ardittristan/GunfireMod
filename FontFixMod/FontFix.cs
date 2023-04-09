@@ -4,8 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using HarmonyLib;
+using Il2CppTMPro;
 using MelonLoader;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 

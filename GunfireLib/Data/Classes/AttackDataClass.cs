@@ -2,9 +2,9 @@
 // ReSharper disable ArrangeAccessorOwnerBody
 // ReSharper disable StringLiteralTypo
 using System;
+using Il2CppDataHelper;
+using Il2CppInterop.Runtime;
 using Il2CppSystem.Collections.Generic;
-using DataHelper;
-using UnhollowerBaseLib;
 using KeyNotFoundException = System.Collections.Generic.KeyNotFoundException;
 using StringDictionary = System.Collections.Generic.Dictionary<string, string>;
 using RStringDictionary = System.Collections.Generic.IReadOnlyDictionary<string, string>;
